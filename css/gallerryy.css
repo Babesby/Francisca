@@ -1,0 +1,247 @@
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
+
+:root {
+  --aquamarine: #9f1c20;
+  --cyan: #7a0f12;
+  --pastel-aqua: #ff6b6b;
+  --deep-blue: #f2a900;
+}
+
+.fluid-container {
+    max-width: 100%;
+    overflow: hidden;
+    padding: 80px 0;
+    position: relative;
+}
+
+
+
+
+/* Continuous Scroll Container */
+.scroll-container {
+    position: relative;
+    overflow: hidden;
+    padding: 30px 0;
+}
+
+.scroll-wrapper {
+    display: flex;
+    animation: scroll-left 60s linear infinite;
+    width: calc(400px * 12); /* 6 items × 2 for seamless loop */
+}
+
+.scroll-wrapper:hover {
+    animation-play-state: paused;
+}
+
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-400px * 6)); /* Half the total width */
+    }
+}
+
+/* Service Item Styles */
+.service-item {
+    flex: 0 0 380px;
+    margin-right: 20px;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(100, 149, 237, 0.15);
+    transition: all 0.3s ease;
+    position: relative;
+    height: 480px;
+}
+
+.service-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 255, 255, 0.2);
+}
+
+.service-item figure {
+    height: 250px;
+    overflow: hidden;
+    position: relative;
+}
+
+.service-item figure::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40%;
+    background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+}
+
+.service-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.service-item:hover img {
+    transform: scale(1.1);
+}
+
+
+
+/* Service Type Variants */
+.service-1 {
+    border-top: 4px solid var(--aquamarine);
+}
+
+.service-2 {
+    border-top: 4px solid var(--deep-blue);
+}
+
+.service-3 {
+    border-top: 4px solid var(--cyan);
+}
+
+/* Learn More Section */
+.learn-more-section {
+    text-align: center;
+    margin-top: 60px;
+    padding: 0 20px;
+}
+
+.learn-more-btn {
+    display: inline-flex;
+    align-items: center;
+    background: linear-gradient(45deg, var(--deep-blue))!important;
+    color: #4A4A4A !important;
+    padding: 16px 35px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(100, 149, 237, 0.3);
+     font-family: 'Cormorant Garamond', serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: none;
+    cursor: pointer;
+}
+
+.learn-more-btn:hover {
+    background: linear-gradient(45deg, var(--cyan))!important;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 255, 255, 0.4);
+    color: #4A4A4A !important;
+}
+
+.learn-more-btn i {
+    margin-left: 10px;
+    transition: transform 0.3s ease;
+}
+
+.learn-more-btn:hover i {
+    transform: translateX(5px);
+}
+
+/* Gradient overlay for seamless loop effect */
+.scroll-container::before,
+.scroll-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 150px;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.scroll-container::before {
+    left: 0;
+    background: linear-gradient(to right, var(--pastel-aqua), transparent);
+}
+
+.scroll-container::after {
+    right: 0;
+    background: linear-gradient(to left, var(--pastel-aqua), transparent);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .big_title {
+        font-size: 2.5rem;
+    }
+    
+    .service-item {
+        flex: 0 0 350px;
+        height: 450px;
+    }
+    
+    .scroll-wrapper {
+        width: calc(370px * 12);
+    }
+    
+    @keyframes scroll-left {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(calc(-370px * 6));
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .fluid-container {
+        padding: 60px 0;
+    }
+    
+    .big_title {
+        font-size: 2.2rem;
+    }
+    
+    .service-item {
+        flex: 0 0 300px;
+        height: 420px;
+    }
+    
+    .scroll-wrapper {
+        width: calc(320px * 12);
+    }
+    
+    @keyframes scroll-left {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(calc(-320px * 6));
+        }
+    }
+    
+    .scroll-container::before,
+    .scroll-container::after {
+        width: 80px;
+    }
+}
+
+/* Animation for items when loaded */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.service-item {
+    animation: fadeInUp 0.6s ease forwards;
+    opacity: 0;
+}
+
+/* Delay animations for each item */
+.service-item:nth-child(1) { animation-delay: 0.1s; }
+.service-item:nth-child(2) { animation-delay: 0.2s; }
+.service-item:nth-child(3) { animation-delay: 0.3s; }
