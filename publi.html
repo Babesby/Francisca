@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Francisca Boateng | Home </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Poppins -->
+     <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+
+
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+      <link rel="stylesheet" href="css/whatsapx.css">
+      <link rel="stylesheet" href="css/home.css">
+      <link rel="stylesheet" href="css/gallerryy.css">
+      <link rel="icon" type="image/svg+xml" href="img/logo.svg">
+
+  <!-- Icons & fonts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --primary:#9f1c20;
+      --primary-dark:#7a0f12;
+      --primary-light:#ff6b6b;
+      --secondary:#ff6b6b;
+      --accent:#004a77;
+      --dark:#2b2b2b;
+      --light:#f9f9f9;
+      --transition: all 0.4s cubic-bezier(.17,.88,.32,1.28);
+    }
+
+    /* Reset & body */
+    *{box-sizing:border-box}
+    body {
+      margin:0;
+      font-family: 'Cormorant Garamond', serif;
+      color:var(--primary);
+      background:#fff;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+  
+
+    .container{width:95%;max-width:1300px;margin:2rem auto;padding-bottom:3rem}
+
+    /* Page header */
+    .page-header{
+      background:linear-gradient(135deg,var(--primary-dark),var(--primary));
+      color:white;
+      padding:4rem 2rem;
+      text-align:center;
+      border-radius:12px;
+    }
+    .page-header h1{font-size:2.6rem;margin:0}
+    .page-header p{opacity:.95;margin-top:.6rem}
+
+    /* Search & filters */
+    .search-box{max-width:700px;margin:1rem auto;position:relative}
+    .search-input{width:100%;padding:.75rem 2.6rem;border-radius:30px;border:2px solid var(--primary-light);font-size:1rem}
+    .search-icon{position:absolute;left:1rem;top:50%;transform:translateY(-50%);color:var(--primary)}
+    .filter-controls{display:flex;justify-content:center;gap:.6rem;flex-wrap:wrap;margin:.8rem 0}
+    .filter-option{background:var(--primary);color:#fff;padding:.45rem .9rem;border-radius:999px;cursor:pointer}
+    .filter-option.active,.filter-option:hover{background:var(--secondary);color:var(--dark)}
+    .year-select{background:var(--primary);color:#fff;border:none;border-radius:999px;padding:.45rem .9rem}
+
+    /* Gallery grid */
+    .publications-list{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:1.2rem;
+      margin-top:1rem;
+    }
+
+    .publication-card{
+      background:var(--primary-light);
+      border-radius:14px;
+      overflow:hidden;
+      color:#fff;
+      box-shadow:0 6px 18px rgba(0,0,0,0.12);
+      display:flex;
+      flex-direction:column;
+      transition:var(--transition);
+    }
+    .publication-card:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(0,0,0,0.15)}
+
+    /* VIDEO WRAPPER (pub-thumbnail) - this is the key area */
+    .pub-thumbnail{
+      width:100%;
+      background:#000;
+      display:flex;
+      justify-content:center;
+      align-items:flex-end; /* anchor to bottom so faces remain visible when letterboxed */
+      overflow:hidden;
+      border-radius:12px;
+      /* allow the wrapper to grow up to a sane maximum */
+      max-height:80vh;
+      min-height:160px;
+    }
+
+    /* Base rules for video & poster images */
+    .pub-thumbnail video,
+    .pub-thumbnail img{
+      display:block;
+      border-radius:inherit;
+      background:#000;
+      object-fit:contain;       /* always show entire frame */
+      object-position:center bottom; /* bias toward bottom so head isn't cut off */
+      max-width:100%;
+      max-height:100%;
+    }
+
+    /* Landscape -> scale by width (default) */
+    .pub-thumbnail.landscape video{
+      width:100%;
+      height:auto;
+    }
+
+    /* Portrait -> scale by height so tall person fills card */
+    .pub-thumbnail.portrait video{
+      width:auto;
+      height:100%;
+      max-height:75vh;
+    }
+
+    /* Poster images should match same behavior */
+    .pub-thumbnail.portrait img{ width:auto; height:100%; max-height:75vh; object-fit:contain; object-position:center bottom; }
+    .pub-thumbnail.landscape img{ width:100%; height:auto; object-fit:contain; object-position:center bottom; }
+
+    /* Details area */
+    .pub-details{padding:1rem;display:flex;flex-direction:column;gap:.6rem;flex:1}
+    .pub-header{display:flex;justify-content:space-between;align-items:center;font-size:.86rem}
+    .pub-badge{background:rgba(255,255,255,0.85);color:var(--primary-dark);padding:.25rem .5rem;border-radius:6px;font-size:.78rem}
+    .pub-title{font-size:1rem;font-weight:600;color:#fff;margin:0.2rem 0}
+    .pub-abstract{display:none;color:#fff;font-size:.92rem;line-height:1.4}
+    .pub-abstract.show{display:block}
+    .pub-actions{display:flex;justify-content:space-between;align-items:center;margin-top:auto}
+    .abstract-toggle{background:none;border:none;color:var(--primary-dark);cursor:pointer;font-size:.96rem}
+    .action-icons a{color:var(--primary-dark);margin-left:.6rem;text-decoration:none;font-size:1.05rem}
+
+    /* Small screens: keep comfortable spacing */
+    @media (max-width:920px){
+      .page-header{padding:3rem 1.2rem}
+    }
+    @media (max-width:723px){
+      .page-header h1{font-size:1.8rem}
+      .pub-thumbnail{min-height:220px; max-height:75vh}
+      .pub-thumbnail.landscape video{max-height:45vh}
+      .pub-thumbnail.portrait video{max-height:75vh}
+    }
+
+    /* Footer & profile links (kept minimal) */
+    .profile-links{margin-top:2rem}
+    .links-container{display:flex;gap:1rem;flex-wrap:wrap}
+    .profile-link{display:flex;align-items:center;padding:.7rem 1rem;border-radius:10px;background:#fff;color:var(--primary);text-decoration:none;box-shadow:0 4px 12px rgba(0,0,0,0.06)}
+    .link-icon{font-size:1.25rem;margin-right:.6rem}
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+        <div id="logo" class="logo">
+        <h1><a href="#" class="logo"><img src="img/logo.svg" alt="" title="" /></a></h1>
+      </div>
+      <div class="hero-text animated fadeInDownBig"> <a href="#">
+        
+        <div class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <nav id="nav">
+            <ul>
+                  <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#expertise">Expertise</a></li>
+                <li><a href="proj.html">Projects</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+<br/><br/><br/> 
+  <div class="container">
+    <section class="page-header">
+      <h1>Videos</h1>
+      <p>Gallery — Recent Podcasts & Talks</p>
+    </section>
+
+    <!-- Search -->
+    <div class="search-box">
+      <i class="fas fa-search search-icon"></i>
+      <input id="search-input" class="search-input" placeholder="Search videos by title, topic, or keyword..." />
+    </div>
+
+    <!-- Filters -->
+    <div class="filter-controls">
+      <div class="filter-option active" data-filter="all">All Videos</div>
+      <select id="topic-filter" class="year-select">
+        <option value="all">Based on Topic</option>
+        <option value="Faith">Faith</option>
+        <option value="Leadership">Leadership</option>
+        <option value="Love">Love</option>
+        <option value="Technology">Technology</option>
+        <option value="Local context">Local Context</option>
+      </select>
+    </div>
+
+    <!-- Video Grid -->
+    <div class="publications-list" id="videos-container">
+
+      <!-- Video 1 -->
+      <div class="publication-card" data-topic="Faith" data-keywords="faith talk god encouragement inspiration">
+        <div class="pub-thumbnail">
+          <video controls poster="franca/one.jpg">
+            <source src="img/Create Or Compete.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="pub-details">
+          <div class="pub-header">
+            <div class="pub-badge"><i class="fas fa-star"></i> Featured</div>
+            <div class="pub-year">Faith</div>
+          </div>
+          <h3 class="pub-title">Create Or Compete — Finding Your Unique Path</h3>
+          <div class="pub-actions">
+            <button class="abstract-toggle" onclick="toggleDescription(this)">Show Description <i class="fas fa-chevron-down"></i></button>
+            <div class="action-icons">
+              <a href="img/Create Or Compete.mp4" download title="Download Video"><i class="fas fa-download"></i></a>
+              <a href="#" class="share-btn" title="Share" data-src="img/Create Or Compete.mp4"><i class="fas fa-share-alt"></i></a>
+            </div>
+          </div>
+          <div class="pub-abstract"><p>A heartfelt reflection on competition and creativity, exploring how creativity shapes our identity.</p></div>
+        </div>
+      </div>
+
+      <!-- Video 2 -->
+      <div class="publication-card" data-topic="Leadership" data-keywords="leadership integrity trust">
+        <div class="pub-thumbnail">
+          <video controls poster="franca/two.jpg">
+            <source src="img/Integrity.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="pub-details">
+          <div class="pub-header">
+            <div class="pub-badge"><i class="fas fa-user-tie"></i> Insight</div>
+            <div class="pub-year">Leadership</div>
+          </div>
+          <h3 class="pub-title">Leading with Integrity — Building Trust</h3>
+          <div class="pub-actions">
+            <button class="abstract-toggle" onclick="toggleDescription(this)">Show Description <i class="fas fa-chevron-down"></i></button>
+            <div class="action-icons">
+              <a href="img/Integrity.mp4" download title="Download Video"><i class="fas fa-download"></i></a>
+              <a href="#" class="share-btn" title="Share" data-src="img/Integrity.mp4"><i class="fas fa-share-alt"></i></a>
+            </div>
+          </div>
+          <div class="pub-abstract"><p>An empowering conversation on leadership grounded in trust and integrity.</p></div>
+        </div>
+      </div>
+
+      <!-- Video 3 -->
+      <div class="publication-card" data-topic="Leadership" data-keywords="resilience courage">
+        <div class="pub-thumbnail">
+          <video controls poster="franca/three.jpg">
+            <source src="img/Strength and Courage.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="pub-details">
+          <div class="pub-header">
+            <div class="pub-badge"><i class="fas fa-medkit"></i> Courage</div>
+            <div class="pub-year">Leadership</div>
+          </div>
+          <h3 class="pub-title">Resilient Leadership — Leading with strength and Courage</h3>
+          <div class="pub-actions">
+            <button class="abstract-toggle" onclick="toggleDescription(this)">Show Description <i class="fas fa-chevron-down"></i></button>
+            <div class="action-icons">
+              <a href="img/Strength and Courage.mp4" download><i class="fas fa-download"></i></a>
+              <a href="#" class="share-btn" data-src="img/Strength and Courage.mp4"><i class="fas fa-share-alt"></i></a>
+            </div>
+          </div>
+          <div class="pub-abstract"><p>How individuals and leaders can thrive through strength and courage.</p></div>
+        </div>
+      </div>
+
+      <!-- Video 4 -->
+      <div class="publication-card" data-topic="Faith" data-keywords="resilience faith motivate">
+        <div class="pub-thumbnail">
+          <video controls poster="franca/four.jpg">
+            <source src="img/Dont Quit.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="pub-details">
+          <div class="pub-header">
+            <div class="pub-badge"><i class="fas fa-balance-scale"></i> Faith</div>
+            <div class="pub-year">Faith</div>
+          </div>
+          <h3 class="pub-title">Don't Quit! Keep Moving</h3>
+          <div class="pub-actions">
+            <button class="abstract-toggle" onclick="toggleDescription(this)">Show Description <i class="fas fa-chevron-down"></i></button>
+            <div class="action-icons">
+              <a href="img/Dont Quit.mp4" download><i class="fas fa-download"></i></a>
+              <a href="#" class="share-btn" data-src="img/Dont Quit.mp4"><i class="fas fa-share-alt"></i></a>
+            </div>
+          </div>
+          <div class="pub-abstract"><p>Encouragement on tenacity and resilience.</p></div>
+        </div>
+      </div>
+
+      <!-- Video 5 -->
+      <div class="publication-card" data-topic="Love" data-keywords="self love empowerment">
+        <div class="pub-thumbnail">
+          <video controls poster="franca/five.jpg">
+            <source src="img/hey you.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="pub-details">
+          <div class="pub-header">
+            <div class="pub-badge"><i class="fas fa-heart"></i> Self Love</div>
+            <div class="pub-year">Love</div>
+          </div>
+          <h3 class="pub-title">Self Love as Leadership</h3>
+          <div class="pub-actions">
+            <button class="abstract-toggle" onclick="toggleDescription(this)">Show Description <i class="fas fa-chevron-down"></i></button>
+            <div class="action-icons">
+              <a href="img/hey you.mp4" download><i class="fas fa-download"></i></a>
+              <a href="#" class="share-btn" data-src="img/hey you.mp4"><i class="fas fa-share-alt"></i></a>
+            </div>
+          </div>
+          <div class="pub-abstract"><p>Self-love as a leadership force creating confidence and growth.</p></div>
+        </div>
+      </div>
+
+      <!-- Video 6 -->
+      <div class="publication-card" data-topic="Love" data-keywords="fashion brand story">
+        <div class="pub-thumbnail">
+          <video controls poster="franca/six.jpg">
+            <source src="img/Odo' Clothing.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="pub-details">
+          <div class="pub-header">
+            <div class="pub-badge"><i class="fas fa-globe"></i> Fashion</div>
+            <div class="pub-year">Love</div>
+          </div>
+          <h3 class="pub-title">Odo's Kloset — Fashion created with love</h3>
+          <div class="pub-actions">
+            <button class="abstract-toggle" onclick="toggleDescription(this)">Show Description <i class="fas fa-chevron-down"></i></button>
+            <div class="action-icons">
+              <a href="img/Odo' Clothing.mp4" download><i class="fas fa-download"></i></a>
+              <a href="#" class="share-btn" data-src="img/Odo' Clothing.mp4"><i class="fas fa-share-alt"></i></a>
+            </div>
+          </div>
+          <div class="pub-abstract"><p>The story behind the brand.</p></div>
+        </div>
+      </div>
+
+      <!-- Video 7 -->
+      <div class="publication-card" data-topic="Love" data-keywords="motivation voice">
+        <div class="pub-thumbnail">
+          <video controls poster="franca/seven.jpg">
+            <source src="img/LOVE.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="pub-details">
+          <div class="pub-header">
+            <div class="pub-badge"><i class="fas fa-leaf"></i> Self Motivation</div>
+            <div class="pub-year">Love</div>
+          </div>
+          <h3 class="pub-title">Voices that will motivate you</h3>
+          <div class="pub-actions">
+            <button class="abstract-toggle" onclick="toggleDescription(this)">Show Description <i class="fas fa-chevron-down"></i></button>
+            <div class="action-icons">
+              <a href="img/LOVE.mp4" download><i class="fas fa-download"></i></a>
+              <a href="#" class="share-btn" data-src="img/LOVE.mp4"><i class="fas fa-share-alt"></i></a>
+            </div>
+          </div>
+          <div class="pub-abstract"><p>Encouraging words to keep you moving.</p></div>
+        </div>
+      </div>
+
+      <!-- Video 8 -->
+      <div class="publication-card" data-topic="Technology" data-keywords="training cybersecurity youth">
+        <div class="pub-thumbnail">
+          <video controls poster="franca/eight.jpg">
+            <source src="img/training.MP4" type="video/mp4">
+          </video>
+        </div>
+        <div class="pub-details">
+          <div class="pub-header">
+            <div class="pub-badge"><i class="fas fa-seedling"></i> Cybersecurity</div>
+            <div class="pub-year">Technology</div>
+          </div>
+          <h3 class="pub-title">Slamm Foundation — ISC2 Cybersecurity Training</h3>
+          <div class="pub-actions">
+            <button class="abstract-toggle" onclick="toggleDescription(this)">Show Description <i class="fas fa-chevron-down"></i></button>
+            <div class="action-icons">
+              <a href="img/training.MP4" download><i class="fas fa-download"></i></a>
+              <a href="#" class="share-btn" data-src="img/training.MP4"><i class="fas fa-share-alt"></i></a>
+            </div>
+          </div>
+          <div class="pub-abstract"><p>How we provided free cybersecurity training for youth in Kumasi in one week.</p></div>
+        </div>
+      </div>
+
+    </div> <!-- end grid -->
+
+    <!-- Profile Links -->
+    <div class="profile-links">
+      <h2>Connect with Me</h2>
+      <div class="links-container">
+        <a href="https://www.instagram.com/francisca_boateng1/" class="profile-link" target="_blank">
+          <div class="link-icon"><i class="fab fa-instagram"></i></div>
+          <div class="link-text"><div class="link-title">Instagram</div><div class="link-url">francisca_boateng1</div></div>
+        </a>
+        <a href="https://web.facebook.com/obo.boateng" class="profile-link" target="_blank">
+          <div class="link-icon"><i class="fab fa-facebook-f"></i></div>
+          <div class="link-text"><div class="link-title">Facebook</div><div class="link-url">obo.boateng</div></div>
+        </a>
+        <a href="https://www.linkedin.com/in/franciscaboateng" class="profile-link" target="_blank">
+          <div class="link-icon"><i class="fab fa-linkedin-in"></i></div>
+          <div class="link-text"><div class="link-title">LinkedIn</div><div class="link-url">franciscaboateng</div></div>
+        </a>
+      </div>
+    </div>
+
+  </div> <!-- container -->
+
+   <!-- Gallery -->
+     <section>
+        <div class="fluid-container">
+          <div class="section_title">
+            <h1 class="big_title">Images</h1>
+          </div>
+          
+          <div class="scroll-container">
+            <div class="scroll-wrapper">
+              <!-- First set of services -->
+              <div class="service-item service-1">
+                <img src="pub/1.JPG" alt="" loading="lazy">             
+              </div></a> 
+
+              <div class="service-item service-2">
+              <img src="pub/2.JPG" alt="" loading="lazy">
+              </div></a>
+
+              <div class="service-item service-3">
+                <img src="pub/3.JPG" alt="" loading="lazy">
+               </div></a>
+
+                <div class="service-item service-1">
+                <img src="pub/4.jpg" alt="" loading="lazy">
+              </div></a>
+
+              <div class="service-item service-2">
+                <img src="pub/5.JPG" alt="" loading="lazy">
+              </div></a>
+
+              <div class="service-item service-2">
+                <img src="pub/21.jpg" alt="" loading="lazy">
+              </div></a>
+
+              <div class="service-item service-3">
+                <img src="pub/6.jpg" alt="" loading="lazy">
+               </div></a>
+                      
+
+              
+              </div>
+            </div>
+          
+        </div>
+      </section> 
+
+ 
+         <!-- WhatsApp Floating Button -->
+    <button class="whatsapp-float" id="whatsappButton">
+        <svg class="whatsapp-icon" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+        </svg>
+    </button>
+
+    <!-- WhatsApp Chat Widget -->
+    <div class="whatsapp-chat" id="whatsappChat">
+        <div class="chat-header">
+            <div class="chat-header-info">
+                <div class="chat-avatar">
+                    <img src="img/e.JPG" alt="Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div style="display: none; width: 100%; height: 100%; align-items: center; justify-content: center;  background: white!important; font-weight: bold;">OT</div>
+                </div>
+                <div>
+                    <h3 class="chat-title">Francisca Boateng</h3>
+                    <p class="chat-subtitle" style="color:#f7f7f7!important">Replies within 24 hours</p>
+                </div>
+            </div>
+            <button class="close-btn" id="closeChat">×</button>
+        </div>
+        
+        <div class="chat-body">
+            <div class="chat-time">Today</div>
+            
+            <div class="message received">
+                <div class="message-bubble">
+                    Hi there, welcome to my page, book an appointment with me.
+                </div>
+                <div class="message-time">16:23</div>
+            </div>
+            
+        </div>
+        
+       <div class="chat-footer">
+    <div class="message-input-container">
+        <textarea 
+            class="message-input" 
+            id="messageInput" 
+            placeholder="Type a message..."
+            rows="1"
+        ></textarea>
+        <button class="send-btn" id="sendBtn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M2,21L23,12L2,3V10L17,12L2,14V21Z"/>
+            </svg>
+        </button>
+    </div>
+
+    <!-- ✅ Add this -->
+    <button class="start-chat-btn" id="startChatBtn">
+        Start Chat on WhatsApp
+    </button>
+</div>
+    </div>
+    <script src="js/whatsapp.js"></script>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <img src="img/logo.svg" alt="Logo" style="width:120px; height:auto;">
+             <p>Passionate about mentorship, social impact and guiding young people in public speaking, debate, and personal development.</p>
+  <div class="social-links">
+                    <a href="https://www.linkedin.com/in/franciscaboateng?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BU%2BgjWCpcSSaJAnzj%2FAUkdQ%3D%3D"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-researchgate"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Accra, Greater Accra Region, Ghana</p>
+                <p><i class="fas fa-envelope"></i> info@slammllc.com</p>
+                <p><i class="fas fa-phone"></i> +1 (703) 930 9011</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Francisca Boateng. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const nav = document.getElementById('nav');
+        
+        menuToggle.addEventListener('click', function() {
+            nav.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link
+        const navLinks = document.querySelectorAll('nav ul li a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                nav.classList.remove('active');
+            });
+        });
+
+        // Enhanced Carousel with 10 Animation Styles
+        const carouselSlides = document.querySelectorAll('.carousel-slide');
+        let currentSlide = 0;
+        
+        // Initialize first slide
+        carouselSlides[0].classList.add('active');
+        
+        function rotateCarousel() {
+            // Remove active class from current slide
+            carouselSlides[currentSlide].classList.remove('active');
+            
+            // Move to next slide
+            currentSlide = (currentSlide + 1) % carouselSlides.length;
+            
+            // Add active class to new slide
+            carouselSlides[currentSlide].classList.add('active');
+        }
+        
+        // Start the carousel
+        setInterval(rotateCarousel, 4000);
+
+        // Typed.js for hero section
+        const typed = new Typed('#typed', {
+            strings: [
+                '"God\'s Favourite Daughter"'
+            ],
+            typeSpeed: 50,
+            backSpeed: 30,
+            loop: true,
+            backDelay: 2000,
+            style:"font-family",
+            showCursor: false,
+            cursorChar: '|'
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+
+  <!-- SCRIPTS -->
+  <script>
+    /* Toggle description */
+    function toggleDescription(button) {
+      const card = button.closest('.publication-card');
+      const desc = card.querySelector('.pub-abstract');
+      if (!desc) return;
+      if (desc.classList.contains('show')) {
+        desc.classList.remove('show');
+        button.innerHTML = 'Show Description <i class="fas fa-chevron-down"></i>';
+      } else {
+        desc.classList.add('show');
+        button.innerHTML = 'Hide Description <i class="fas fa-chevron-up"></i>';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const filterOptions = document.querySelectorAll('.filter-option');
+      const topicSelect = document.getElementById('topic-filter');
+      const searchInput = document.getElementById('search-input');
+      const videoCards = Array.from(document.querySelectorAll('.publication-card'));
+
+      /* Search */
+      searchInput.addEventListener('input', function() {
+        const term = this.value.trim().toLowerCase();
+        videoCards.forEach(card => {
+          const title = card.querySelector('.pub-title')?.textContent.toLowerCase() || '';
+          const keywords = (card.dataset.keywords || '').toLowerCase();
+          const desc = (card.querySelector('.pub-abstract')?.textContent || '').toLowerCase();
+          const match = title.includes(term) || keywords.includes(term) || desc.includes(term);
+          card.style.display = match || term === '' ? 'flex' : 'none';
+        });
+      });
+
+      /* Filters */
+      filterOptions.forEach(option => {
+        option.addEventListener('click', function() {
+          filterOptions.forEach(o => o.classList.remove('active'));
+          this.classList.add('active');
+          filterVideos(this.dataset.filter);
+        });
+      });
+      topicSelect.addEventListener('change', function() {
+        filterVideos(this.value);
+        filterOptions.forEach(o => o.classList.remove('active'));
+      });
+      function filterVideos(filter) {
+        videoCards.forEach(card => {
+          const topic = card.dataset.topic;
+          card.style.display = (filter === 'all' || topic === filter) ? 'flex' : 'none';
+        });
+      }
+
+      /* Share buttons: native share or copy link fallback */
+      document.querySelectorAll('.share-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          const src = this.dataset.src;
+          const title = this.closest('.publication-card')?.querySelector('.pub-title')?.textContent || 'Video';
+          // build absolute URL if src is relative
+          const absolute = (new URL(src, window.location.href)).href;
+          if (navigator.share) {
+            navigator.share({title, text: title, url: absolute}).catch(()=>{});
+          } else if (navigator.clipboard) {
+            navigator.clipboard.writeText(absolute).then(()=>alert('Video link copied to clipboard!')).catch(()=>prompt('Copy link:', absolute));
+          } else {
+            prompt('Copy link:', absolute);
+          }
+        });
+      });
+
+      /* Entry animation */
+      videoCards.forEach((card, i) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(18px)';
+        card.style.transition = 'all .5s ease';
+        setTimeout(()=>{ card.style.opacity = '1'; card.style.transform = 'translateY(0)'; }, 80*i);
+      });
+
+      /* ======= ASPECT DETECTION: auto-add portrait or landscape classes =======
+         This reads each video's naturalWidth/naturalHeight (videoWidth/videoHeight)
+         and assigns .portrait or .landscape to the .pub-thumbnail wrapper.
+         That allows our CSS to scale by height for tall videos, by width for wide ones.
+      */
+      (function classifyVideos(){
+        const cards = document.querySelectorAll('.publication-card');
+        cards.forEach(card => {
+          const wrapper = card.querySelector('.pub-thumbnail');
+          const video = card.querySelector('video');
+
+          if (!wrapper || !video) return;
+
+          function setClassByAspect(){
+            const vw = video.videoWidth || video.clientWidth || 1280;
+            const vh = video.videoHeight || video.clientHeight || 720;
+            // small safeguard: if unknown, use poster image aspect if available
+            if(vh === 0) {
+              const img = wrapper.querySelector('img');
+              if(img && img.naturalWidth && img.naturalHeight) {
+                if(img.naturalHeight > img.naturalWidth){ wrapper.classList.add('portrait'); wrapper.classList.remove('landscape'); return; }
+                else { wrapper.classList.add('landscape'); wrapper.classList.remove('portrait'); return; }
+              }
+            }
+            if (vh > vw) {
+              wrapper.classList.add('portrait');
+              wrapper.classList.remove('landscape');
+            } else {
+              wrapper.classList.add('landscape');
+              wrapper.classList.remove('portrait');
+            }
+          }
+
+          if (video.readyState >= 1) {
+            setClassByAspect();
+          } else {
+            // when metadata loads (dimensions become available)
+            video.addEventListener('loadedmetadata', setClassByAspect, {once:true});
+            // fallback after short delay
+            setTimeout(setClassByAspect, 900);
+          }
+
+          // If screen rotates/resizes, recompute after short debounce
+          let resizeTimer;
+          window.addEventListener('resize', ()=> {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => setClassByAspect(), 150);
+          });
+        });
+      })();
+
+    }); /* end DOMContentLoaded */
+  </script>
+</body>
+</html>

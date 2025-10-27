@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Francisca Boateng | Home </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Poppins -->
+     <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+
+
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+      <link rel="stylesheet" href="css/whatsapx.css">
+      <link rel="stylesheet" href="css/home.css">
+      <link rel="stylesheet" href="css/gallerryy.css">
+      <link rel="icon" type="image/svg+xml" href="img/logo.svg">
+      <!-- Favicons -->
+
+
+
+
+   
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
+
+:root {
+  --primary: #9f1c20;
+  --primary-dark: #7a0f12;
+  --primary-light: #ff6b6b;
+
+  --secondary: #ff6b6b;
+
+  --accent: #004a77;
+
+  --dark: #2b2b2b;
+  --light: #f9f9f9;
+  
+  --transition: all 0.3s ease-in-out;
+
+}
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+          font-family: 'Cormorant Garamond', serif;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+
+
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            background: rgba(248, 249, 252, 0.85);
+            box-shadow: 0 5px 20px rgba(122, 82, 148, 0.1);
+        }
+
+        header.scrolled {
+            padding: 1rem 5%;
+            background: #2b2b2b;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            color: var(--primary-dark);
+            text-decoration: none;
+            font-size: 1.8rem;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        header.scrolled .logo {
+            color: white;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 2rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: var(--transition);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--primary);
+            transition: var(--transition);
+            border-radius: 10px;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        header.scrolled nav ul li a {
+            color: white;
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--primary-dark);
+        }
+
+        header.scrolled .menu-toggle {
+            color: white;
+        }
+
+        /* Enhanced Hero Section with 10 Animation Styles */
+       #typed {
+  font-family: 'Satisfy', cursive;
+  font-size: 2.2rem;
+  font-weight: normal;
+  line-height: 1.1;
+  color: #222; /* Adjust to match your theme */
+}
+
+
+        .hero {
+            height: 100vh;
+        
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .carousel-container {
+            position: relative;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 200%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transform-origin: center;
+            transition: none;
+        }
+
+           /* Responsive Design */
+        @media (min-width: 1000px) {
+           .carousel-slide {
+         
+            width: 100%;
+            height: 180%;
+           
+        }
+        }
+
+
+
+  .hero-content {
+            text-align: center;
+            z-index: 2;
+            position: relative;
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--plum-lilac);
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: slideInUp 1s ease 0.3s forwards;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--deep-lilac);
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: slideInUp 1s ease 0.6s forwards;
+        }
+
+        .typing-text {
+            font-size: 1.2rem;
+            color: var(--plum-lilac);
+            margin-bottom: 2rem;
+            min-height: 60px;
+            opacity: 0;
+            animation: slideInUp 1s ease 0.9s forwards;
+        }
+       
+
+        .typed-container {
+            min-height: 60px;
+            margin-bottom: 1.5rem;
+        }
+
+        .typed-text {
+            font-size: 1.5rem;
+            color: white;
+            font-weight: 400;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .typed-text span {
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: var(--secondary);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(78, 205, 196, 0.4);
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(78, 205, 196, 0.6);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            margin-left: 1rem;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary);
+        }
+
+     @media (min-width: 1000px) {
+  .hero-content {
+    position: absolute;
+    top: 50%;
+    right: 30%;
+    transform: translate(-50%, -50%); /* Centers it properly */
+    padding: 1rem;
+    border-radius: 30px;
+    z-index: 5;
+    background-color: rgba(235, 217, 244, 0.8); /* Fixed opacity */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+    width: 80%;
+  }
+}
+
+.carousel-slide.active {
+    opacity: 1;
+    display: block;
+}
+
+/* Animation Styles */
+/* 1. Diagonal Slide */
+.slide-1.active {
+    animation: diagonalSlideIn 1.2s forwards;
+}
+
+@keyframes diagonalSlideIn {
+    0% { transform: translate(100%, 100%) rotate(15deg); opacity: 0; }
+    100% { transform: translate(0, 0) rotate(0); opacity: 1; }
+}
+
+/* 2. Box Puzzle */
+.slide-2.active {
+    animation: boxPuzzle 1.5s forwards;
+}
+
+@keyframes boxPuzzle {
+    0% { clip-path: polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%); opacity: 0; }
+    100% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); opacity: 1; }
+}
+
+/* 3. Water Splash */
+.slide-4.active {
+    animation: waterSplash 1.8s forwards;
+}
+
+@keyframes waterSplash {
+    0% { clip-path: circle(0% at 50% 50%); opacity: 0; filter: blur(20px); }
+    70% { filter: blur(0) drop-shadow(0 0 20px rgba(78, 205, 196, 0.6)); }
+    100% { clip-path: circle(150% at 50% 50%); opacity: 1; filter: blur(0) drop-shadow(0 0 0 rgba(78, 205, 196, 0)); }
+}
+
+/* 4. Cancellation Effect */
+.slide-5.active {
+    animation: cancellationEffect 1.7s forwards;
+}
+
+@keyframes cancellationEffect {
+    0% { clip-path: inset(0 100% 0 0); opacity: 0; }
+    50% { clip-path: inset(0 0 0 0); opacity: 1; }
+    100% { clip-path: inset(0 0 0 0); opacity: 1; }
+}
+
+/* 5. Glitch Effect */
+.slide-6.active {
+    animation: glitchEffect 1.4s forwards;
+}
+
+@keyframes glitchEffect {
+    0% { clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); opacity: 0; }
+    30% { clip-path: polygon(0 20%, 100% 40%, 100% 60%, 0 80%); }
+    60% { clip-path: polygon(0 10%, 100% 30%, 100% 70%, 0 90%); }
+    100% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); opacity: 1; }
+}
+
+/* 6. Tree Drawing */
+.slide-7.active {
+    animation: treeDrawing 2s forwards;
+}
+
+@keyframes treeDrawing {
+    0% { clip-path: polygon(50% 100%, 50% 100%, 50% 100%, 50% 100%); opacity: 0; }
+    100% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); opacity: 1; }
+}
+
+/* 7. Blinds Effect */
+.slide-8.active {
+    animation: blindsEffect 1.6s forwards;
+}
+
+@keyframes blindsEffect {
+    0% { clip-path: inset(0 0 100% 0); opacity: 0; }
+    100% { clip-path: inset(0 0 0 0); opacity: 1; }
+}
+
+/* 8. Swirl Effect */
+.slide-9.active {
+    animation: swirlEffect 1.8s forwards;
+}
+
+@keyframes swirlEffect {
+    0% { transform: rotate(360deg) scale(0); opacity: 0; }
+    100% { transform: rotate(0) scale(1); opacity: 1; }
+}
+
+/* 9. Fold Effect */
+.slide-10.active {
+    animation: foldEffect 1.5s forwards;
+}
+
+@keyframes foldEffect {
+    0% { transform: perspective(1000px) rotateX(90deg); opacity: 0; }
+    100% { transform: perspective(1000px) rotateX(0); opacity: 1; }
+}
+        /* About Section */
+        .section {
+            padding: 8rem 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            color: var(--primary-dark);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 1rem;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 10px;
+        }
+
+        .about-content {
+            display: flex;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .about-image {
+            flex: 1;
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(122, 82, 148, 0.3);
+            height: 700px;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h3 {
+            font-size: 2.2rem;
+            color: var(--primary-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(154, 112, 181, 0.1);
+            border-radius: 15px;
+            transition: var(--transition);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(122, 82, 148, 0.15);
+        }
+
+        .stat-item .number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item .label {
+            font-size: 1.1rem;
+            color: var(--dark);
+        }
+
+        /* Expertise Section */
+        .expertise {
+            background: linear-gradient(135deg, rgba(248, 249, 252, 0.9) 0%, rgba(240, 240, 252, 0.9) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .expertise::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(154, 112, 181, 0.1) 0%, rgba(154, 112, 181, 0) 70%);
+        }
+
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .expertise-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(122, 82, 148, 0.1);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .expertise-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(122, 82, 148, 0.2);
+        }
+
+        .expertise-icon {
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+        }
+
+        .expertise-content {
+            padding: 2rem;
+        }
+
+        .expertise-content h3 {
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .expertise-content ul {
+            list-style: none;
+        }
+
+        .expertise-content ul li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .expertise-content ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            text-align: center;
+            padding: 6rem 5%;
+        }
+
+        .contact h2 {
+            font-size: 2.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact p {
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            font-size: 1.2rem;
+        }
+
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.2rem 2.5rem;
+            background: white;
+            color: var(--primary);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-btn i {
+            font-size: 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 5% 2rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-col h3 {
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .footer-col p {
+            margin-bottom: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+
+        .social-links a:hover {
+            background: var(--secondary);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+                gap: 3rem;
+            }
+            
+            .about-image {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 70%;
+                background: var(--primary);
+                transition: var(--transition);
+                z-index: 1001;
+                padding: 6rem 2rem 2rem;
+                box-shadow: -5px 0 20px rgba(0, 0, 0, 0.2);
+            }
+            
+            nav.active {
+                right: 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 1rem 0;
+            }
+            
+            nav ul li a {
+                color: white;
+                font-size: 1.2rem;
+            }
+            
+            .menu-toggle {
+                display: block;
+                z-index: 1002;
+            }
+            
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+            
+            .typed-text {
+                font-size: 1.2rem;
+            }
+            
+            .btn-container {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .btn-outline {
+                margin-left: 0;
+            }
+        }
+        
+    </style>
+
+    <style>
+     .carousel-slide 
+     {
+        position: absolute;
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+     }
+     .carousel-slide.active 
+     {
+    opacity: 1;}
+        /* Initial state - hide all */
+     .carousel-slide 
+     {
+        display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div id="logo" class="logo">
+        <h1><a href="#" class="logo"><img src="img/logo.svg" alt="" title="" /></a></h1>
+      </div>
+      <div class="hero-text animated fadeInDownBig"> <a href="#">
+        
+        <div class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <nav id="nav">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#expertise">Expertise</a></li>
+                 <li><a href="publi.html">Videos</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+<!-- Enhanced Hero Section with 10 Animation Styles -->
+<section class="hero" id="home">
+    <div class="carousel-container">
+        <!-- Mobile slides (will be removed on desktop) -->
+        <div class="carousel-slide slide-mobile" data-image="img/b.JPG"></div>
+        <div class="carousel-slide slide-mobile" data-image="img/e.JPG"></div>
+        <div class="carousel-slide slide-mobile" data-image="img/j.JPG"></div>
+        <div class="carousel-slide slide-mobile" data-image="img/l.JPG"></div>
+        <div class="carousel-slide slide-mobile" data-image="img/i.JPG"></div>
+        <!-- Desktop slides (will be removed on mobile) -->
+        <div class="carousel-slide slide-desktop" data-image="img/a.JPG"></div>
+        <div class="carousel-slide slide-desktop" data-image="img/c.JPG"></div>
+        <div class="carousel-slide slide-desktop" data-image="img/d.JPG"></div>   
+    </div>
+
+    <div class="hero-content" > 
+        <div class="hero-text">
+            <h1 style="font-size: 60px" class="typed-text" id="typed"></h1>
+            <div class="btn-container">
+                <a href="#contact" class="btn">        
+                    <div>Francisca Boateng</div>
+                </a>
+            </div>
+        </div>
+    </div>    
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // ✅ Use lowercase .jpg and relative paths for deployment compatibility
+  const allSlides = [
+    { class: 'slide-1 slide-desktop', image: './img/a.jpg', animation: 'diagonalSlideIn' },
+    { class: 'slide-2 slide-mobile', image: './img/b.jpg', animation: 'boxPuzzle' },
+    { class: 'slide-4 slide-desktop', image: './img/c.jpg', animation: 'waterSplash' },
+    { class: 'slide-5 slide-desktop', image: './img/d.jpg', animation: 'cancellationEffect' },
+    { class: 'slide-6 slide-mobile', image: './img/e.jpg', animation: 'glitchEffect' },
+    { class: 'slide-7 slide-mobile', image: './img/f.jpg', animation: 'treeDrawing' },
+    { class: 'slide-8 slide-mobile', image: './img/j.jpg', animation: 'blindsEffect' },
+    { class: 'slide-9 slide-mobile', image: './img/l.jpg', animation: 'swirlEffect' },
+    { class: 'slide-10 slide-mobile', image: './img/i.jpg', animation: 'foldEffect' }
+  ];
+
+  const container = document.querySelector('.carousel-container');
+  let currentSlides = [];
+  let currentIndex = 0;
+  let slideInterval;
+
+  function initializeCarousel() {
+    container.innerHTML = '';
+    currentSlides = [];
+    const isMobile = window.innerWidth <= 999;
+
+    allSlides.forEach(slideData => {
+      if ((isMobile && slideData.class.includes('slide-mobile')) ||
+          (!isMobile && slideData.class.includes('slide-desktop'))) {
+
+        const slide = document.createElement('div');
+        slide.className = `carousel-slide ${slideData.class}`;
+        slide.dataset.image = slideData.image;
+        slide.dataset.animation = slideData.animation;
+        container.appendChild(slide);
+        currentSlides.push(slide);
+      }
+    });
+
+    if (currentSlides.length > 0) {
+      preloadFirstSlide(currentSlides[0]);  // show first immediately
+      setupLazyLoading(currentSlides);
+      showSlide(0);
+      startCarousel();
+    }
+  }
+
+  // ✅ Preload first slide for instant display
+  function preloadFirstSlide(firstSlide) {
+    const img = new Image();
+    const imageUrl = firstSlide.dataset.image;
+    img.src = imageUrl;
+    img.onload = () => {
+      firstSlide.style.backgroundImage = `url(${imageUrl})`;
+      firstSlide.style.backgroundSize = 'cover';
+      firstSlide.style.backgroundPosition = 'center';
+      firstSlide.style.opacity = '1';
+    };
+  }
+
+  // ✅ Lazy loading for remaining slides
+  function setupLazyLoading(slides) {
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const slide = entry.target;
+          const imageUrl = slide.dataset.image;
+          if (imageUrl) {
+            const img = new Image();
+            img.src = imageUrl;
+            img.onload = () => {
+              slide.style.backgroundImage = `url(${imageUrl})`;
+              slide.style.backgroundSize = 'cover';
+              slide.style.backgroundPosition = 'center';
+              slide.style.opacity = '1';
+              slide.removeAttribute('data-image');
+            };
+            obs.unobserve(slide);
+          }
+        }
+      });
+    }, {
+      rootMargin: '300px 0px',
+      threshold: 0.01
+    });
+
+    slides.forEach(slide => {
+      slide.style.opacity = '0';
+      slide.style.transition = 'opacity 0.6s ease-in-out';
+      observer.observe(slide);
+    });
+  }
+
+  function showSlide(index) {
+    currentSlides.forEach(slide => {
+      slide.classList.remove('active');
+      slide.style.display = 'none';
+    });
+
+    const currentSlide = currentSlides[index];
+    if (currentSlide) {
+      currentSlide.style.display = 'block';
+      currentSlide.classList.add('active');
+      void currentSlide.offsetWidth;
+    }
+  }
+
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % currentSlides.length;
+    showSlide(currentIndex);
+  }
+
+  function startCarousel() {
+    if (slideInterval) clearInterval(slideInterval);
+    slideInterval = setInterval(nextSlide, 5000);
+  }
+
+  initializeCarousel();
+  window.addEventListener('resize', initializeCarousel);
+});
+</script>
+
+
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="section-title">
+            <h2>About Me</h2>
+        </div>
+        <div class="about-content">
+            <div class="about-image">
+                <img src="img/ax.jpg" alt="">
+            </div>
+            <div class="about-text">
+                <h3>Award-Winning Cybersecurity Leader & Operations Director | Philanthropist & Fashion Entrepreneur</h3>
+                <p>With over 20 years of experience in business operations and accounting, I am dedicated to driving organizational excellence and empowering others to achieve their goals. As Director of Operations at Slamm LLC, I lead a cross-functional team across multiple locations, delivering innovative IT training and services to global clients.</p>
+<p>Beyond my corporate role, I oversee the Slamm Foundation, which bridges the digital divide by providing free IT and cybersecurity training to women and underserved communities in Ghana and beyond. Through initiatives like the Nimde3 App and strategic partnerships with global organizations, we are creating pathways to digital inclusion and opportunity.</p>
+<p>Passionate about mentorship and social impact, I also founded Cheerleaders for Christ, co-founded Read 2 Lead, and continue to guide young people in public speaking, debate, and personal development.</p>
+<div class="stats">
+                    <div class="stat-item">
+                        <div class="number">20+</div>
+                        <div class="label">Years Experience</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="number">40,000+</div>
+                        <div class="label">People Trained Globally</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="number">100,000+</div>
+                        <div class="label">Books for communities</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="number">150,000+</div>
+                        <div class="label">Lives Impacted</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- Expertise Section -->
+<section class="section expertise" id="expertise">
+    <div class="section-title">
+        <h2>Areas of Expertise</h2>
+    </div>
+    <div class="expertise-grid">
+        
+        <!-- Climate Change -->
+        <div class="expertise-card">
+            <div class="expertise-icon">
+                <img src="img/climate.svg" alt="Climate Change" />
+            </div>
+            <div class="expertise-content" style="color: white;">
+                <h3 style="color: white;">Cybersecurity & Digital Empowerment</h3>
+<ul>
+    <li>Cybersecurity leadership and awareness training</li>
+    <li>IT operations management and strategy</li>
+    <li>Digital inclusion and workforce development</li>
+    <li>Women in tech and community empowerment</li>
+</ul>
+
+            </div>
+        </div>
+
+        <!-- Ecosystem Management -->
+        <div class="expertise-card">
+            <div class="expertise-icon">
+                <img src="img/ecosystem.svg" alt="Ecosystem Management" />
+            </div>
+            <div class="expertise-content" style="color: white;">
+              <h3 style="color: white;">Philanthropy & Social Impact</h3>
+<ul>
+    <li>Women in technology and leadership advocacy</li>
+    <li>Founding and leading non-profit initiatives</li>
+    <li>Mentorship and youth capacity development</li>
+    <li>Partnerships for education and social innovation</li>
+</ul>
+
+            </div>
+        </div>
+
+        <!-- Water Resources -->
+        <div class="expertise-card">
+            <div class="expertise-icon">
+                <img src="img/water.svg" alt="Water Resources" />
+            </div>
+            <div class="expertise-content" style="color: white;">
+              <h3 style="color: white;">Entrepreneurship & Thought Leadership</h3>
+<ul>
+    <li>Founder and CEO of Odo’s Kloset fashion brand</li>
+    <li>Keynote speaking and public engagement</li>
+    <li>Mentorship in leadership and career growth</li>
+    <li>Creative entrepreneurship and brand development</li>
+</ul>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+</head>
+<body>
+   
+                           
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2>Let's Collaborate</h2>
+       <p>Connect with me to discuss collaborations, digital empowerment initiatives, or speaking engagements on cybersecurity leadership and social impact.</p>
+       <div style="display: flex; justify-content: center; margin-top: 20px;">
+  <div class="badge-base LI-profile-badge"
+       data-locale="en_US"
+       data-size="large"
+       data-theme="light"
+       data-type="HORIZONTAL"
+       data-vanity="franciscaboateng"
+       data-version="v1">
+ 
+  </div>
+</div>
+
+
+</p>
+        <div class="contact-buttons">
+            <a href="mailto:ammensah@ug.edu.gh" class="contact-btn">
+                <i class="fas fa-envelope"></i>
+                Email Me
+            </a>
+        
+           <a href="img/my-bio.docx" class="contact-btn" download>
+    <i class="fas fa-file-pdf"></i>
+    Download Profile
+
+</a>
+
+
+   
+
+        
+
+    </section>
+
+         <!-- WhatsApp Floating Button -->
+    <button class="whatsapp-float" id="whatsappButton">
+        <svg class="whatsapp-icon" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+        </svg>
+    </button>
+
+    <!-- WhatsApp Chat Widget -->
+    <div class="whatsapp-chat" id="whatsappChat">
+        <div class="chat-header">
+            <div class="chat-header-info">
+                <div class="chat-avatar">
+                    <img src="img/e.JPG" alt="Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div style="display: none; width: 100%; height: 100%; align-items: center; justify-content: center;  background: white!important; font-weight: bold;">OT</div>
+                </div>
+                <div>
+                    <h3 class="chat-title">Francisca Boateng</h3>
+                    <p class="chat-subtitle" style="color:#f7f7f7!important">Replies within 24 hours</p>
+                </div>
+            </div>
+            <button class="close-btn" id="closeChat">×</button>
+        </div>
+        
+        <div class="chat-body">
+            <div class="chat-time">Today</div>
+            
+            <div class="message received">
+                <div class="message-bubble">
+                    Hi there, welcome to my page, book an appointment with me.
+                </div>
+                <div class="message-time">16:23</div>
+            </div>
+            
+        </div>
+        
+       <div class="chat-footer">
+    <div class="message-input-container">
+        <textarea 
+            class="message-input" 
+            id="messageInput" 
+            placeholder="Type a message..."
+            rows="1"
+        ></textarea>
+        <button class="send-btn" id="sendBtn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M2,21L23,12L2,3V10L17,12L2,14V21Z"/>
+            </svg>
+        </button>
+    </div>
+
+    <!-- ✅ Add this -->
+    <button class="start-chat-btn" id="startChatBtn">
+        Start Chat on WhatsApp
+    </button>
+</div>
+    </div>
+    <script src="js/whatsapp.js"></script>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <img src="img/logo.svg" alt="Logo" style="width:120px; height:auto;">
+             <p>Passionate about mentorship, social impact and guiding young people in public speaking, debate, and personal development.</p>
+  <div class="social-links">
+                    <a href="https://www.linkedin.com/in/franciscaboateng?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BU%2BgjWCpcSSaJAnzj%2FAUkdQ%3D%3D"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-researchgate"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Accra, Greater Accra Region, Ghana</p>
+                <p><i class="fas fa-envelope"></i> info@slammllc.com</p>
+                <p><i class="fas fa-phone"></i> +1 (703) 930 9011</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Francisca Boateng. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const nav = document.getElementById('nav');
+        
+        menuToggle.addEventListener('click', function() {
+            nav.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link
+        const navLinks = document.querySelectorAll('nav ul li a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                nav.classList.remove('active');
+            });
+        });
+
+        // Enhanced Carousel with 10 Animation Styles
+        const carouselSlides = document.querySelectorAll('.carousel-slide');
+        let currentSlide = 0;
+        
+        // Initialize first slide
+        carouselSlides[0].classList.add('active');
+        
+        function rotateCarousel() {
+            // Remove active class from current slide
+            carouselSlides[currentSlide].classList.remove('active');
+            
+            // Move to next slide
+            currentSlide = (currentSlide + 1) % carouselSlides.length;
+            
+            // Add active class to new slide
+            carouselSlides[currentSlide].classList.add('active');
+        }
+        
+        // Start the carousel
+        setInterval(rotateCarousel, 4000);
+
+        // Typed.js for hero section
+        const typed = new Typed('#typed', {
+            strings: [
+                '"God\'s Favourite Daughter"'
+            ],
+            typeSpeed: 50,
+            backSpeed: 30,
+            loop: true,
+            backDelay: 2000,
+            style:"font-family",
+            showCursor: false,
+            cursorChar: '|'
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+
+    <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
+</body>
+</html> 
