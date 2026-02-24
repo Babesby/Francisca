@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Speaking — Francisca Boateng</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Raleway:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="icon" type="image/svg+xml" href="img/logo.svg" />
+  <style>
+    :root {
+      --red:#C0111A; --red-deep:#8B0000; --red-soft:#E8454D;
+      --red-blush:#FFF0F0; --gold:#C9922A; --gold-light:#F0D080;
+      --white:#FFFFFF; --near-white:#F5F3EF;
+      --ink:#1A1A1A; --ink-soft:#3D3D3D; --ink-light:#777;
+      --line:rgba(0,0,0,0.08);
+      --transition:all 0.45s cubic-bezier(0.23,1,0.32,1);
+      --transition-fast:all 0.25s ease;
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Raleway',sans-serif;background:var(--white);color:var(--ink);overflow-x:hidden;line-height:1.7;}
+    ::selection{background:var(--red);color:white;}
+    a{text-decoration:none;color:inherit;}
+    img{max-width:100%;display:block;}
+    ::-webkit-scrollbar{width:4px;}
+    ::-webkit-scrollbar-track{background:var(--white);}
+    ::-webkit-scrollbar-thumb{background:var(--red);border-radius:2px;}
+
+    /* ─── NAV ─── */
+    nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.6rem 5%;display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,0.97);box-shadow:0 1px 0 var(--line);backdrop-filter:blur(12px);}
+    .nav-logo img{height:40px;}
+    .nav-links{display:flex;align-items:center;gap:2.5rem;list-style:none;}
+    .nav-links a{font-size:0.82rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-soft);position:relative;padding-bottom:2px;transition:var(--transition-fast);}
+    .nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:2px;background:var(--red);transition:width 0.3s ease;}
+    .nav-links a:hover,.nav-links a.active{color:var(--red);}
+    .nav-links a:hover::after,.nav-links a.active::after{width:100%;}
+    .nav-cta{background:var(--red);color:white!important;padding:0.6rem 1.5rem;border-radius:2px;}
+    .nav-cta:hover{background:var(--red-deep);}
+    .nav-cta::after{display:none!important;}
+    .menu-toggle{display:none;cursor:pointer;font-size:1.4rem;color:var(--ink);background:none;border:none;padding:0.3rem;}
+    .mobile-nav{display:none;position:fixed;top:0;right:-100%;width:75%;max-width:320px;height:100vh;background:var(--white);z-index:999;padding:6rem 2.5rem 3rem;box-shadow:-20px 0 60px rgba(0,0,0,0.12);transition:right 0.45s cubic-bezier(0.23,1,0.32,1);flex-direction:column;border-left:1px solid var(--line);}
+    .mobile-nav.open{right:0;display:flex;}
+    .mobile-nav a{display:block;padding:1rem 0;font-size:1.1rem;font-weight:600;color:var(--ink);border-bottom:1px solid var(--line);}
+    .mobile-nav a:hover{color:var(--red);}
+    .mobile-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:998;}
+    .mobile-overlay.open{display:block;}
+
+    /* ─── HERO — FULL IMMERSION ─── */
+    .speaking-hero {
+      min-height: 100vh;
+      background: var(--ink);
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .speaking-hero-img {
+      position: absolute; inset: 0;
+      background-image: url('img/ax.jpg');
+      background-size: cover; background-position: center top;
+      opacity: 0.25;
+    }
+    .speaking-hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, rgba(26,26,26,0.95) 50%, rgba(26,26,26,0.4) 100%);
+    }
+    .speaking-hero-content {
+      position: relative; z-index: 2;
+      padding: 10rem 7% 7rem;
+      max-width: 800px;
+    }
+    .hero-eyebrow {
+      display: flex; align-items: center; gap: 0.8rem; margin-bottom: 2rem;
+    }
+    .hero-eyebrow-line { width: 40px; height: 1px; background: var(--red); }
+    .hero-eyebrow span { font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 700; color: var(--red); }
+    .speaking-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 6vw, 5.5rem);
+      font-weight: 900; line-height: 1.0; color: white;
+      margin-bottom: 1.5rem;
+    }
+    .speaking-hero h1 em { font-style: italic; color: var(--gold-light); }
+    .speaking-hero-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+      font-style: italic; color: rgba(255,255,255,0.75);
+      margin-bottom: 3rem; line-height: 1.5;
+    }
+    .speaking-hero-desc {
+      font-size: 0.97rem; color: rgba(255,255,255,0.55);
+      max-width: 520px; line-height: 1.85; margin-bottom: 3rem;
+    }
+    .hero-cta-row { display: flex; gap: 1.2rem; flex-wrap: wrap; }
+    .btn-gold {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      background: var(--gold); color: white;
+      padding: 0.9rem 2.2rem; border-radius: 2px;
+      font-size: 0.82rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      transition: var(--transition); border: 2px solid var(--gold);
+    }
+    .btn-gold:hover { background: #a87820; border-color: #a87820; transform: translateY(-2px); }
+    .btn-ghost-light {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      background: transparent; color: white;
+      padding: 0.9rem 2.2rem; border-radius: 2px;
+      font-size: 0.82rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      transition: var(--transition); border: 2px solid rgba(255,255,255,0.35);
+    }
+    .btn-ghost-light:hover { border-color: white; background: rgba(255,255,255,0.08); }
+    .speaking-scroll-anchor {
+      position: absolute; bottom: 3rem; left: 7%;
+      display: flex; align-items: center; gap: 0.8rem; z-index: 2;
+    }
+    .scroll-pulse { width: 40px; height: 1px; background: rgba(255,255,255,0.2); position: relative; overflow: hidden; }
+    .scroll-pulse::after { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: var(--gold); animation: scrollPulse 2s infinite; }
+    @keyframes scrollPulse { from{left:-100%} to{left:100%} }
+    .scroll-text { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.35); }
+
+    /* ─── IDENTITY DECLARATION ─── */
+    .identity-section {
+      padding: 8rem 5%;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 7rem; align-items: center;
+    }
+    .identity-visual { position: relative; }
+    .identity-img {
+      width: 100%; aspect-ratio: 3/4;
+      object-fit: cover; object-position: top;
+      border-radius: 2px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.12);
+    }
+    .identity-badge {
+      position: absolute; top: -1.5rem; right: -1.5rem;
+      background: var(--red); color: white;
+      padding: 2rem; border-radius: 2px;
+      box-shadow: 0 15px 40px rgba(192,17,26,0.3);
+      text-align: center;
+    }
+    .identity-badge-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+    .identity-badge-text { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700; opacity: 0.85; }
+    .identity-pull {
+      position: absolute; bottom: -1.5rem; left: -1.5rem;
+      background: white; border: 1px solid var(--line);
+      padding: 1.5rem 2rem; border-radius: 2px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+      max-width: 260px;
+    }
+    .identity-pull p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem; font-style: italic;
+      color: var(--ink); line-height: 1.55; margin-bottom: 0.5rem;
+    }
+    .identity-pull cite { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--red); font-style: normal; font-weight: 700; }
+    .identity-text h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem); font-weight: 900;
+      line-height: 1.15; color: var(--ink); margin-bottom: 2rem;
+    }
+    .identity-text h2 em { font-style: italic; color: var(--red); }
+    .identity-text p {
+      font-size: 0.97rem; color: var(--ink-soft);
+      line-height: 1.85; margin-bottom: 1.3rem;
+    }
+    .proof-items { margin: 2.5rem 0; }
+    .proof-item {
+      display: flex; align-items: flex-start; gap: 1.2rem;
+      padding: 1.2rem 0; border-bottom: 1px solid var(--line);
+    }
+    .proof-item:first-child { border-top: 1px solid var(--line); }
+    .proof-icon { flex-shrink: 0; width: 36px; height: 36px; background: var(--red-blush); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--red); font-size: 0.85rem; }
+    .proof-item p { font-size: 0.92rem; color: var(--ink-soft); line-height: 1.65; }
+    .proof-item p strong { color: var(--ink); }
+
+    /* ─── SIGNATURE MESSAGE ─── */
+    .signature-section {
+      background: var(--red);
+      padding: 8rem 5%;
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .signature-section::before {
+      content: '❝'; position: absolute;
+      top: -2rem; left: 5%;
+      font-size: 20rem; color: rgba(255,255,255,0.04);
+      font-family: 'Playfair Display', serif; line-height: 1;
+      pointer-events: none;
+    }
+    .sig-eyebrow { display: flex; align-items: center; gap: 0.8rem; justify-content: center; margin-bottom: 2rem; }
+    .sig-eyebrow span { font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 700; color: rgba(255,255,255,0.7); }
+    .sig-eyebrow-line { width: 40px; height: 1px; background: rgba(255,255,255,0.4); }
+    .signature-message {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 900; font-style: italic;
+      color: white; line-height: 1.1;
+      margin-bottom: 2rem; position: relative; z-index: 1;
+    }
+    .signature-message span { color: var(--gold-light); }
+    .signature-sub {
+      font-size: 1.05rem; color: rgba(255,255,255,0.7);
+      max-width: 650px; margin: 0 auto 3rem;
+      line-height: 1.8;
+    }
+
+    /* ─── KEYNOTE TOPICS ─── */
+    .keynotes-section { padding: 8rem 5%; background: var(--near-white); }
+    .section-header { margin-bottom: 5rem; }
+    .section-eyebrow { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1rem; }
+    .section-eyebrow span { font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 700; color: var(--red); }
+    .section-eyebrow-line { width: 40px; height: 1px; background: var(--red); }
+    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; line-height: 1.1; color: var(--ink); }
+    .section-title em { font-style: italic; color: var(--red); }
+    .keynotes-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+    .keynote-card {
+      background: white; border-radius: 2px;
+      border: 1px solid var(--line);
+      padding: 3rem 2.5rem;
+      position: relative; overflow: hidden;
+      transition: var(--transition);
+    }
+    .keynote-card::before {
+      content: ''; position: absolute;
+      top: 0; left: 0; width: 4px; height: 0;
+      background: var(--red);
+      transition: height 0.4s ease;
+    }
+    .keynote-card:hover { box-shadow: 0 20px 60px rgba(0,0,0,0.08); transform: translateY(-4px); border-color: transparent; }
+    .keynote-card:hover::before { height: 100%; }
+    .keynote-num { font-family: 'Playfair Display', serif; font-size: 4rem; font-weight: 900; color: rgba(192,17,26,0.07); line-height: 1; margin-bottom: 1rem; }
+    .keynote-card h3 { font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--ink); margin-bottom: 1rem; line-height: 1.3; }
+    .keynote-card p { font-size: 0.9rem; color: var(--ink-soft); line-height: 1.8; margin-bottom: 1.5rem; }
+    .keynote-audience {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+      font-weight: 700; color: var(--red); padding: 0.35rem 0.8rem;
+      border: 1px solid rgba(192,17,26,0.2); border-radius: 2px;
+    }
+    .keynote-audience i { font-size: 0.65rem; }
+
+    /* ─── WHO SHE SPEAKS TO ─── */
+    .audience-section { padding: 8rem 5%; }
+    .audience-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 4rem; }
+    .audience-card {
+      text-align: center; padding: 3rem 2rem;
+      border: 1px solid var(--line); border-radius: 2px;
+      transition: var(--transition);
+    }
+    .audience-card:hover { border-color: var(--red); box-shadow: 0 10px 40px rgba(192,17,26,0.08); }
+    .audience-icon { font-size: 2.5rem; color: var(--red); margin-bottom: 1.5rem; }
+    .audience-card h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 0.8rem; }
+    .audience-card p { font-size: 0.88rem; color: var(--ink-light); line-height: 1.7; }
+
+    /* ─── CALLING SECTION ─── */
+    .calling-section {
+      padding: 8rem 5%;
+      background: var(--ink);
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 6rem; align-items: center;
+    }
+    .calling-text {}
+    .calling-eyebrow { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 2rem; }
+    .calling-eyebrow span { font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 700; color: var(--gold); }
+    .calling-eyebrow-line { width: 40px; height: 1px; background: var(--gold); }
+    .calling-text h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; color: white; margin-bottom: 2rem; line-height: 1.15; }
+    .calling-text h2 em { font-style: italic; color: var(--gold-light); }
+    .calling-text p { font-size: 0.97rem; color: rgba(255,255,255,0.6); line-height: 1.85; margin-bottom: 1.5rem; }
+    .calling-evidence { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 3rem; }
+    .calling-ev-item {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 1.5rem; border-radius: 2px;
+    }
+    .calling-ev-item i { color: var(--gold); font-size: 1.2rem; margin-bottom: 0.8rem; }
+    .calling-ev-item h4 { font-family: 'Playfair Display', serif; font-size: 1rem; color: white; margin-bottom: 0.4rem; }
+    .calling-ev-item p { font-size: 0.82rem; color: rgba(255,255,255,0.45); line-height: 1.6; }
+    .calling-visual {
+      position: relative;
+    }
+    .calling-img {
+      width: 100%; aspect-ratio: 3/4;
+      object-fit: cover; object-position: top;
+      border-radius: 2px;
+      filter: grayscale(30%);
+    }
+    .calling-verse {
+      position: absolute; bottom: 2rem; left: 50%;
+      transform: translateX(-50%);
+      background: var(--red); color: white;
+      padding: 1.5rem 2rem; text-align: center;
+      border-radius: 2px; width: 80%;
+      box-shadow: 0 10px 40px rgba(192,17,26,0.4);
+    }
+    .calling-verse p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem; font-style: italic;
+      line-height: 1.5; margin-bottom: 0.4rem;
+    }
+    .calling-verse cite { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700; opacity: 0.8; }
+
+    /* ─── 30-DAY ROADMAP ─── */
+    .roadmap-section { padding: 8rem 5%; }
+    .roadmap-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 4rem; }
+    .roadmap-week {
+      padding: 2.5rem 2rem;
+      border: 1px solid var(--line);
+      margin: -1px 0 0 -1px;
+      transition: var(--transition);
+      position: relative;
+    }
+    .roadmap-week:hover { z-index: 1; box-shadow: 0 10px 40px rgba(0,0,0,0.08); border-color: var(--red); }
+    .roadmap-week-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem; font-weight: 900;
+      color: rgba(192,17,26,0.08); line-height: 1; margin-bottom: 1rem;
+    }
+    .roadmap-week h3 { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 800; color: var(--red); margin-bottom: 1.2rem; }
+    .roadmap-week ul { list-style: none; }
+    .roadmap-week ul li { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.87rem; color: var(--ink-soft); padding: 0.4rem 0; border-bottom: 1px solid var(--line); line-height: 1.5; }
+    .roadmap-week ul li:last-child { border-bottom: none; }
+    .roadmap-week ul li::before { content: '→'; color: var(--red); flex-shrink: 0; font-size: 0.8rem; margin-top: 0.1rem; }
+
+    /* ─── CTA ─── */
+    .speaking-cta {
+      background: linear-gradient(135deg, var(--red) 0%, var(--red-deep) 100%);
+      padding: 8rem 5%; text-align: center;
+    }
+    .speaking-cta h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 900; color: white; margin-bottom: 1.5rem; }
+    .speaking-cta h2 em { font-style: italic; color: var(--gold-light); }
+    .speaking-cta p { color: rgba(255,255,255,0.75); max-width: 600px; margin: 0 auto 3rem; font-size: 1.05rem; line-height: 1.75; }
+    .cta-row { display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap; }
+    .btn-white { background: white; color: var(--red); padding: 0.9rem 2.5rem; border-radius: 2px; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; transition: var(--transition); border: 2px solid white; display: inline-flex; align-items: center; gap: 0.6rem; }
+    .btn-white:hover { background: transparent; color: white; transform: translateY(-2px); }
+    .btn-white-ghost { background: transparent; color: white; padding: 0.9rem 2.5rem; border-radius: 2px; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; transition: var(--transition); border: 2px solid rgba(255,255,255,0.4); display: inline-flex; align-items: center; gap: 0.6rem; }
+    .btn-white-ghost:hover { border-color: white; background: rgba(255,255,255,0.1); transform: translateY(-2px); }
+
+    /* ─── SPEAKLIFE ─── */
+    .speaklife-bar{position:fixed;bottom:0;left:0;right:0;z-index:900;transform:translateY(100%);transition:transform 0.6s cubic-bezier(0.23,1,0.32,1);background:white;border-top:3px solid var(--red);box-shadow:0 -10px 50px rgba(0,0,0,0.12);}
+    .speaklife-bar.visible{transform:translateY(0);}
+    .speaklife-inner{max-width:900px;margin:0 auto;padding:1.8rem 2rem;display:flex;align-items:center;gap:2rem;}
+    .speaklife-icon{flex-shrink:0;width:48px;height:48px;background:var(--red);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-size:1.2rem;}
+    .speaklife-label{flex-shrink:0;font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;font-weight:800;color:var(--red);}
+    .speaklife-quote{flex:1;}
+    .speaklife-quote p{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-style:italic;color:var(--ink);line-height:1.6;}
+    .speaklife-quote cite{display:block;margin-top:0.4rem;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--red);font-style:normal;font-weight:700;}
+    .speaklife-close{flex-shrink:0;background:none;border:none;cursor:pointer;font-size:1.2rem;color:var(--ink-light);}
+    .speaklife-close:hover{color:var(--red);}
+
+    /* ─── REVEAL ─── */
+    .reveal{opacity:0;transform:translateY(40px);transition:opacity 0.8s ease,transform 0.8s ease;}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+    .reveal-delay-1{transition-delay:0.1s;}
+    .reveal-delay-2{transition-delay:0.2s;}
+    .reveal-delay-3{transition-delay:0.3s;}
+
+    footer{background:var(--ink);color:white;padding:3rem 5%;text-align:center;}
+    footer p{font-size:0.82rem;color:rgba(255,255,255,0.35);}
+    footer a{color:var(--red);}
+
+    @media(max-width:1024px){
+      .identity-section{grid-template-columns:1fr;gap:4rem;}
+      .calling-section{grid-template-columns:1fr;gap:3rem;}
+      .keynotes-grid{grid-template-columns:1fr;}
+      .audience-grid{grid-template-columns:1fr 1fr;}
+      .roadmap-grid{grid-template-columns:1fr 1fr;}
+    }
+    @media(max-width:768px){
+      .nav-links{display:none;}
+      .menu-toggle{display:block;}
+      .audience-grid{grid-template-columns:1fr;}
+      .roadmap-grid{grid-template-columns:1fr;}
+      .calling-evidence{grid-template-columns:1fr;}
+      .identity-pull,.identity-badge{display:none;}
+      .speaklife-inner{flex-direction:column;align-items:flex-start;gap:1rem;}
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo"><img src="img/logo.svg" alt="Francisca Boateng" /></div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="impact.html">Impact</a></li>
+    <li><a href="speaking.html" class="active">Speaking</a></li>
+    <li><a href="publi.html">Media</a></li>
+    <li><a href="booking.html" class="nav-cta">Book Francisca</a></li>
+  </ul>
+  <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+</nav>
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<nav class="mobile-nav" id="mobileNav">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="impact.html">Impact</a>
+  <a href="speaking.html">Speaking</a>
+  <a href="publi.html">Media</a>
+  <a href="booking.html">Book Francisca</a>
+</nav>
+
+<!-- HERO -->
+<section class="speaking-hero">
+  <div class="speaking-hero-img"></div>
+  <div class="speaking-hero-overlay"></div>
+  <div class="speaking-hero-content">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-line"></div>
+      <span>Motivational Speaker · Global Voice</span>
+    </div>
+    <h1>"Your Voice<br />Is Not an <em>Accident</em>"</h1>
+    <div class="speaking-hero-tagline">Speaking life. Activating purpose. Transforming people.</div>
+    <p class="speaking-hero-desc">Francisca Boateng doesn't just speak to audiences — she enters the room and leaves people changed. Every word she carries has been tested in the fire of real life, real faith, and real service to others.</p>
+    <div class="hero-cta-row">
+      <a href="booking.html" class="btn-gold"><i class="fas fa-calendar-check"></i> Book Her Now</a>
+      <a href="#keynotes" class="btn-ghost-light"><i class="fas fa-arrow-down"></i> See Keynotes</a>
+    </div>
+  </div>
+  <div class="speaking-scroll-anchor">
+    <div class="scroll-pulse"></div>
+    <span class="scroll-text">Scroll to explore</span>
+  </div>
+</section>
+
+<!-- IDENTITY DECLARATION -->
+<section class="identity-section">
+  <div class="identity-visual reveal">
+    <img src="img/e.JPG" class="identity-img" alt="Francisca speaking" />
+    <div class="identity-badge">
+      <div class="identity-badge-icon">🎤</div>
+      <div class="identity-badge-text">Motivational<br/>Speaker</div>
+    </div>
+    <div class="identity-pull">
+      <p>"The reason people calm down when they hear your voice is because you carry reassurance."</p>
+      <cite>— On Francisca's gift</cite>
+    </div>
+  </div>
+  <div class="identity-text reveal reveal-delay-1">
+    <div class="section-eyebrow"><div class="section-eyebrow-line"></div><span>She Is Already This</span></div>
+    <h2>Not Aspiring.<br /><em>Arriving.</em></h2>
+    <p>Francisca Boateng is a motivational speaker who is building global platforms. This is not a future statement — it is her present reality, lived out in churches, conferences, boardrooms, and the quiet moments when someone called her in crisis at 2am and heard their fear dissolve.</p>
+    <p>She didn't decide to become a speaker. The calling decided for her — and three decades of evidence confirm it.</p>
+    <div class="proof-items">
+      <div class="proof-item">
+        <div class="proof-icon"><i class="fas fa-phone"></i></div>
+        <p><strong>The 2am Calls.</strong> People in crisis, in fear, before major life moments — they call Francisca. Not randomly. Purposefully. Because her voice holds something others don't.</p>
+      </div>
+      <div class="proof-item">
+        <div class="proof-icon"><i class="fas fa-heart"></i></div>
+        <p><strong>The Calming Effect.</strong> Audiences don't just hear her — they settle. They breathe. They believe again. That is not a skill. That is an anointing.</p>
+      </div>
+      <div class="proof-item">
+        <div class="proof-icon"><i class="fas fa-book-open"></i></div>
+        <p><strong>The Stories.</strong> She has the stories. The stamina. The words. Three decades of serving, leading, building — all of it is content that transforms rooms.</p>
+      </div>
+      <div class="proof-item">
+        <div class="proof-icon"><i class="fas fa-globe"></i></div>
+        <p><strong>The Platform.</strong> From US to Ghana, churches to corporations, parliaments to youth halls — she already commands authority across continents.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SIGNATURE MESSAGE -->
+<section class="signature-section">
+  <div class="sig-eyebrow"><div class="sig-eyebrow-line"></div><span>Her North Star</span><div class="sig-eyebrow-line"></div></div>
+  <div class="signature-message reveal">"Your Voice Is <span>Not an Accident.</span><br />Neither Is Your Presence."</div>
+  <p class="signature-sub reveal reveal-delay-1">At the intersection of Voice · Identity · Courage · Purpose · Faith · Resilience — Francisca speaks to the woman who is ready to stop hiding and start leading. To the leader who has forgotten that they were chosen. To anyone who needs to be reminded that their story is not finished.</p>
+  <a href="booking.html" class="btn-gold reveal reveal-delay-2"><i class="fas fa-arrow-right"></i> Invite Her to Your Stage</a>
+</section>
+
+<!-- KEYNOTE TOPICS -->
+<section class="keynotes-section" id="keynotes">
+  <div class="section-header reveal">
+    <div class="section-eyebrow"><div class="section-eyebrow-line"></div><span>Signature Keynotes</span></div>
+    <h2 class="section-title">What She <em>Brings</em> to Your Stage</h2>
+  </div>
+  <div class="keynotes-grid">
+    <div class="keynote-card reveal">
+      <div class="keynote-num">01</div>
+      <h3>Your Voice Is Not an Accident</h3>
+      <p>The keynote that started it all. Francisca traces the journey from being the child who calmed rooms to becoming the woman who commands them. A message about discovering that your voice — the very thing you've been minimizing — is the tool the world has been waiting for.</p>
+      <div class="keynote-audience"><i class="fas fa-users"></i> Women in Leadership · People in Transition</div>
+    </div>
+    <div class="keynote-card reveal reveal-delay-1">
+      <div class="keynote-num">02</div>
+      <h3>When One Voice Changes the Room</h3>
+      <p>A powerful exploration of how a single act of courage — to speak up, stand firm, or simply show up — creates a ripple that transforms entire communities. Built from Francisca's lived experience across three continents of leadership and service.</p>
+      <div class="keynote-audience"><i class="fas fa-users"></i> Conferences · Corporate Events · Churches</div>
+    </div>
+    <div class="keynote-card reveal">
+      <div class="keynote-num">03</div>
+      <h3>Cybersecurity, Women & the Digital Frontier</h3>
+      <p>Named a global impact leader by ISC², Francisca speaks on building cyber-resilient communities, closing the gender gap in technology, and why digital empowerment is the civil rights issue of our generation.</p>
+      <div class="keynote-audience"><i class="fas fa-users"></i> Tech Conferences · Government · Universities</div>
+    </div>
+    <div class="keynote-card reveal reveal-delay-1">
+      <div class="keynote-num">04</div>
+      <h3>Faith, Courage & the Entrepreneur's Call</h3>
+      <p>How do you build something from nothing when you have only purpose and prayer? Francisca unpacks the architecture of faith-driven entrepreneurship — from Slamm Technologies to Read 2 Lead — and how obedience to calling creates enterprises that outlast their founders.</p>
+      <div class="keynote-audience"><i class="fas fa-users"></i> Faith Communities · Nonprofits · Entrepreneurs</div>
+    </div>
+    <div class="keynote-card reveal">
+      <div class="keynote-num">05</div>
+      <h3>From Kumasi to the World Stage</h3>
+      <p>A deeply personal keynote about the journey of a girl from Ghana who dared to believe that her origin did not determine her destination. A message of identity, belonging, and the audacity to claim global space without apologizing for where you came from.</p>
+      <div class="keynote-audience"><i class="fas fa-users"></i> Youth · Diaspora · Women's Events</div>
+    </div>
+    <div class="keynote-card reveal reveal-delay-1">
+      <div class="keynote-num">06</div>
+      <h3>Speak Life — The Power of Your Words</h3>
+      <p>Rooted in the Speakwell Foundation's work, this keynote explores communication as a life force — how the words we speak over ourselves, our children, and our communities become the architecture of our reality.</p>
+      <div class="keynote-audience"><i class="fas fa-users"></i> Churches · Schools · Leadership Programs</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO SHE SPEAKS TO -->
+<section class="audience-section">
+  <div class="section-header reveal" style="text-align:center;">
+    <div class="section-eyebrow" style="justify-content:center;"><div class="section-eyebrow-line"></div><span>Her People</span><div class="section-eyebrow-line"></div></div>
+    <h2 class="section-title">Who She Speaks <em>To</em></h2>
+  </div>
+  <div class="audience-grid">
+    <div class="audience-card reveal">
+      <div class="audience-icon"><i class="fas fa-female"></i></div>
+      <h3>Women in Leadership</h3>
+      <p>Women navigating the intersection of ambition, identity, faith and purpose — who need permission to take up space and a roadmap to lead with wholeness.</p>
+    </div>
+    <div class="audience-card reveal reveal-delay-1">
+      <div class="audience-icon"><i class="fas fa-cross"></i></div>
+      <h3>Faith-Driven Professionals</h3>
+      <p>People of faith who are building careers, organizations, and legacies while holding their calling as the north star rather than a side note.</p>
+    </div>
+    <div class="audience-card reveal reveal-delay-2">
+      <div class="audience-icon"><i class="fas fa-road"></i></div>
+      <h3>People in Transition</h3>
+      <p>Those between seasons — who feel the old chapter closing and are terrified of what the next page holds. Francisca meets them in the middle and walks them forward.</p>
+    </div>
+    <div class="audience-card reveal">
+      <div class="audience-icon"><i class="fas fa-shield-halved"></i></div>
+      <h3>Tech & Corporate Audiences</h3>
+      <p>Organizations seeking a speaker who bridges cybersecurity leadership, digital inclusion, and the human element of building resilient, diverse teams.</p>
+    </div>
+    <div class="audience-card reveal reveal-delay-1">
+      <div class="audience-icon"><i class="fas fa-seedling"></i></div>
+      <h3>Youth & Next Generation</h3>
+      <p>Young people who feel unseen but are called to more — who need someone to look them in the eye and tell them the truth about who they are and what they carry.</p>
+    </div>
+    <div class="audience-card reveal reveal-delay-2">
+      <div class="audience-icon"><i class="fas fa-globe-africa"></i></div>
+      <h3>African & Diaspora Communities</h3>
+      <p>Communities navigating identity across cultures — who need a voice that honors both where they come from and where they are called to go.</p>
+    </div>
+  </div>
+</section>
+
+<!-- THE CALLING — DARK SECTION -->
+<section class="calling-section">
+  <div class="calling-text">
+    <div class="calling-eyebrow"><div class="calling-eyebrow-line"></div><span>This Is Not a Career. It Is a Calling.</span></div>
+    <h2>She Already Has <em>Everything</em> She Needs</h2>
+    <p style="color:rgba(255,255,255,0.6);line-height:1.85;margin-bottom:1.3rem;">The greatest speakers didn't start with stages. They started with obedience to the call — and relentless consistency. Francisca has already been doing the work for thirty years. Now she is owning it.</p>
+    <p style="color:rgba(255,255,255,0.6);line-height:1.85;">The world doesn't need more speakers. It needs the right voices. Voices that have paid the price of experience, held their ground through difficulty, and chosen to pour out anyway.</p>
+    <div class="calling-evidence">
+      <div class="calling-ev-item reveal">
+        <i class="fas fa-check-circle"></i>
+        <h4>Calling</h4>
+        <p>People don't choose who they call in a crisis. They respond to anointed alignment.</p>
+      </div>
+      <div class="calling-ev-item reveal reveal-delay-1">
+        <i class="fas fa-check-circle"></i>
+        <h4>Confirmation</h4>
+        <p>Thirty years of evidence. The lives changed speak louder than any credential.</p>
+      </div>
+      <div class="calling-ev-item reveal">
+        <i class="fas fa-check-circle"></i>
+        <h4>Content</h4>
+        <p>The stories. The stamina. The words. All of it is currency that transforms rooms.</p>
+      </div>
+      <div class="calling-ev-item reveal reveal-delay-1">
+        <i class="fas fa-check-circle"></i>
+        <h4>Courage</h4>
+        <p>She has built across continents, served across cultures, and never stopped showing up.</p>
+      </div>
+    </div>
+  </div>
+  <div class="calling-visual reveal">
+    <img src="img/j.JPG" class="calling-img" alt="Francisca Boateng on stage" />
+    <div class="calling-verse">
+      <p>"For the gifts and the calling of God are irrevocable."</p>
+      <cite>— Romans 11:29</cite>
+    </div>
+  </div>
+</section>
+
+<!-- 30-DAY ROADMAP VISIBLE -->
+<section class="roadmap-section">
+  <div class="section-header reveal" style="text-align:center;">
+    <div class="section-eyebrow" style="justify-content:center;"><div class="section-eyebrow-line"></div><span>The Path Forward</span><div class="section-eyebrow-line"></div></div>
+    <h2 class="section-title">Structure + Strategy + <em>Scale</em></h2>
+    <p style="color:var(--ink-light);font-size:0.97rem;max-width:600px;margin:1.5rem auto 0;line-height:1.75;">She is not late. She is right on time. And she is moving with intention.</p>
+  </div>
+  <div class="roadmap-grid">
+    <div class="roadmap-week reveal">
+      <div class="roadmap-week-num">01</div>
+      <h3>Week 1 — Foundation</h3>
+      <ul>
+        <li>Signature message crystallized</li>
+        <li>3 core stories outlined</li>
+        <li>Speaker identity locked</li>
+      </ul>
+    </div>
+    <div class="roadmap-week reveal reveal-delay-1">
+      <div class="roadmap-week-num">02</div>
+      <h3>Week 2 — Visibility</h3>
+      <ul>
+        <li>3 motivational videos recorded</li>
+        <li>Speaker bio written</li>
+        <li>Social presence activated</li>
+      </ul>
+    </div>
+    <div class="roadmap-week reveal reveal-delay-2">
+      <div class="roadmap-week-num">03</div>
+      <h3>Week 3 — Outreach</h3>
+      <ul>
+        <li>Speaker sheet designed</li>
+        <li>5 organizations contacted</li>
+        <li>First keynote offered</li>
+      </ul>
+    </div>
+    <div class="roadmap-week reveal reveal-delay-3">
+      <div class="roadmap-week-num">04</div>
+      <h3>Week 4 — Momentum</h3>
+      <ul>
+        <li>Public speaking engagement</li>
+        <li>Content captured</li>
+        <li>Message refined</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="speaking-cta">
+  <h2 class="reveal">Ready to <em>Book Her</em>?</h2>
+  <p class="reveal reveal-delay-1">Don't wait for the perfect moment. The room that needs Francisca's voice exists right now. Let's put her in it.</p>
+  <div class="cta-row reveal reveal-delay-2">
+    <a href="booking.html" class="btn-white"><i class="fas fa-calendar-check"></i> Book a Keynote</a>
+    <a href="mailto:info@slammllc.com" class="btn-white-ghost"><i class="fas fa-envelope"></i> Send an Inquiry</a>
+  </div>
+</section>
+
+<footer><p>&copy; 2025 Francisca Boateng — Motivational Speaker · Director · Philanthropist · <a href="index.html">Return Home</a></p></footer>
+
+<!-- SpeakLife -->
+<div class="speaklife-bar" id="speaklifeBar">
+  <div class="speaklife-inner">
+    <div class="speaklife-icon"><i class="fas fa-dove"></i></div>
+    <div class="speaklife-label">✦ SpeakLife</div>
+    <div class="speaklife-quote">
+      <p id="speaklifeVerse">Loading today's word...</p>
+      <cite id="speaklifeRef"></cite>
+    </div>
+    <button class="speaklife-close" id="speaklifeClose"><i class="fas fa-times"></i></button>
+  </div>
+</div>
+
+<script>
+  const toggle=document.getElementById('menuToggle'),mobileNav=document.getElementById('mobileNav'),overlay=document.getElementById('mobileOverlay');
+  toggle.addEventListener('click',()=>{mobileNav.classList.toggle('open');overlay.classList.toggle('open');});
+  overlay.addEventListener('click',()=>{mobileNav.classList.remove('open');overlay.classList.remove('open');});
+
+  const reveals=document.querySelectorAll('.reveal');
+  const ro=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');}),{threshold:0.1});
+  reveals.forEach(r=>ro.observe(r));
+
+  const verses=[
+    {text:"For God has not given us a spirit of fear, but of power and of love and of a sound mind.",ref:"2 Timothy 1:7"},
+    {text:"I can do all things through Christ who strengthens me.",ref:"Philippians 4:13"},
+    {text:"She is clothed with strength and dignity; she can laugh at the days to come.",ref:"Proverbs 31:25"},
+    {text:"For we walk by faith, not by sight.",ref:"2 Corinthians 5:7"},
+    {text:"For the gifts and the calling of God are irrevocable.",ref:"Romans 11:29"},
+    {text:"Let your light shine before others, that they may see your good deeds.",ref:"Matthew 5:16"},
+    {text:"For I know the plans I have for you, plans to prosper you and not to harm you.",ref:"Jeremiah 29:11"},
+    {text:"But those who hope in the Lord will renew their strength. They will soar on wings like eagles.",ref:"Isaiah 40:31"},
+    {text:"If God is for us, who can be against us?",ref:"Romans 8:31"},
+    {text:"Be strong and courageous. Do not be afraid; the Lord your God will be with you wherever you go.",ref:"Joshua 1:9"},
+    {text:"May the God of hope fill you with all joy and peace as you trust in him.",ref:"Romans 15:13"},
+    {text:"The Lord is my light and my salvation — whom shall I fear?",ref:"Psalm 27:1"},
+    {text:"I praise you because I am fearfully and wonderfully made.",ref:"Psalm 139:14"},
+    {text:"With God nothing will be impossible.",ref:"Luke 1:37"},
+    {text:"Delight yourself in the Lord, and he will give you the desires of your heart.",ref:"Psalm 37:4"},
+  ];
+  const day=Math.floor((new Date()-new Date(new Date().getFullYear(),0,0))/86400000);
+  const v=verses[day%verses.length];
+  document.getElementById('speaklifeVerse').textContent='"'+v.text+'"';
+  document.getElementById('speaklifeRef').textContent='— '+v.ref;
+  const bar=document.getElementById('speaklifeBar');
+  if(!sessionStorage.getItem('speaklifeDismissed')){
+    let shown=false;
+    window.addEventListener('scroll',()=>{if(!shown&&window.scrollY>600){bar.classList.add('visible');shown=true;}});
+  }
+  document.getElementById('speaklifeClose').addEventListener('click',()=>{bar.classList.remove('visible');sessionStorage.setItem('speaklifeDismissed','1');});
+</script>
+</body>
+</html>

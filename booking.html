@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Francisca — Consultations & Speaking</title>
+  <link rel="icon" type="image/svg+xml" href="img/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Tenor+Sans&family=Cinzel:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/whatsapx.css">
+  <style>
+    /* ---- BOOKING PAGE SPECIFIC ---- */
+    .booking-hero {
+      padding: 140px 5% 80px;
+      text-align: center;
+      background: var(--white);
+      border-bottom: 1px solid var(--red-soft);
+    }
+    .booking-hero h1 { font-family: var(--font-serif); font-size: clamp(2.5rem, 5vw, 4rem); color: var(--red-deep); font-weight: 400; }
+    .booking-hero h1 em { font-style: italic; color: var(--red); }
+    .booking-hero p { font-family: var(--font-display); font-size: 1.1rem; color: var(--text-mid); max-width: 600px; margin: 1rem auto 0; }
+
+    /* PACKAGES */
+    .packages-section { padding: 80px 5%; background: var(--white); }
+    .packages-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem; }
+    .package-card {
+      border: 1.5px solid var(--red-soft);
+      border-radius: 4px;
+      padding: 2.5rem 2rem;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      background: var(--white);
+    }
+    .package-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 3px;
+      background: var(--red);
+      transition: width 0.4s ease;
+    }
+    .package-card:hover::before, .package-card.selected::before { width: 100%; }
+    .package-card.selected { border-color: var(--red); box-shadow: 0 10px 40px rgba(159,28,32,0.1); }
+    .package-card.featured { border-color: var(--red); background: linear-gradient(135deg, #fff5f5 0%, #fff 100%); }
+    .package-badge { position: absolute; top: 1.2rem; right: 1.2rem; background: var(--red); color: white; font-family: var(--font-display); font-size: 0.7rem; letter-spacing: 0.1em; padding: 0.3rem 0.7rem; border-radius: 2px; text-transform: uppercase; }
+    .package-icon { font-size: 1.8rem; color: var(--red); margin-bottom: 1rem; }
+    .package-title { font-family: var(--font-serif); font-size: 1.5rem; color: var(--red-deep); font-weight: 500; margin-bottom: 0.5rem; }
+    .package-subtitle { font-family: var(--font-display); font-size: 0.9rem; color: var(--text-mid); margin-bottom: 1.5rem; }
+    .package-price { font-family: var(--font-serif); font-size: 2.5rem; color: var(--red); font-weight: 300; margin-bottom: 0.3rem; }
+    .package-price span { font-size: 1rem; color: var(--text-mid); }
+    .package-features { list-style: none; padding: 0; margin: 1.5rem 0; }
+    .package-features li { font-family: var(--font-display); font-size: 0.92rem; color: var(--text-dark); padding: 0.4rem 0; border-bottom: 1px solid rgba(159,28,32,0.08); display: flex; align-items: center; gap: 0.6rem; }
+    .package-features li i { color: var(--red); font-size: 0.8rem; }
+    .select-package-btn { width: 100%; padding: 0.85rem; border: 1.5px solid var(--red); background: transparent; color: var(--red); font-family: var(--font-display); font-size: 0.9rem; letter-spacing: 0.08em; cursor: pointer; transition: all 0.3s; border-radius: 2px; text-transform: uppercase; }
+    .select-package-btn:hover, .package-card.selected .select-package-btn { background: var(--red); color: white; }
+
+    /* BOOKING FORM */
+    .booking-form-section { padding: 80px 5%; background: #fafafa; }
+    .booking-form-wrap { max-width: 760px; margin: 0 auto; }
+    .booking-form-title { font-family: var(--font-serif); font-size: 2rem; color: var(--red-deep); margin-bottom: 0.5rem; }
+    .booking-form-sub { font-family: var(--font-display); color: var(--text-mid); margin-bottom: 2.5rem; }
+    
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .form-grid.full { grid-template-columns: 1fr; }
+    @media(max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
+    
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-label { font-family: var(--font-display); font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-dark); font-weight: 500; }
+    .form-input, .form-select, .form-textarea {
+      padding: 0.85rem 1rem;
+      border: 1.5px solid #e0e0e0;
+      border-radius: 2px;
+      font-family: var(--font-display);
+      font-size: 1rem;
+      color: var(--text-dark);
+      background: white;
+      transition: border-color 0.3s;
+      outline: none;
+      width: 100%;
+    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--red); }
+    .form-textarea { resize: vertical; min-height: 120px; }
+    .selected-package-display {
+      background: linear-gradient(135deg, #fff5f5, #fff);
+      border: 1.5px solid var(--red);
+      border-radius: 4px;
+      padding: 1.2rem 1.5rem;
+      margin-bottom: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .selected-package-display.hidden { display: none; }
+    .selected-package-name { font-family: var(--font-serif); font-size: 1.2rem; color: var(--red-deep); }
+    .selected-package-price { font-family: var(--font-serif); font-size: 1.4rem; color: var(--red); }
+    .form-submit { width: 100%; padding: 1.1rem; background: var(--red); color: white; border: none; font-family: var(--font-display); font-size: 1rem; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; border-radius: 2px; transition: all 0.3s; margin-top: 1rem; }
+    .form-submit:hover { background: var(--red-deep); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(159,28,32,0.25); }
+    .form-note { font-family: var(--font-display); font-size: 0.82rem; color: var(--text-mid); text-align: center; margin-top: 1rem; }
+    
+    /* SUCCESS MESSAGE */
+    .booking-success { display: none; text-align: center; padding: 3rem; background: linear-gradient(135deg, #fff5f5, #fff); border: 1.5px solid var(--red); border-radius: 4px; }
+    .booking-success.show { display: block; }
+    .booking-success i { font-size: 3rem; color: var(--red); margin-bottom: 1rem; }
+    .booking-success h3 { font-family: var(--font-serif); font-size: 1.8rem; color: var(--red-deep); margin-bottom: 0.8rem; }
+    .booking-success p { font-family: var(--font-display); color: var(--text-mid); max-width: 500px; margin: 0 auto; }
+
+    /* TESTIMONIALS */
+    .testimonials-section { padding: 80px 5%; background: var(--white); }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 3rem; }
+    .testimonial-card { border-left: 3px solid var(--red); padding: 1.5rem; background: #fafafa; }
+    .testimonial-quote { font-family: var(--font-serif); font-size: 1.15rem; color: var(--text-dark); line-height: 1.7; font-style: italic; margin-bottom: 1rem; }
+    .testimonial-author { font-family: var(--font-display); font-size: 0.85rem; color: var(--text-mid); text-transform: uppercase; letter-spacing: 0.05em; }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar" id="navbar">
+    <a href="index.html" class="nav-logo">
+      <img src="img/logo.svg" alt="Francisca Boateng" onerror="this.style.display='none'">
+      <span class="logo-text">F<span>B</span></span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="publi.html" class="nav-link">Videos</a>
+      <a href="booking.html" class="nav-link active">Book</a>
+       <a href="speaking.html" class="nav-link">Speaking</a>
+       <li><a href="impact.html">Impact</a></li>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <div class="booking-hero">
+    <span class="section-eyebrow">Work With Francisca</span>
+    <h1>Book a <em>Session</em></h1>
+    <p>Whether you need a powerful keynote, a strategic consultation, or a mentorship conversation — Francisca shows up fully.</p>
+  </div>
+
+  <!-- PACKAGES -->
+  <section class="packages-section">
+    <div class="section-header">
+      <span class="section-eyebrow">Investment</span>
+      <h2 class="section-title">Choose Your Experience</h2>
+    </div>
+    <div class="packages-grid" id="packagesGrid">
+
+      <div class="package-card" data-package="Discovery Call" data-price="$150">
+        <div class="package-icon"><i class="fas fa-comment-dots"></i></div>
+        <h3 class="package-title">Discovery Call</h3>
+        <p class="package-subtitle">30-minute introductory conversation</p>
+        <div class="package-price">$150 <span>/ session</span></div>
+        <ul class="package-features">
+          <li><i class="fas fa-check"></i> 30-minute 1-on-1 video call</li>
+          <li><i class="fas fa-check"></i> Career or leadership guidance</li>
+          <li><i class="fas fa-check"></i> Q&A and strategic direction</li>
+          <li><i class="fas fa-check"></i> Follow-up resource email</li>
+        </ul>
+        <button class="select-package-btn" onclick="selectPackage(this)">Select This Package</button>
+      </div>
+
+      <div class="package-card featured" data-package="Strategy Session" data-price="$500">
+        <div class="package-badge">Most Popular</div>
+        <div class="package-icon"><i class="fas fa-chess-queen"></i></div>
+        <h3 class="package-title">Strategy Session</h3>
+        <p class="package-subtitle">60-minute deep-dive consultation</p>
+        <div class="package-price">$500 <span>/ session</span></div>
+        <ul class="package-features">
+          <li><i class="fas fa-check"></i> 60-minute focused consultation</li>
+          <li><i class="fas fa-check"></i> Business, leadership or nonprofit strategy</li>
+          <li><i class="fas fa-check"></i> Personalized action plan</li>
+          <li><i class="fas fa-check"></i> Digital tools & resource pack</li>
+          <li><i class="fas fa-check"></i> 7-day follow-up support via email</li>
+        </ul>
+        <button class="select-package-btn" onclick="selectPackage(this)">Select This Package</button>
+      </div>
+
+      <div class="package-card" data-package="Keynote Speaking — Half Day" data-price="$3,500">
+        <div class="package-icon"><i class="fas fa-microphone-lines"></i></div>
+        <h3 class="package-title">Keynote — Half Day</h3>
+        <p class="package-subtitle">Up to 4 hours on-site or virtual</p>
+        <div class="package-price">$3,500 <span>/ event</span></div>
+        <ul class="package-features">
+          <li><i class="fas fa-check"></i> Customised keynote address (60–90 min)</li>
+          <li><i class="fas fa-check"></i> Panel or Q&A session</li>
+          <li><i class="fas fa-check"></i> On cybersecurity, leadership, or faith</li>
+          <li><i class="fas fa-check"></i> Pre-event briefing call included</li>
+          <li><i class="fas fa-check"></i> Audience engagement materials</li>
+        </ul>
+        <button class="select-package-btn" onclick="selectPackage(this)">Select This Package</button>
+      </div>
+
+      <div class="package-card" data-package="Keynote Speaking — Full Day" data-price="$6,500">
+        <div class="package-icon"><i class="fas fa-star"></i></div>
+        <h3 class="package-title">Keynote — Full Day</h3>
+        <p class="package-subtitle">Full-day engagement for your event or team</p>
+        <div class="package-price">$6,500 <span>/ event</span></div>
+        <ul class="package-features">
+          <li><i class="fas fa-check"></i> Full-day presence (up to 8 hours)</li>
+          <li><i class="fas fa-check"></i> Workshop + keynote + panel</li>
+          <li><i class="fas fa-check"></i> Tailored content for your audience</li>
+          <li><i class="fas fa-check"></i> Travel & accommodation (separate)</li>
+          <li><i class="fas fa-check"></i> Post-event debrief call</li>
+        </ul>
+        <button class="select-package-btn" onclick="selectPackage(this)">Select This Package</button>
+      </div>
+
+      <div class="package-card" data-package="Corporate Workshop" data-price="Custom">
+        <div class="package-icon"><i class="fas fa-users"></i></div>
+        <h3 class="package-title">Corporate Workshop</h3>
+        <p class="package-subtitle">Custom training for your organization</p>
+        <div class="package-price">Custom <span>pricing</span></div>
+        <ul class="package-features">
+          <li><i class="fas fa-check"></i> Cybersecurity awareness training</li>
+          <li><i class="fas fa-check"></i> Leadership development workshop</li>
+          <li><i class="fas fa-check"></i> Women in Tech empowerment program</li>
+          <li><i class="fas fa-check"></i> Tailored to your team size & needs</li>
+          <li><i class="fas fa-check"></i> Certificate of completion for attendees</li>
+        </ul>
+        <button class="select-package-btn" onclick="selectPackage(this)">Request a Quote</button>
+      </div>
+
+      <div class="package-card" data-package="Mentorship Programme" data-price="$1,200">
+        <div class="package-icon"><i class="fas fa-seedling"></i></div>
+        <h3 class="package-title">Mentorship Programme</h3>
+        <p class="package-subtitle">3-month guided mentorship journey</p>
+        <div class="package-price">$1,200 <span>/ 3 months</span></div>
+        <ul class="package-features">
+          <li><i class="fas fa-check"></i> Monthly 60-min strategy sessions (×3)</li>
+          <li><i class="fas fa-check"></i> Unlimited email access</li>
+          <li><i class="fas fa-check"></i> Career & leadership roadmap</li>
+          <li><i class="fas fa-check"></i> Book & resource recommendations</li>
+          <li><i class="fas fa-check"></i> Introductions to network (where relevant)</li>
+        </ul>
+        <button class="select-package-btn" onclick="selectPackage(this)">Select This Package</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FORM -->
+  <section class="booking-form-section">
+    <div class="booking-form-wrap">
+      <h2 class="booking-form-title">Complete Your Booking</h2>
+      <p class="booking-form-sub">Fill in the details below and Francisca's team will confirm within 48 hours.</p>
+
+      <div class="selected-package-display hidden" id="selectedPackageDisplay">
+        <div>
+          <div style="font-family:var(--font-display);font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-mid);margin-bottom:0.2rem;">Selected Package</div>
+          <div class="selected-package-name" id="selectedPackageName">—</div>
+        </div>
+        <div class="selected-package-price" id="selectedPackagePrice">—</div>
+      </div>
+
+      <form id="bookingForm" novalidate>
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label" for="firstName">First Name *</label>
+            <input class="form-input" type="text" id="firstName" name="firstName" placeholder="Your first name" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="lastName">Last Name *</label>
+            <input class="form-input" type="text" id="lastName" name="lastName" placeholder="Your last name" required>
+          </div>
+        </div>
+        <div class="form-grid" style="margin-top:1.5rem">
+          <div class="form-group">
+            <label class="form-label" for="email">Email Address *</label>
+            <input class="form-input" type="email" id="email" name="email" placeholder="your@email.com" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="phone">Phone Number</label>
+            <input class="form-input" type="tel" id="phone" name="phone" placeholder="+1 (000) 000-0000">
+          </div>
+        </div>
+        <div class="form-grid" style="margin-top:1.5rem">
+          <div class="form-group">
+            <label class="form-label" for="organization">Organization / Company</label>
+            <input class="form-input" type="text" id="organization" name="organization" placeholder="Your organization (if any)">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="packageSelect">Package *</label>
+            <select class="form-select" id="packageSelect" name="package" required>
+              <option value="">— Select a package —</option>
+              <option value="Discovery Call — $150">Discovery Call — $150</option>
+              <option value="Strategy Session — $500">Strategy Session — $500</option>
+              <option value="Keynote — Half Day — $3,500">Keynote — Half Day — $3,500</option>
+              <option value="Keynote — Full Day — $6,500">Keynote — Full Day — $6,500</option>
+              <option value="Corporate Workshop — Custom">Corporate Workshop — Custom Quote</option>
+              <option value="Mentorship Programme — $1,200/3mo">Mentorship Programme — $1,200 / 3 months</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-grid" style="margin-top:1.5rem">
+          <div class="form-group">
+            <label class="form-label" for="preferredDate">Preferred Date</label>
+            <input class="form-input" type="date" id="preferredDate" name="preferredDate">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="timezone">Your Time Zone</label>
+            <input class="form-input" type="text" id="timezone" name="timezone" placeholder="e.g. GMT, EST, WAT">
+          </div>
+        </div>
+        <div class="form-grid full" style="margin-top:1.5rem">
+          <div class="form-group">
+            <label class="form-label" for="sessionGoal">What do you hope to achieve? *</label>
+            <textarea class="form-textarea" id="sessionGoal" name="sessionGoal" placeholder="Tell Francisca about your goals, your context, and what you're looking to transform..." required></textarea>
+          </div>
+        </div>
+        <div class="form-grid full" style="margin-top:1.5rem">
+          <div class="form-group">
+            <label class="form-label" for="hearAbout">How did you hear about Francisca?</label>
+            <select class="form-select" id="hearAbout" name="hearAbout">
+              <option value="">— Select one —</option>
+              <option>LinkedIn</option>
+              <option>Instagram</option>
+              <option>Facebook</option>
+              <option>Referral from a colleague</option>
+              <option>Conference or event</option>
+              <option>News or press coverage</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="form-submit">Submit Booking Request <i class="fas fa-arrow-right" style="margin-left:0.5rem"></i></button>
+        <p class="form-note">No payment is charged at this stage. Francisca's team will review your request and send a confirmation with payment instructions within 48 hours.</p>
+      </form>
+
+      <div class="booking-success" id="bookingSuccess">
+        <i class="fas fa-dove"></i>
+        <h3>Your Request Has Been Received</h3>
+        <p>Thank you for reaching out. Francisca's team will review your submission and get back to you within 48 hours with next steps. In the meantime, stay connected — something beautiful is about to begin.</p>
+        <a href="index.html" class="btn-primary" style="margin-top:2rem;display:inline-block;">Return Home</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials-section">
+    <div class="section-header">
+      <span class="section-eyebrow">What They Say</span>
+      <h2 class="section-title">Voices of Impact</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <p class="testimonial-quote">"Francisca's keynote at our annual conference left every person in the room transformed. Her ability to blend vision with vulnerability is rare and remarkable."</p>
+        <p class="testimonial-author">— Conference Organiser, Accra, Ghana</p>
+      </div>
+      <div class="testimonial-card">
+        <p class="testimonial-quote">"The strategy session we had opened my eyes to what was truly possible. I left with a roadmap and the courage to follow it. Best investment I made that year."</p>
+        <p class="testimonial-author">— Founder, Women's Tech Network</p>
+      </div>
+      <div class="testimonial-card">
+        <p class="testimonial-quote">"She speaks with the authority of someone who has lived the journey — not just studied it. The room comes alive when Francisca walks in."</p>
+        <p class="testimonial-author">— Event Director, Washington D.C.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPEAKLIFE WIDGET -->
+  <div class="speaklife-widget" id="speaklifeWidget">
+    <button class="speaklife-toggle" id="speaklifeToggle">
+      <i class="fas fa-dove"></i>
+      <span>SpeakLife</span>
+    </button>
+    <div class="speaklife-card" id="speaklifeCard">
+      <div class="speaklife-header">
+        <i class="fas fa-dove"></i>
+        <span>SpeakLife — Daily Word</span>
+        <button class="speaklife-close" id="speaklifeClose">×</button>
+      </div>
+      <div class="speaklife-verse" id="speaklifeVerse"></div>
+      <div class="speaklife-ref" id="speaklifeRef"></div>
+      <div class="speaklife-actions">
+        <button class="speaklife-share" id="speaklifeShare"><i class="fas fa-share-alt"></i> Share</button>
+        <button class="speaklife-next" id="speaklifeNext"><i class="fas fa-sync-alt"></i> New Verse</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="img/logo.svg" alt="FB" onerror="this.style.display='none'">
+        <p class="footer-brand-name">Francisca Boateng</p>
+        <p class="footer-tagline">God's Favourite Daughter</p>
+      </div>
+      <div class="footer-links-col">
+        <p class="footer-col-title">Navigate</p>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="publi.html">Videos</a>
+        <a href="booking.html">Book</a>
+      </div>
+      <div class="footer-links-col">
+        <p class="footer-col-title">Contact</p>
+        <a href="mailto:info@slammllc.com">info@slammllc.com</a>
+        <a href="tel:+17039309011">+1 (703) 930-9011</a>
+        <p style="font-family:var(--font-display);font-size:0.85rem;color:rgba(255,255,255,0.5);margin-top:0.5rem;">Accra, Ghana & USA</p>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>© 2025 Francisca Boateng. All Rights Reserved.</p></div>
+  </footer>
+
+  <script src="js/global.js"></script>
+  <script>
+    let currentSelectedPackage = '';
+    
+    function selectPackage(btn) {
+      document.querySelectorAll('.package-card').forEach(c => c.classList.remove('selected'));
+      const card = btn.closest('.package-card');
+      card.classList.add('selected');
+      currentSelectedPackage = card.dataset.package;
+      const price = card.dataset.price;
+      document.getElementById('selectedPackageDisplay').classList.remove('hidden');
+      document.getElementById('selectedPackageName').textContent = currentSelectedPackage;
+      document.getElementById('selectedPackagePrice').textContent = price;
+      // Set select
+      const sel = document.getElementById('packageSelect');
+      for (let o of sel.options) {
+        if (o.value.startsWith(currentSelectedPackage.split(' —')[0])) { sel.value = o.value; break; }
+      }
+      document.getElementById('bookingForm').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    document.getElementById('bookingForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const required = this.querySelectorAll('[required]');
+      let valid = true;
+      required.forEach(f => {
+        if (!f.value.trim()) {
+          f.style.borderColor = 'var(--red)';
+          valid = false;
+        } else { f.style.borderColor = '#e0e0e0'; }
+      });
+      if (!valid) return;
+      this.style.display = 'none';
+      document.getElementById('bookingSuccess').classList.add('show');
+      window.scrollTo({ top: document.getElementById('bookingSuccess').offsetTop - 100, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>

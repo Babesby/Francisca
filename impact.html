@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Impact — Francisca Boateng</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Raleway:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="icon" type="image/svg+xml" href="img/logo.svg" />
+  <style>
+    :root {
+      --red:#C0111A;--red-deep:#8B0000;--red-soft:#E8454D;--red-blush:#FFF0F0;
+      --gold:#C9922A;--gold-light:#F0D080;--white:#FFFFFF;--near-white:#F5F3EF;
+      --ink:#1A1A1A;--ink-soft:#3D3D3D;--ink-light:#777;--line:rgba(0,0,0,0.08);
+      --transition:all 0.45s cubic-bezier(0.23,1,0.32,1);
+      --transition-fast:all 0.25s ease;
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Raleway',sans-serif;background:var(--white);color:var(--ink);overflow-x:hidden;line-height:1.7;}
+    ::selection{background:var(--red);color:white;}
+    a{text-decoration:none;color:inherit;}
+    img{max-width:100%;display:block;}
+    ::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-track{background:var(--white);}::-webkit-scrollbar-thumb{background:var(--red);border-radius:2px;}
+
+    nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.6rem 5%;display:flex;align-items:center;justify-content:space-between;transition:var(--transition);background:rgba(255,255,255,0.97);box-shadow:0 1px 0 var(--line);backdrop-filter:blur(12px);}
+    .nav-logo img{height:40px;}
+    .nav-links{display:flex;align-items:center;gap:2.5rem;list-style:none;}
+    .nav-links a{font-size:0.82rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-soft);position:relative;padding-bottom:2px;transition:var(--transition-fast);}
+    .nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:2px;background:var(--red);transition:width 0.3s ease;}
+    .nav-links a:hover,.nav-links a.active{color:var(--red);}
+    .nav-links a:hover::after,.nav-links a.active::after{width:100%;}
+    .nav-cta{background:var(--red);color:white!important;padding:0.6rem 1.5rem;border-radius:2px;}
+    .nav-cta:hover{background:var(--red-deep);}
+    .nav-cta::after{display:none!important;}
+    .menu-toggle{display:none;cursor:pointer;font-size:1.4rem;color:var(--ink);background:none;border:none;padding:0.3rem;}
+    .mobile-nav{display:none;position:fixed;top:0;right:-100%;width:75%;max-width:320px;height:100vh;background:var(--white);z-index:999;padding:6rem 2.5rem 3rem;box-shadow:-20px 0 60px rgba(0,0,0,0.12);transition:right 0.45s cubic-bezier(0.23,1,0.32,1);flex-direction:column;gap:0;border-left:1px solid var(--line);}
+    .mobile-nav.open{right:0;display:flex;}
+    .mobile-nav a{display:block;padding:1rem 0;font-size:1.1rem;font-weight:600;color:var(--ink);border-bottom:1px solid var(--line);}
+    .mobile-nav a:hover{color:var(--red);}
+    .mobile-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:998;}
+    .mobile-overlay.open{display:block;}
+
+    .page-hero{padding:12rem 5% 6rem;background:var(--near-white);position:relative;overflow:hidden;}
+    .page-hero::before{content:'IMPACT';position:absolute;right:3%;top:50%;transform:translateY(-50%);font-family:'Playfair Display',serif;font-size:clamp(5rem,14vw,13rem);font-weight:900;color:rgba(192,17,26,0.04);line-height:1;pointer-events:none;}
+    .page-eyebrow{display:flex;align-items:center;gap:0.8rem;margin-bottom:1.5rem;}
+    .page-eyebrow span{font-size:0.72rem;letter-spacing:0.22em;text-transform:uppercase;font-weight:700;color:var(--red);}
+    .page-eyebrow-line{width:40px;height:1px;background:var(--red);}
+    .page-title{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:900;line-height:1.0;color:var(--ink);margin-bottom:1.5rem;}
+    .page-title em{font-style:italic;color:var(--red);}
+    .page-desc{font-size:1.05rem;color:var(--ink-soft);max-width:620px;line-height:1.8;}
+
+    /* METRICS BAND */
+    .metrics-band{background:var(--red);padding:4rem 5%;}
+    .metrics-inner{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;}
+    .metric{background:rgba(255,255,255,0.08);padding:2.5rem 2rem;text-align:center;border:1px solid rgba(255,255,255,0.1);}
+    .metric-num{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:900;color:white;line-height:1;margin-bottom:0.5rem;}
+    .metric-label{font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.7);font-weight:600;}
+
+    /* INITIATIVES */
+    .initiatives{padding:7rem 5%;}
+    .initiatives-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:4rem;}
+    .initiative-item{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);margin:-1px 0 0 -1px;overflow:hidden;transition:var(--transition);}
+    .initiative-item:hover{box-shadow:0 20px 60px rgba(0,0,0,0.1);z-index:1;position:relative;}
+    .initiative-img{background:var(--near-white);overflow:hidden;}
+    .initiative-img img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform 0.8s ease;}
+    .initiative-item:hover .initiative-img img{transform:scale(1.05);}
+    .initiative-body{padding:3rem 2.5rem;display:flex;flex-direction:column;justify-content:center;}
+    .initiative-num{font-family:'Playfair Display',serif;font-size:3rem;font-weight:900;color:rgba(192,17,26,0.1);line-height:1;margin-bottom:1rem;}
+    .initiative-body h3{font-family:'Playfair Display',serif;font-size:1.4rem;margin-bottom:1rem;line-height:1.3;}
+    .initiative-body p{font-size:0.9rem;color:var(--ink-soft);line-height:1.8;}
+    .initiative-tag{display:inline-flex;align-items:center;gap:0.5rem;margin-top:1.5rem;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;font-weight:700;color:var(--red);}
+
+    /* GALLERY STRIP */
+    .gallery-strip{padding:5rem 0;overflow:hidden;background:var(--near-white);}
+    .gallery-scroll{display:flex;gap:1rem;padding:0 5%;animation:galleryScroll 30s linear infinite;}
+    @keyframes galleryScroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+    .gallery-img{flex-shrink:0;width:280px;height:380px;object-fit:cover;object-position:top;border-radius:2px;}
+
+    /* IMPACT QUOTE */
+    .impact-quote-section{padding:7rem 5%;background:var(--ink);text-align:center;}
+    .impact-quote{font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,3vw,2.5rem);font-style:italic;color:white;max-width:800px;margin:0 auto 1.5rem;line-height:1.5;}
+    .impact-quote em{color:var(--gold-light);}
+    .impact-cite{font-size:0.8rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);font-weight:700;}
+    .impact-cta{margin-top:3rem;display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;}
+    .btn-white{background:white;color:var(--red);padding:0.9rem 2.5rem;border-radius:2px;font-size:0.82rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;transition:var(--transition);border:2px solid white;}
+    .btn-white:hover{background:transparent;color:white;transform:translateY(-2px);}
+
+    .reveal{opacity:0;transform:translateY(40px);transition:opacity 0.8s ease,transform 0.8s ease;}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+    .reveal-delay-1{transition-delay:0.1s;}
+    .reveal-delay-2{transition-delay:0.2s;}
+
+    .speaklife-bar{position:fixed;bottom:0;left:0;right:0;z-index:900;transform:translateY(100%);transition:transform 0.6s cubic-bezier(0.23,1,0.32,1);background:white;border-top:3px solid var(--red);box-shadow:0 -10px 50px rgba(0,0,0,0.12);}
+    .speaklife-bar.visible{transform:translateY(0);}
+    .speaklife-inner{max-width:900px;margin:0 auto;padding:1.8rem 2rem;display:flex;align-items:center;gap:2rem;}
+    .speaklife-icon{flex-shrink:0;width:48px;height:48px;background:var(--red);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-size:1.2rem;}
+    .speaklife-label{flex-shrink:0;font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;font-weight:800;color:var(--red);}
+    .speaklife-quote{flex:1;}
+    .speaklife-quote p{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-style:italic;color:var(--ink);line-height:1.6;}
+    .speaklife-quote cite{display:block;margin-top:0.4rem;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--red);font-style:normal;font-weight:700;}
+    .speaklife-close{flex-shrink:0;background:none;border:none;cursor:pointer;font-size:1.2rem;color:var(--ink-light);}
+    .speaklife-close:hover{color:var(--red);}
+
+    footer{background:var(--ink);color:white;padding:3rem 5%;text-align:center;}
+    footer p{font-size:0.82rem;color:rgba(255,255,255,0.35);}
+    footer a{color:var(--red);}
+
+    @media(max-width:1024px){
+      .initiatives-grid{grid-template-columns:1fr;}
+      .initiative-item{grid-template-columns:1fr;}
+      .initiative-img{height:300px;}
+      .metrics-inner{grid-template-columns:1fr 1fr;}
+    }
+    @media(max-width:768px){
+      .nav-links{display:none;}
+      .menu-toggle{display:block;}
+      .metrics-inner{grid-template-columns:1fr 1fr;}
+      .speaklife-inner{flex-direction:column;align-items:flex-start;gap:1rem;}
+    }
+  </style>
+</head>
+<body>
+
+<nav id="mainNav">
+  <div class="nav-logo"><img src="img/logo.svg" alt="Francisca Boateng" /></div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="impact.html" class="active">Impact</a></li>
+    <li><a href="publi.html">Media</a></li>
+    <li><a href="booking.html" class="nav-cta">Book Francisca</a></li>
+  </ul>
+  <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+</nav>
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<nav class="mobile-nav" id="mobileNav">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="impact.html">Impact</a>
+  <a href="publi.html">Media</a>
+  <a href="booking.html">Book Francisca</a>
+</nav>
+
+<header class="page-hero">
+  <div style="max-width:700px;">
+    <div class="page-eyebrow"><div class="page-eyebrow-line"></div><span>Her Legacy</span></div>
+    <h1 class="page-title">Initiatives That<br /><em>Change Lives</em></h1>
+    <p class="page-desc">From libraries in Kumasi to an app in 10 languages, Francisca's work has crossed borders, touched families, and rewired possibilities for tens of thousands.</p>
+  </div>
+</header>
+
+<!-- Metrics -->
+<div class="metrics-band">
+  <div class="metrics-inner">
+    <div class="metric reveal">
+      <div class="metric-num" data-target="38000">0</div>
+      <div class="metric-label">People Trained — Slamm Foundation</div>
+    </div>
+    <div class="metric reveal reveal-delay-1">
+      <div class="metric-num" data-target="100000">0</div>
+      <div class="metric-label">Books Donated — Read 2 Lead</div>
+    </div>
+    <div class="metric reveal reveal-delay-2">
+      <div class="metric-num" data-target="50000">0</div>
+      <div class="metric-label">Students Served — Read 2 Lead</div>
+    </div>
+    <div class="metric reveal reveal-delay-2">
+      <div class="metric-num" data-target="150000">0</div>
+      <div class="metric-label">Lives Impacted — Total</div>
+    </div>
+  </div>
+</div>
+
+<!-- Initiatives -->
+<section class="initiatives">
+  <div style="text-align:center; margin-bottom:2rem;" class="reveal">
+    <div class="page-eyebrow" style="justify-content:center;"><div class="page-eyebrow-line"></div><span>Her Organizations</span><div class="page-eyebrow-line"></div></div>
+    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:900;">Built With <em style="font-style:italic;color:var(--red)">Purpose</em></h2>
+  </div>
+
+  <div class="initiatives-grid">
+    <!-- Slamm Technologies -->
+    <div class="initiative-item reveal">
+      <div class="initiative-img"><img src="img/ax.jpg" alt="Slamm Technologies" /></div>
+      <div class="initiative-body">
+        <div class="initiative-num">01</div>
+        <h3>Slamm Technologies</h3>
+        <p>As Director of Operations, Francisca leads IT training and cybersecurity services delivery across the US and Ghana — serving organizations, governments and individuals with enterprise-grade solutions.</p>
+        <div class="initiative-tag"><i class="fas fa-arrow-right"></i> IT · Cybersecurity · Operations</div>
+      </div>
+    </div>
+    <!-- Slamm Foundation -->
+    <div class="initiative-item reveal reveal-delay-1">
+      <div class="initiative-img"><img src="img/b.JPG" alt="Slamm Foundation" /></div>
+      <div class="initiative-body">
+        <div class="initiative-num">02</div>
+        <h3>Slamm Foundation</h3>
+        <p>A global nonprofit providing free IT and cybersecurity training. The 1 Million Campaign has reached 38,000+ participants. The Nimdee App delivers learning in 10 languages and dialects.</p>
+        <div class="initiative-tag"><i class="fas fa-arrow-right"></i> Non-Profit · Digital Inclusion · App</div>
+      </div>
+    </div>
+    <!-- Read 2 Lead -->
+    <div class="initiative-item reveal">
+      <div class="initiative-img"><img src="img/j.JPG" alt="Read 2 Lead" /></div>
+      <div class="initiative-body">
+        <div class="initiative-num">03</div>
+        <h3>Read 2 Lead</h3>
+        <p>Since 2016, Francisca's literacy nonprofit has built 3 libraries, raised over 100,000 books, and served approximately 50,000 students and their families across Ghana.</p>
+        <div class="initiative-tag"><i class="fas fa-arrow-right"></i> Literacy · Libraries · Education</div>
+      </div>
+    </div>
+    <!-- Speakwell Foundation -->
+    <div class="initiative-item reveal reveal-delay-1">
+      <div class="initiative-img"><img src="img/e.JPG" alt="Speakwell Foundation" /></div>
+      <div class="initiative-body">
+        <div class="initiative-num">04</div>
+        <h3>Speakwell Foundation</h3>
+        <p>Co-founded to build a world of articulate, confident communicators and transformational leaders — offering training in public speaking, debate, and professional presence.</p>
+        <div class="initiative-tag"><i class="fas fa-arrow-right"></i> Communication · Leadership · Debate</div>
+      </div>
+    </div>
+    <!-- Cheerleaders for Christ -->
+    <div class="initiative-item reveal">
+      <div class="initiative-img"><img src="img/l.JPG" alt="Cheerleaders for Christ" /></div>
+      <div class="initiative-body">
+        <div class="initiative-num">05</div>
+        <h3>Cheerleaders for Christ</h3>
+        <p>Founded by Francisca to inspire young women through faith, mentorship and personal development. Guiding the next generation to discover their God-given identity and voice.</p>
+        <div class="initiative-tag"><i class="fas fa-arrow-right"></i> Faith · Youth · Mentorship</div>
+      </div>
+    </div>
+    <!-- Odo's Kloset -->
+    <div class="initiative-item reveal reveal-delay-1">
+      <div class="initiative-img"><img src="img/i.JPG" alt="Odo's Kloset" /></div>
+      <div class="initiative-body">
+        <div class="initiative-num">06</div>
+        <h3>Odo's Kloset</h3>
+        <p>A fashion brand with soul — where every fabric and design is chosen with the intention that wearing it makes you feel loved. Because beauty is a form of divine expression.</p>
+        <div class="initiative-tag"><i class="fas fa-arrow-right"></i> Fashion · Identity · Brand</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery Strip -->
+<div class="gallery-strip">
+  <div class="gallery-scroll">
+    <img class="gallery-img" src="img/ax.jpg" alt="" />
+    <img class="gallery-img" src="img/b.JPG" alt="" />
+    <img class="gallery-img" src="img/e.JPG" alt="" />
+    <img class="gallery-img" src="img/j.JPG" alt="" />
+    <img class="gallery-img" src="img/l.JPG" alt="" />
+    <img class="gallery-img" src="img/i.JPG" alt="" />
+    <img class="gallery-img" src="img/ax.jpg" alt="" />
+    <img class="gallery-img" src="img/b.JPG" alt="" />
+    <img class="gallery-img" src="img/e.JPG" alt="" />
+    <img class="gallery-img" src="img/j.JPG" alt="" />
+    <img class="gallery-img" src="img/l.JPG" alt="" />
+    <img class="gallery-img" src="img/i.JPG" alt="" />
+  </div>
+</div>
+
+<!-- Impact Quote -->
+<section class="impact-quote-section">
+  <div class="impact-quote reveal">"The measure of a life is not in what it accumulates, but in what it <em>gives away</em> — and in doing so, becomes more."</div>
+  <div class="impact-cite">— Francisca Boateng</div>
+  <div class="impact-cta reveal">
+    <a href="booking.html" class="btn-white"><i class="fas fa-calendar-check"></i> Partner With Francisca</a>
+  </div>
+</section>
+
+<footer><p>&copy; 2025 Francisca Boateng. All Rights Reserved. · <a href="index.html">Return Home</a></p></footer>
+
+<div class="speaklife-bar" id="speaklifeBar">
+  <div class="speaklife-inner">
+    <div class="speaklife-icon"><i class="fas fa-dove"></i></div>
+    <div class="speaklife-label">✦ SpeakLife</div>
+    <div class="speaklife-quote">
+      <p id="speaklifeVerse">Loading today's word...</p>
+      <cite id="speaklifeRef"></cite>
+    </div>
+    <button class="speaklife-close" id="speaklifeClose"><i class="fas fa-times"></i></button>
+  </div>
+</div>
+
+<script>
+  const toggle=document.getElementById('menuToggle'),mobileNav=document.getElementById('mobileNav'),overlay=document.getElementById('mobileOverlay');
+  toggle.addEventListener('click',()=>{mobileNav.classList.toggle('open');overlay.classList.toggle('open');});
+  overlay.addEventListener('click',()=>{mobileNav.classList.remove('open');overlay.classList.remove('open');});
+
+  const reveals=document.querySelectorAll('.reveal');
+  const ro=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');}),{threshold:0.1});
+  reveals.forEach(r=>ro.observe(r));
+
+  // Counter animation
+  function animateCounter(el){
+    const target=parseInt(el.dataset.target);
+    const duration=2000; const step=50;
+    const increment=target/(duration/step);
+    let current=0;
+    const timer=setInterval(()=>{
+      current+=increment;
+      if(current>=target){current=target;clearInterval(timer);}
+      el.textContent=Math.floor(current).toLocaleString()+'+';
+    },step);
+  }
+  const counterObserver=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){animateCounter(e.target);counterObserver.unobserve(e.target);}});
+  },{threshold:0.5});
+  document.querySelectorAll('.metric-num[data-target]').forEach(el=>counterObserver.observe(el));
+
+  const verses=[
+    {text:"For God has not given us a spirit of fear, but of power and of love and of a sound mind.",ref:"2 Timothy 1:7"},
+    {text:"I can do all things through Christ who strengthens me.",ref:"Philippians 4:13"},
+    {text:"She is clothed with strength and dignity; she can laugh at the days to come.",ref:"Proverbs 31:25"},
+    {text:"For we walk by faith, not by sight.",ref:"2 Corinthians 5:7"},
+    {text:"Now faith is confidence in what we hope for and assurance about what we do not see.",ref:"Hebrews 11:1"},
+    {text:"For I know the plans I have for you, plans to prosper you and not to harm you.",ref:"Jeremiah 29:11"},
+    {text:"But those who hope in the Lord will renew their strength.",ref:"Isaiah 40:31"},
+    {text:"If God is for us, who can be against us?",ref:"Romans 8:31"},
+  ];
+  const day=Math.floor((new Date()-new Date(new Date().getFullYear(),0,0))/86400000);
+  const v=verses[day%verses.length];
+  document.getElementById('speaklifeVerse').textContent='"'+v.text+'"';
+  document.getElementById('speaklifeRef').textContent='— '+v.ref;
+  const bar=document.getElementById('speaklifeBar');
+  if(!sessionStorage.getItem('speaklifeDismissed')){
+    let shown=false;
+    window.addEventListener('scroll',()=>{if(!shown&&window.scrollY>600){bar.classList.add('visible');shown=true;}});
+  }
+  document.getElementById('speaklifeClose').addEventListener('click',()=>{bar.classList.remove('visible');sessionStorage.setItem('speaklifeDismissed','1');});
+</script>
+</body>
+</html>
