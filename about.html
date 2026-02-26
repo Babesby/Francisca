@@ -1,220 +1,742 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About — Francisca Boateng</title>
-  <link rel="icon" type="image/svg+xml" href="img/logo.svg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Tenor+Sans&family=Cinzel:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="css/global.css">
-  <link rel="stylesheet" href="css/whatsapx.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Francisca Boateng</title>
+<link rel="icon" type="image/svg+xml" href="img/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Tenor+Sans&family=Cinzel:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="css/global.css">
+<link rel="stylesheet" href="css/whatsapx.css">
+<style>
+/* ===== DESIGN TOKENS ===== */
+:root {
+  --red: #9f1c20;
+  --red-deep: #7a0f12;
+  --red-bright: #c4282e;
+  --white: #fff;
+  --off: #fafaf8;
+  --cream: #f5f0e8;
+  --dark: #1a1a1a;
+  --mid: #555;
+  --lt: #999;
+  --bdr: rgba(159,28,32,0.1);
+  --sh: 0 4px 16px rgba(0,0,0,0.06);
+  --shm: 0 16px 48px rgba(0,0,0,0.1);
+  --shr: 0 8px 32px rgba(159,28,32,0.22);
+  --tr: all 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+  --sf: 'Cormorant Garamond', Georgia, serif;
+  --ss: 'Tenor Sans', sans-serif;
+  --sc: 'Cinzel', serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--ss); background: var(--white); color: var(--dark); line-height: 1.7; overflow-x: hidden; }
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; }
+ul, ol { list-style: none; }
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #f8f8f8; }
+::-webkit-scrollbar-thumb { background: var(--red); border-radius: 3px; }
+
+/* ===== NAVBAR ===== */
+.navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.1rem 5%;
+  background: rgba(255,255,255,0.97);
+  box-shadow: 0 2px 24px rgba(0,0,0,0.07);
+  backdrop-filter: blur(18px);
+}
+.nav-logo { display: flex; align-items: center; gap: .7rem; }
+.nav-logo img { height: 32px; }
+.logo-text { font-family: var(--sc); font-size: 1.25rem; font-weight: 600; color: var(--red-deep); letter-spacing: .06em; }
+.logo-text span { color: var(--red); }
+.nav-links { display: flex; align-items: center; gap: 2rem; }
+.nav-link {
+  font-family: var(--ss); font-size: .78rem; text-transform: uppercase;
+  letter-spacing: .13em; color: var(--dark);
+  position: relative; padding: .3rem 0; transition: color .3s;
+}
+.nav-link::after {
+  content: ''; position: absolute; bottom: 0; left: 0;
+  width: 0; height: 1px; background: var(--red); transition: width .3s;
+}
+.nav-link:hover, .nav-link.active { color: var(--red); }
+.nav-link:hover::after, .nav-link.active::after { width: 100%; }
+.nav-book {
+  background: var(--red); color: white !important;
+  padding: .48rem 1.2rem; border-radius: 2px;
+}
+.nav-book::after { display: none !important; }
+.nav-book:hover { background: var(--red-deep) !important; }
+.nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; padding: 4px; }
+.nav-toggle span { display: block; width: 22px; height: 1.5px; background: var(--red-deep); transition: var(--tr); transform-origin: center; }
+.nav-toggle.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-toggle.open span:nth-child(2) { opacity: 0; }
+.nav-toggle.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+@media (max-width: 900px) {
+  .nav-toggle { display: flex; }
+  .nav-links {
+    position: fixed; top: 0; right: -100%; width: min(290px, 82vw); height: 100dvh;
+    background: var(--white); flex-direction: column; justify-content: center;
+    align-items: flex-start; padding: 4rem 2.5rem; gap: 1.8rem;
+    box-shadow: -6px 0 40px rgba(0,0,0,.1);
+    transition: right .4s cubic-bezier(.23,1,.32,1); z-index: 999;
+  }
+  .nav-links.open { right: 0; }
+  .nav-link { font-size: .95rem; }
+  .nav-link:hover, .nav-link.active { transform: translateX(5px); }
+  .nav-link::after { display: none; }
+  .nav-book { color: white !important; }
+}
+
+/* ===== PAGE HERO ===== */
+.page-hero { position: relative; height: 70vh; min-height: 460px; overflow: hidden; }
+.page-hero-image { position: absolute; inset: 0; }
+.page-hero-image img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+.page-hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to right, rgba(0,0,0,.78) 0%, rgba(0,0,0,.38) 55%, rgba(0,0,0,.08) 100%);
+}
+.page-hero-content { position: absolute; bottom: 64px; left: 5%; color: white; z-index: 2; }
+.page-eyebrow {
+  display: block; font-family: var(--ss); font-size: .72rem; text-transform: uppercase;
+  letter-spacing: .32em; color: rgba(255,255,255,.55); margin-bottom: .9rem;
+}
+.page-hero-content h1 {
+  font-family: var(--sf); font-size: clamp(3.5rem, 7vw, 6rem);
+  font-weight: 300; line-height: .95; margin-bottom: .9rem;
+}
+.page-hero-content h1 em { font-style: italic; color: rgba(255,255,255,.6); }
+.page-hero-content p {
+  font-family: var(--ss); font-size: .88rem; text-transform: uppercase;
+  letter-spacing: .18em; color: rgba(255,255,255,.5);
+}
+
+/* ===== ORIGIN STORY ===== */
+.about-origin { padding: 100px 5%; background: var(--white); }
+.origin-inner {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 6rem;
+  align-items: center; max-width: 1200px; margin: 0 auto;
+}
+@media (max-width: 780px) { .origin-inner { grid-template-columns: 1fr; gap: 3rem; } }
+.origin-text .ey {
+  display: block; font-family: var(--ss); font-size: .7rem; text-transform: uppercase;
+  letter-spacing: .28em; color: var(--red); margin-bottom: .7rem;
+}
+.origin-text h2 {
+  font-family: var(--sf); font-size: clamp(2rem, 3.5vw, 2.8rem); color: var(--dark);
+  font-weight: 400; margin: .6rem 0 1.5rem; line-height: 1.2;
+}
+.origin-text p { font-family: var(--ss); font-size: .95rem; color: var(--mid); line-height: 1.9; margin-bottom: 1rem; }
+.origin-portrait { position: relative; overflow: hidden; }
+.origin-portrait img { width: 100%; height: 520px; object-fit: cover; object-position: top center; }
+.origin-accent-line { position: absolute; bottom: 0; right: 0; width: 60%; height: 3px; background: var(--red); }
+
+/* ===== TIMELINE (VERTICAL - RELIABLE) ===== */
+.timeline-section { padding: 100px 5%; background: var(--off); }
+.section-header { text-align: center; margin-bottom: 3.5rem; }
+.section-eyebrow {
+  display: block; font-family: var(--ss); font-size: .7rem; text-transform: uppercase;
+  letter-spacing: .28em; color: var(--red); margin-bottom: .7rem;
+}
+.section-title { font-family: var(--sf); font-size: clamp(2rem, 4vw, 3rem); color: var(--dark); font-weight: 400; line-height: 1.2; }
+.section-title em { color: var(--red); font-style: italic; }
+
+.timeline {
+  position: relative;
+  max-width: 700px;
+  margin: 0 auto;
+  padding-left: 2.8rem;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 10px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--bdr);
+}
+.timeline-item {
+  position: relative;
+  margin-bottom: 2.2rem;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.timeline-item.visible { opacity: 1; transform: none; }
+.timeline-item:last-child { margin-bottom: 0; }
+.timeline-dot {
+  position: absolute;
+  left: -2.28rem;
+  top: 1.3rem;
+  width: 13px;
+  height: 13px;
+  background: var(--red);
+  border-radius: 50%;
+  border: 3px solid var(--off);
+  box-shadow: 0 0 0 2px var(--red);
+  z-index: 1;
+}
+.timeline-card {
+  background: white;
+  border: 1px solid var(--bdr);
+  border-left: 3px solid var(--red);
+  padding: 1.4rem 1.6rem;
+  transition: box-shadow .3s;
+}
+.timeline-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.08); }
+.timeline-year {
+  display: block; font-family: var(--ss); font-size: .7rem; text-transform: uppercase;
+  letter-spacing: .18em; color: var(--red); margin-bottom: .35rem;
+}
+.timeline-card h3 { font-family: var(--sf); font-size: 1.2rem; color: var(--dark); margin-bottom: .4rem; font-weight: 500; }
+.timeline-card p { font-family: var(--ss); font-size: .86rem; color: var(--mid); line-height: 1.7; }
+
+/* ===== THREE PILLARS ===== */
+.pillars-deep { padding: 100px 5%; background: var(--white); }
+.pillar-deep-item {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 6rem;
+  align-items: center; margin-bottom: 6rem;
+  max-width: 1200px; margin-left: auto; margin-right: auto;
+}
+.pillar-deep-item:last-child { margin-bottom: 0; }
+.pillar-deep-item.reverse { direction: rtl; }
+.pillar-deep-item.reverse > * { direction: ltr; }
+@media (max-width: 768px) {
+  .pillar-deep-item, .pillar-deep-item.reverse { grid-template-columns: 1fr; direction: ltr; gap: 2.5rem; margin-bottom: 4rem; }
+}
+.pillar-deep-image { overflow: hidden; height: 420px; }
+.pillar-deep-image img { width: 100%; height: 100%; object-fit: cover; object-position: top center; transition: transform 1.2s ease; }
+.pillar-deep-image:hover img { transform: scale(1.04); }
+.pillar-deep-label {
+  display: flex; align-items: center; gap: .6rem;
+  font-family: var(--ss); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .2em; color: var(--red); margin-bottom: 1rem;
+}
+.pillar-deep-text h3 {
+  font-family: var(--sf); font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  color: var(--dark); font-weight: 400; margin-bottom: 1.2rem; line-height: 1.2;
+}
+.pillar-deep-text p { font-family: var(--ss); font-size: .93rem; color: var(--mid); line-height: 1.85; margin-bottom: 1rem; }
+.pillar-list { display: flex; flex-direction: column; gap: .45rem; margin-top: 1rem; }
+.pillar-list li {
+  font-family: var(--ss); font-size: .88rem; color: var(--mid);
+  display: flex; align-items: center; gap: .6rem;
+}
+.pillar-list li i { color: var(--red); font-size: .7rem; }
+
+/* ===== FAITH ===== */
+.faith-section { padding: 100px 5%; background: var(--off); text-align: center; }
+.faith-inner { max-width: 700px; margin: 0 auto; }
+.faith-icon { font-size: 2rem; color: var(--red); margin-bottom: 1.2rem; }
+.faith-section h2 {
+  font-family: var(--sf); font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  color: var(--dark); font-weight: 400; margin-bottom: 1.2rem;
+}
+.faith-section p { font-family: var(--ss); font-size: .95rem; color: var(--mid); line-height: 1.85; margin-bottom: 2rem; }
+.faith-section blockquote {
+  font-family: var(--sf); font-size: clamp(1.1rem, 2vw, 1.45rem); font-style: italic;
+  font-weight: 300; color: var(--dark); border-left: 2px solid var(--red);
+  padding: .8rem 1.5rem; text-align: left; line-height: 1.65;
+}
+.faith-section cite {
+  display: block; font-family: var(--ss); font-size: .75rem; font-style: normal;
+  text-transform: uppercase; letter-spacing: .12em; color: var(--red); margin-top: .7rem;
+}
+
+/* ===== CONTACT CTA ===== */
+.contact-cta { padding: 100px 5%; background: var(--red); text-align: center; }
+.contact-cta-inner { max-width: 660px; margin: 0 auto; }
+.contact-cta .ey {
+  display: block; font-family: var(--ss); font-size: .7rem; text-transform: uppercase;
+  letter-spacing: .28em; color: rgba(255,255,255,.6); margin-bottom: .7rem;
+}
+.contact-cta h2 {
+  font-family: var(--sf); font-size: clamp(2rem, 4vw, 3.2rem);
+  color: white; font-weight: 300; line-height: 1.15; margin-bottom: .6rem;
+}
+.contact-cta h2 em { font-style: italic; }
+.cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem; }
+.btn-white {
+  display: inline-flex; align-items: center; gap: .6rem; padding: .82rem 2.1rem;
+  background: white; color: var(--red); font-family: var(--ss); font-size: .8rem;
+  text-transform: uppercase; letter-spacing: .13em; border-radius: 2px; transition: var(--tr);
+}
+.btn-white:hover { background: rgba(255,255,255,.9); transform: translateY(-3px); }
+.btn-outline-white {
+  display: inline-flex; align-items: center; gap: .6rem; padding: .82rem 2.1rem;
+  background: transparent; color: white; font-family: var(--ss); font-size: .8rem;
+  text-transform: uppercase; letter-spacing: .13em; border-radius: 2px;
+  border: 1.5px solid rgba(255,255,255,.4); transition: var(--tr);
+}
+.btn-outline-white:hover { background: white; color: var(--red); }
+
+/* ===== FOOTER ===== */
+.footer { background: #111; color: white; padding: 60px 5% 0; }
+.footer-inner {
+  display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 3rem;
+  padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,.07);
+}
+@media (max-width: 620px) { .footer-inner { grid-template-columns: 1fr; gap: 2rem; } }
+.footer-brand-name { font-family: var(--sf); font-size: 1.2rem; color: white; margin: .5rem 0 .2rem; }
+.footer-tagline { font-family: var(--ss); font-size: .7rem; text-transform: uppercase; letter-spacing: .18em; color: rgba(255,255,255,.3); }
+.footer-col-title { font-family: var(--ss); font-size: .67rem; text-transform: uppercase; letter-spacing: .22em; color: #c4282e; margin-bottom: .9rem; display: block; }
+.footer-links-col { display: flex; flex-direction: column; gap: .6rem; }
+.footer-links-col a {
+  display: flex; align-items: center; gap: .5rem;
+  font-family: var(--ss); font-size: .83rem; color: rgba(255,255,255,.4); transition: color .3s;
+}
+.footer-links-col a:hover { color: white; }
+.footer-bottom { padding: 1.4rem 0; text-align: center; font-family: var(--ss); font-size: .73rem; color: rgba(255,255,255,.18); }
+
+/* ===== SPEAKLIFE WIDGET ===== */
+.speaklife-widget { position: fixed; bottom: 86px; left: 20px; z-index: 900; display: flex; flex-direction: column; align-items: flex-start; gap: .5rem; }
+.speaklife-toggle {
+  display: flex; align-items: center; gap: .5rem; background: var(--red-deep); color: white;
+  border: none; border-radius: 30px; padding: .52rem .95rem; font-family: var(--ss);
+  font-size: .72rem; text-transform: uppercase; letter-spacing: .1em;
+  box-shadow: var(--shr); transition: var(--tr);
+}
+.speaklife-toggle:hover { background: var(--red); transform: translateY(-2px); }
+.speaklife-card {
+  background: white; border: 1px solid var(--bdr); border-radius: 8px;
+  padding: 1.3rem; width: min(320px, 88vw); box-shadow: var(--shm); display: none;
+}
+.speaklife-card.open { display: block; animation: fup .35s ease; }
+.speaklife-header {
+  display: flex; align-items: center; gap: .5rem; margin-bottom: .85rem;
+  padding-bottom: .7rem; border-bottom: 1px solid rgba(0,0,0,.06);
+}
+.speaklife-header i { color: var(--red); font-size: .85rem; }
+.speaklife-header span { font-family: var(--ss); font-size: .7rem; text-transform: uppercase; letter-spacing: .15em; color: var(--lt); flex: 1; }
+.speaklife-close { background: none; border: none; font-size: 1.2rem; color: var(--lt); cursor: pointer; line-height: 1; }
+.speaklife-close:hover { color: var(--red); }
+.speaklife-verse { font-family: var(--sf); font-size: 1rem; font-style: italic; color: var(--dark); line-height: 1.6; margin-bottom: .5rem; }
+.speaklife-ref { font-family: var(--ss); font-size: .73rem; text-transform: uppercase; letter-spacing: .1em; color: var(--red); margin-bottom: 1rem; }
+.speaklife-actions { display: flex; gap: .6rem; }
+.sl-btn {
+  flex: 1; padding: .42rem; border: 1.5px solid rgba(0,0,0,.09); background: none; border-radius: 2px;
+  font-family: var(--ss); font-size: .7rem; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--mid); display: flex; align-items: center; justify-content: center; gap: .4rem;
+  transition: all .25s; cursor: pointer;
+}
+.sl-btn:first-child:hover { background: var(--red); color: white; border-color: var(--red); }
+.sl-btn:last-child:hover { background: var(--off); }
+
+/* ===== WHATSAPP ===== */
+.whatsapp-float {
+  position: fixed; bottom: 20px; right: 20px; width: 50px; height: 50px;
+  background: #25d366; border: none; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 18px rgba(37,211,102,.38); z-index: 950;
+  transition: transform .3s; animation: waPulse 2.8s ease-in-out infinite;
+}
+.whatsapp-float:hover { transform: scale(1.1); animation: none; }
+.whatsapp-icon { width: 26px; height: 26px; fill: white; }
+.whatsapp-chat {
+  position: fixed; bottom: 84px; right: 20px; width: min(330px, 90vw);
+  background: white; border-radius: 12px; overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0,0,0,.16); z-index: 951;
+  display: none; flex-direction: column;
+}
+.whatsapp-chat.open { display: flex; animation: fup .3s ease; }
+.chat-header { background: #075e54; padding: .9rem 1.1rem; display: flex; align-items: center; justify-content: space-between; }
+.chat-header-info { display: flex; align-items: center; gap: .7rem; }
+.chat-avatar { width: 40px; height: 40px; border-radius: 50%; overflow: hidden; background: #1a8b6e; flex-shrink: 0; }
+.chat-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.chat-title { font-family: var(--ss); font-size: .88rem; color: white; font-weight: 600; }
+.chat-subtitle { font-family: var(--ss); font-size: .73rem; color: rgba(255,255,255,.65); }
+.close-btn { background: none; border: none; color: rgba(255,255,255,.6); font-size: 1.3rem; cursor: pointer; }
+.close-btn:hover { color: white; }
+.chat-body { padding: .9rem 1rem; background: #ece5dd; min-height: 90px; display: flex; flex-direction: column; gap: .5rem; }
+.chat-time { text-align: center; font-family: var(--ss); font-size: .68rem; color: #999; }
+.message-bubble { background: white; padding: .62rem .88rem; border-radius: 0 10px 10px 10px; font-family: var(--ss); font-size: .84rem; color: var(--dark); }
+.message-time { font-family: var(--ss); font-size: .65rem; color: #999; margin-top: .15rem; }
+.chat-footer { padding: .7rem .9rem; background: #f0f0f0; display: flex; flex-direction: column; gap: .5rem; }
+.message-input-container { display: flex; align-items: center; gap: .5rem; background: white; border-radius: 22px; padding: .32rem .32rem .32rem .85rem; }
+.message-input { flex: 1; border: none; outline: none; resize: none; font-family: var(--ss); font-size: .86rem; background: transparent; }
+.send-btn { width: 32px; height: 32px; background: #25d366; border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; cursor: pointer; flex-shrink: 0; }
+.start-chat-btn { background: #25d366; color: white; border: none; border-radius: 22px; padding: .58rem; font-family: var(--ss); font-size: .8rem; width: 100%; cursor: pointer; }
+.start-chat-btn:hover { background: #1da851; }
+
+/* ===== ANIMATIONS ===== */
+@keyframes fup { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes waPulse {
+  0% { box-shadow: 0 0 0 0 rgba(37,211,102,.45); }
+  70% { box-shadow: 0 0 0 12px rgba(37,211,102,0); }
+  100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+}
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
+@media (max-width: 480px) {
+  .whatsapp-float { right: 14px; bottom: 14px; }
+  .speaklife-widget { left: 12px; bottom: 76px; }
+}
+</style>
 </head>
 <body>
 
-  <nav class="navbar" id="navbar">
-    <a href="index.html" class="nav-logo">
-      <img src="img/logo.svg" alt="Francisca Boateng" onerror="this.style.display='none'">
-      <span class="logo-text">F<span>B</span></span>
-    </a>
-    <div class="nav-links" id="navLinks">
-      <a href="index.html" class="nav-link">Home</a>
-      <a href="about.html" class="nav-link active">About</a>
-      <a href="publi.html" class="nav-link">Videos</a>
-      <a href="booking.html" class="nav-link">Book</a>
-       <a href="speaking.html" class="nav-link">Speaking</a>
-       <li><a href="impact.html">Impact</a></li>
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="nav-logo">
+    <img src="img/logo.svg" alt="FB" onerror="this.style.display='none'">
+    <span class="logo-text">F<span>B</span></span>
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="about.html" class="nav-link active">About</a>
+    <a href="speaking.html" class="nav-link">Speaking</a>
+    <a href="impact.html" class="nav-link">Impact</a>
+    <a href="publi.html" class="nav-link">Videos</a>
+    <a href="booking.html" class="nav-link nav-book">Book</a>
+  </div>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-image">
+    <img src="img/ax.jpg" alt="Francisca Boateng" onerror="this.src='img/j.JPG'">
+    <div class="page-hero-overlay"></div>
+  </div>
+  <div class="page-hero-content">
+    <span class="page-eyebrow">The Story</span>
+    <h1>Francisca<br><em>Boateng</em></h1>
+    <p>Cybersecurity Leader · Philanthropist · Speaker · Entrepreneur</p>
+  </div>
+</section>
+
+<!-- ORIGIN STORY -->
+<section class="about-origin">
+  <div class="origin-inner">
+    <div class="origin-text">
+      <span class="ey">Where She Began</span>
+      <h2>Rooted in Kumasi,<br>Shaped by the World</h2>
+      <p>Francisca Boateng was born and raised in Kumasi, Ghana — a city of gold, culture, and unshakeable spirit. She carried that spirit across continents, moving to the United States in 1994, earning her credentials at Oxford University (1998) and Strayer University (2005).</p>
+      <p>Nearly three decades in business operations and accounting have sharpened her into a leader who moves with clarity, acts with conviction, and builds with intention. She is not a person who waits for change — she is the change.</p>
+      <p>In 2024, she was awarded the ISC2 Global Impact Award — the highest global recognition in cybersecurity for community impact — and was named a finalist for the Women In Technology 2025 Non-profit Impact Award in North America.</p>
     </div>
-    <button class="nav-toggle" id="navToggle" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
-
-  <!-- PAGE HERO -->
-  <section class="page-hero">
-    <div class="page-hero-image">
-      <img src="img/ax.jpg" alt="Francisca Boateng">
-      <div class="page-hero-overlay"></div>
+    <div class="origin-portrait">
+      <img src="img/j.JPG" alt="Francisca Boateng">
+      <div class="origin-accent-line"></div>
     </div>
-    <div class="page-hero-content">
-      <span class="page-eyebrow">The Story</span>
-      <h1>Francisca<br><em>Boateng</em></h1>
-      <p>Entrepreneur. Philanthropist. Speaker. Faith Leader.</p>
-    </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ORIGIN STORY -->
-  <section class="about-origin">
-    <div class="origin-inner">
-      <div class="origin-text">
-        <span class="section-eyebrow">Where She Began</span>
-        <h2>Rooted in Kumasi,<br>Shaped by the World</h2>
-        <p>Francisca Boateng was born and raised in Kumasi, Ghana — a city of gold, culture, and unshakeable spirit. She carried that spirit across continents, living in the USA since 1994, earning her credentials at Oxford University (1998) and Strayer University (2005).</p>
-        <p>Nearly three decades in business operations and accounting have sharpened her into a leader who moves with clarity, acts with conviction, and builds with intention. She is not a person who waits for change — she is the change.</p>
-      </div>
-      <div class="origin-portrait">
-        <img src="img/j.JPG" alt="Francisca Boateng">
-        <div class="origin-accent-line"></div>
-      </div>
-    </div>
-  </section>
+<!-- TIMELINE -->
+<section class="timeline-section">
+  <div class="section-header">
+    <span class="section-eyebrow">The Journey</span>
+    <h2 class="section-title">Milestones of <em>Impact</em></h2>
+  </div>
 
+  <div class="timeline">
 
-
-  <!-- THREE PILLARS -->
-  <section class="pillars-deep" id="technology">
-    <div class="section-header">
-      <span class="section-eyebrow">Her Work</span>
-      <h2 class="section-title">Three Pillars of Purpose</h2>
-    </div>
-
-    <div class="pillar-deep-item" id="technology">
-      <div class="pillar-deep-image">
-        <img src="img/i.JPG" alt="Cybersecurity">
-      </div>
-      <div class="pillar-deep-text">
-        <span class="pillar-deep-label"><i class="fas fa-shield-halved"></i> Technology</span>
-        <h3>Slamm Technologies & the Digital Frontier</h3>
-        <p>As Director of Operations at Slamm Technologies — an IT company operating across the US and Ghana — Francisca leads a cross-functional team delivering innovative IT training and services to governments, organizations, and individuals worldwide.</p>
-        <p>Her 2024 ISC2 Global Impact Award is a testament to her unwavering commitment to closing the cybersecurity gap, especially for women and underserved communities.</p>
-        <ul class="pillar-list">
-          <li><i class="fas fa-check"></i> Cybersecurity leadership & awareness training</li>
-          <li><i class="fas fa-check"></i> IT operations management & strategy</li>
-          <li><i class="fas fa-check"></i> Digital inclusion and workforce development</li>
-          <li><i class="fas fa-check"></i> Women in tech empowerment</li>
-        </ul>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <span class="timeline-year">1994</span>
+        <h3>A New Chapter</h3>
+        <p>Moves to the United States, carrying her roots in Ghana and a vision for what her life could build.</p>
       </div>
     </div>
 
-    <div class="pillar-deep-item reverse" id="impact">
-      <div class="pillar-deep-image">
-        <img src="img/l.JPG" alt="Philanthropy">
-      </div>
-      <div class="pillar-deep-text">
-        <span class="pillar-deep-label"><i class="fas fa-hands-holding-heart"></i> Philanthropy</span>
-        <h3>Building Foundations That Last</h3>
-        <p><strong>Slamm Foundation</strong> has partnered with churches, corporations, parliamentarians, and youth organizations across Ghana, training 38,000+ people through their 1 Million Campaign. The Nimdee App teaches IT skills in 10 languages and dialects.</p>
-        <p><strong>Read 2 Lead</strong> has built 3 libraries, raised 100,000+ books, and served 50,000+ students and families since 2016.</p>
-        <p><strong>Speakwell Foundation</strong> — which she co-founded — trains people to become powerful communicators and confident leaders.</p>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <span class="timeline-year">1998</span>
+        <h3>Oxford Graduate</h3>
+        <p>Earns her credentials from Oxford University, cementing an academic foundation for a life of excellence.</p>
       </div>
     </div>
 
-    <div class="pillar-deep-item">
-      <div class="pillar-deep-image">
-        <img src="img/e.JPG" alt="Fashion and Speaking">
-      </div>
-      <div class="pillar-deep-text">
-        <span class="pillar-deep-label"><i class="fas fa-star"></i> Expression</span>
-        <h3>Odo's Kloset & the Speaking Stage</h3>
-        <p>Francisca founded <strong>Odo's Kloset</strong> — a clothing line where every fabric and every design is created to make you feel deeply, unmistakably loved. Fashion as a love language.</p>
-        <p>As a keynote speaker, she graces stages around the world with messages rooted in faith, resilience, and the audacity to lead. Her voice carries rooms. Her presence transforms spaces.</p>
-        <a href="booking.html" class="btn-primary" style="margin-top:1.5rem; display:inline-block;">Invite Her to Speak</a>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <span class="timeline-year">2005</span>
+        <h3>Strayer University</h3>
+        <p>Continues academic pursuit at Strayer University, deepening her knowledge in business and operations.</p>
       </div>
     </div>
-  </section>
 
-  <!-- FAITH -->
-  <section class="faith-section">
-    <div class="faith-inner">
-      <i class="fas fa-dove faith-icon"></i>
-      <h2>Faith is Her Foundation</h2>
-      <p>Everything Francisca builds, she builds on faith. Known as "God's Favourite Daughter," her work is not simply professional — it is prophetic. She believes that purpose is not found, it is built, step by faithful step.</p>
-      <blockquote>"For I know the plans I have for you, declares the Lord — plans to prosper you and not to harm you, plans to give you hope and a future."<cite>— Jeremiah 29:11</cite></blockquote>
-    </div>
-  </section>
-
-  <!-- CONTACT CTA -->
-  <section class="contact-section" id="contact">
-    <div class="contact-inner">
-      <span class="section-eyebrow" style="color:rgba(255,255,255,0.7)">Ready to Connect?</span>
-      <h2>Let's Build<br>Something <em>Together</em></h2>
-      <div class="contact-actions">
-        <a href="booking.html" class="btn-primary btn-light"><i class="fas fa-calendar"></i> Book a Session</a>
-        <a href="mailto:info@slammllc.com" class="btn-ghost btn-ghost-light"><i class="fas fa-envelope"></i> Email Directly</a>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <span class="timeline-year">2016</span>
+        <h3>Read 2 Lead Founded</h3>
+        <p>Launches a literacy nonprofit that builds 3 libraries, fundraises 100,000+ books, and serves 50,000+ students across Ghana.</p>
       </div>
     </div>
-  </section>
 
-  <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <img src="img/logo.svg" alt="FB Logo" onerror="this.style.display='none'">
-        <p class="footer-brand-name">Francisca Boateng</p>
-        <p class="footer-tagline">God's Favourite Daughter</p>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <span class="timeline-year">2018</span>
+        <h3>Speakwell Foundation</h3>
+        <p>Co-founds an organization dedicated to developing powerful communicators and visionary leaders across Ghana and beyond.</p>
       </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <span class="timeline-year">2020</span>
+        <h3>Slamm Foundation & Nimdee App</h3>
+        <p>Founds the Slamm Foundation and launches the Nimdee App — teaching IT skills in 10 languages. The 1 Million Campaign begins training communities across Ghana.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <span class="timeline-year">2024</span>
+        <h3>ISC2 Global Impact Award Winner</h3>
+        <p>Wins the highest global recognition in cybersecurity for community impact, and is named a finalist for the Women In Technology 2025 Non-profit Impact Award in North America.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- THREE PILLARS -->
+<section class="pillars-deep">
+  <div class="section-header">
+    <span class="section-eyebrow">Her Work</span>
+    <h2 class="section-title">Three Pillars of <em>Purpose</em></h2>
+  </div>
+
+  <!-- Pillar 1: Technology -->
+  <div class="pillar-deep-item reveal" id="technology">
+    <div class="pillar-deep-image">
+      <img src="img/i.JPG" alt="Cybersecurity Technology" onerror="this.src='img/b.JPG'">
+    </div>
+    <div class="pillar-deep-text">
+      <span class="pillar-deep-label"><i class="fas fa-shield-halved"></i> Technology</span>
+      <h3>Slamm Technologies & the Digital Frontier</h3>
+      <p>As Director of Operations at Slamm Technologies — an IT company operating across the US and Ghana — Francisca leads a cross-functional team delivering innovative IT training and services to governments, organizations, and individuals worldwide.</p>
+      <p>Her 2024 ISC2 Global Impact Award is testament to her unwavering commitment to closing the cybersecurity gap, especially for women and underserved communities.</p>
+      <ul class="pillar-list">
+        <li><i class="fas fa-check"></i> Cybersecurity leadership & awareness training</li>
+        <li><i class="fas fa-check"></i> IT operations management & strategy</li>
+        <li><i class="fas fa-check"></i> Digital inclusion and workforce development</li>
+        <li><i class="fas fa-check"></i> Women in tech empowerment</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Pillar 2: Philanthropy -->
+  <div class="pillar-deep-item reverse reveal" id="impact">
+    <div class="pillar-deep-image">
+      <img src="img/l.JPG" alt="Philanthropy" onerror="this.src='img/e.JPG'">
+    </div>
+    <div class="pillar-deep-text">
+      <span class="pillar-deep-label"><i class="fas fa-hands-holding-heart"></i> Philanthropy</span>
+      <h3>Building Foundations That Last</h3>
+      <p><strong>Slamm Foundation</strong> has partnered with churches, corporations, parliamentarians, and youth organizations across Ghana, training 38,000+ people through their 1 Million Campaign. The Nimdee App teaches IT skills in 10 languages and dialects.</p>
+      <p><strong>Read 2 Lead</strong> has built 3 libraries, donated 100,000+ books, and served 50,000+ students and families since 2016. The belief is simple: when a child reads, a community rises.</p>
+      <p><strong>Speakwell Foundation</strong> — which she co-founded — trains people to become powerful communicators and confident, purpose-driven leaders.</p>
+    </div>
+  </div>
+
+  <!-- Pillar 3: Expression -->
+  <div class="pillar-deep-item reveal">
+    <div class="pillar-deep-image">
+      <img src="img/e.JPG" alt="Fashion and Speaking" onerror="this.src='img/j.JPG'">
+    </div>
+    <div class="pillar-deep-text">
+      <span class="pillar-deep-label"><i class="fas fa-star"></i> Expression</span>
+      <h3>Odo's Kloset & the Speaking Stage</h3>
+      <p>Francisca founded <strong>Odo's Kloset</strong> — a clothing line where every fabric and every design is created to make you feel deeply, unmistakably loved. Fashion as a love language.</p>
+      <p>As a motivational speaker and keynote presenter, she graces stages worldwide with messages rooted in faith, resilience, purpose, and the audacity to lead. Her signature talk <em>"Your Voice Is Not an Accident"</em> has moved rooms to tears and to action.</p>
+      <a href="booking.html" style="display:inline-flex;align-items:center;gap:.6rem;padding:.82rem 2.1rem;background:var(--red);color:white;font-family:var(--ss);font-size:.8rem;text-transform:uppercase;letter-spacing:.13em;border-radius:2px;margin-top:1.5rem;transition:var(--tr)">
+        <i class="fas fa-microphone"></i> Invite Her to Speak
+      </a>
+    </div>
+  </div>
+
+</section>
+
+<!-- FAITH -->
+<section class="faith-section">
+  <div class="faith-inner">
+    <i class="fas fa-dove faith-icon"></i>
+    <h2>Faith Is Her Foundation</h2>
+    <p>Everything Francisca builds, she builds on faith. Known as "God's Favourite Daughter," her work is not simply professional — it is prophetic. She believes that purpose is not found, it is built, step by faithful step. Every library, every training program, every keynote stage — rooted in the conviction that God placed a call on her life to serve.</p>
+    <blockquote>
+      "For I know the plans I have for you, declares the Lord — plans to prosper you and not to harm you, plans to give you hope and a future."
+      <cite>— Jeremiah 29:11</cite>
+    </blockquote>
+  </div>
+</section>
+
+<!-- CONTACT CTA -->
+<section class="contact-cta">
+  <div class="contact-cta-inner">
+    <span class="ey">Ready to Connect?</span>
+    <h2>Let's Build Something <em>Together</em></h2>
+    <div class="cta-actions">
+      <a href="booking.html" class="btn-white"><i class="fas fa-calendar"></i> Book a Session</a>
+      <a href="mailto:info@slammllc.com" class="btn-outline-white"><i class="fas fa-envelope"></i> Email Directly</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <img src="img/logo.svg" alt="FB Logo" height="34" onerror="this.style.display='none'">
+      <p class="footer-brand-name">Francisca Boateng</p>
+      <p class="footer-tagline">God's Favourite Daughter</p>
+    </div>
+    <div>
+      <span class="footer-col-title">Navigate</span>
       <div class="footer-links-col">
-        <p class="footer-col-title">Navigate</p>
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
+        <a href="speaking.html">Speaking</a>
+        <a href="impact.html">Impact</a>
         <a href="publi.html">Videos</a>
         <a href="booking.html">Book</a>
       </div>
+    </div>
+    <div>
+      <span class="footer-col-title">Connect</span>
       <div class="footer-links-col">
-        <p class="footer-col-title">Connect</p>
         <a href="https://www.linkedin.com/in/franciscaboateng" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
         <a href="https://www.instagram.com/francisca_boateng1/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
         <a href="https://web.facebook.com/obo.boateng" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a>
       </div>
     </div>
-    <div class="footer-bottom"><p>© 2025 Francisca Boateng. All Rights Reserved.</p></div>
-  </footer>
+  </div>
+  <div class="footer-bottom"><p>© 2025 Francisca Boateng. All Rights Reserved.</p></div>
+</footer>
 
-  <!-- SPEAKLIFE WIDGET -->
-  <div class="speaklife-widget" id="speaklifeWidget">
-    <button class="speaklife-toggle" id="speaklifeToggle">
+<!-- SPEAKLIFE WIDGET -->
+<div class="speaklife-widget">
+  <div class="speaklife-card" id="speaklifeCard">
+    <div class="speaklife-header">
       <i class="fas fa-dove"></i>
-      <span>SpeakLife</span>
-    </button>
-    <div class="speaklife-card" id="speaklifeCard">
-      <div class="speaklife-header">
-        <i class="fas fa-dove"></i>
-        <span>SpeakLife — Daily Word</span>
-        <button class="speaklife-close" id="speaklifeClose">×</button>
-      </div>
-      <div class="speaklife-verse" id="speaklifeVerse"></div>
-      <div class="speaklife-ref" id="speaklifeRef"></div>
-      <div class="speaklife-actions">
-        <button class="speaklife-share" id="speaklifeShare"><i class="fas fa-share-alt"></i> Share</button>
-        <button class="speaklife-next" id="speaklifeNext"><i class="fas fa-sync-alt"></i> New Verse</button>
-      </div>
+      <span>SpeakLife — Daily Word</span>
+      <button class="speaklife-close" id="slClose">×</button>
+    </div>
+    <div class="speaklife-verse" id="slVerse"></div>
+    <div class="speaklife-ref" id="slRef"></div>
+    <div class="speaklife-actions">
+      <button class="sl-btn" id="slShare"><i class="fas fa-share-alt"></i> Share</button>
+      <button class="sl-btn" id="slNext"><i class="fas fa-sync-alt"></i> New Verse</button>
     </div>
   </div>
+  <button class="speaklife-toggle" id="slToggle"><i class="fas fa-dove"></i> SpeakLife</button>
+</div>
 
-  <!-- WHATSAPP -->
-  <button class="whatsapp-float" id="whatsappButton">
-    <svg class="whatsapp-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/></svg>
-  </button>
-  <div class="whatsapp-chat" id="whatsappChat">
-    <div class="chat-header">
-      <div class="chat-header-info">
-        <div class="chat-avatar"><img src="img/e.JPG" alt="Francisca" onerror="this.style.display='none'"></div>
-        <div><h3 class="chat-title">Francisca Boateng</h3><p class="chat-subtitle">Replies within 24 hours</p></div>
-      </div>
-      <button class="close-btn" id="closeChat">×</button>
+<!-- WHATSAPP -->
+<button class="whatsapp-float" id="waBtn">
+  <svg class="whatsapp-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/></svg>
+</button>
+<div class="whatsapp-chat" id="waChat">
+  <div class="chat-header">
+    <div class="chat-header-info">
+      <div class="chat-avatar"><img src="img/e.JPG" alt="" onerror="this.style.display='none'"></div>
+      <div><h3 class="chat-title">Francisca Boateng</h3><p class="chat-subtitle">Replies within 24 hours</p></div>
     </div>
-    <div class="chat-body">
-      <div class="chat-time">Today</div>
-      <div class="message received"><div class="message-bubble">Hi there! I'd love to connect with you.</div><div class="message-time">Now</div></div>
-    </div>
-    <div class="chat-footer">
-      <div class="message-input-container">
-        <textarea class="message-input" id="messageInput" placeholder="Type a message..." rows="1"></textarea>
-        <button class="send-btn" id="sendBtn"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M2,21L23,12L2,3V10L17,12L2,14V21Z"/></svg></button>
-      </div>
-      <button class="start-chat-btn" id="startChatBtn">Start Chat on WhatsApp</button>
-    </div>
+    <button class="close-btn" id="waClose">×</button>
   </div>
+  <div class="chat-body">
+    <div class="chat-time">Today</div>
+    <div><div class="message-bubble">Hi there! I'd love to connect with you.</div><div class="message-time">Now</div></div>
+  </div>
+  <div class="chat-footer">
+    <div class="message-input-container">
+      <textarea class="message-input" id="waInput" placeholder="Type a message..." rows="1"></textarea>
+      <button class="send-btn" id="waSend"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M2,21L23,12L2,3V10L17,12L2,14V21Z"/></svg></button>
+    </div>
+    <button class="start-chat-btn" id="waStart">Start Chat on WhatsApp</button>
+  </div>
+</div>
 
-  <script src="js/whatsapp.js"></script>
-  <script src="js/global.js"></script>
-  <script>
-    // Animate timeline on scroll
-    const timelineItems = document.querySelectorAll('.timeline-item');
-    const obsT = new IntersectionObserver(entries => {
-      entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.2 });
-    timelineItems.forEach(i => obsT.observe(i));
-  </script>
+<script>
+// ── NAV ──
+const nb = document.getElementById('navbar');
+const nt = document.getElementById('navToggle');
+const nl = document.getElementById('navLinks');
+if (nb) window.addEventListener('scroll', () => nb.classList.toggle('scrolled', scrollY > 50), { passive: true });
+if (nt) nt.addEventListener('click', () => { nl.classList.toggle('open'); nt.classList.toggle('open'); });
+if (nl) nl.querySelectorAll('.nav-link').forEach(l => l.addEventListener('click', () => { nl.classList.remove('open'); if (nt) nt.classList.remove('open'); }));
+
+// ── TIMELINE — Intersection Observer ──
+const tlObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      tlObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.15 });
+document.querySelectorAll('.timeline-item').forEach((el, i) => {
+  el.style.transitionDelay = (i * 0.1) + 's';
+  tlObs.observe(el);
+});
+
+// ── REVEAL on scroll ──
+const rObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); rObs.unobserve(e.target); } });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => rObs.observe(el));
+
+// ── SPEAKLIFE ──
+const verses = [
+  { t: "I can do all things through Christ who strengthens me.", r: "Philippians 4:13" },
+  { t: "For I know the plans I have for you — plans to prosper you and not to harm you, plans to give you hope and a future.", r: "Jeremiah 29:11" },
+  { t: "Be strong and courageous. Do not be afraid; do not be discouraged, for the Lord your God is with you wherever you go.", r: "Joshua 1:9" },
+  { t: "God has not given us a spirit of fear, but of power and of love and of a sound mind.", r: "2 Timothy 1:7" },
+  { t: "Those who hope in the Lord will renew their strength. They will soar on wings like eagles.", r: "Isaiah 40:31" },
+  { t: "She is clothed with strength and dignity; she can laugh at the days to come.", r: "Proverbs 31:25" },
+  { t: "Be still, and know that I am God.", r: "Psalm 46:10" },
+  { t: "Everything is possible for one who believes.", r: "Mark 9:23" },
+  { t: "Let us not become weary in doing good, for at the proper time we will reap a harvest.", r: "Galatians 6:9" },
+  { t: "For with God nothing will be impossible.", r: "Luke 1:37" }
+];
+const doy = Math.floor((Date.now() - new Date(new Date().getFullYear(), 0, 0)) / 86400000);
+let vi = doy % verses.length;
+const vEl = document.getElementById('slVerse');
+const rEl = document.getElementById('slRef');
+function showVerse(i) {
+  vEl.textContent = '\u201C' + verses[i].t + '\u201D';
+  rEl.textContent = '\u2014 ' + verses[i].r;
+}
+showVerse(vi);
+const slCard = document.getElementById('speaklifeCard');
+document.getElementById('slToggle').addEventListener('click', () => slCard.classList.toggle('open'));
+document.getElementById('slClose').addEventListener('click', () => slCard.classList.remove('open'));
+document.getElementById('slNext').addEventListener('click', () => { vi = (vi + 1) % verses.length; showVerse(vi); });
+document.getElementById('slShare').addEventListener('click', () => {
+  const txt = verses[vi].t + ' — ' + verses[vi].r;
+  if (navigator.share) navigator.share({ text: txt });
+  else if (navigator.clipboard) navigator.clipboard.writeText(txt).then(() => alert('Verse copied!'));
+});
+
+// ── WHATSAPP ──
+const waChat = document.getElementById('waChat');
+document.getElementById('waBtn').addEventListener('click', () => waChat.classList.toggle('open'));
+document.getElementById('waClose').addEventListener('click', () => waChat.classList.remove('open'));
+function openWhatsApp() {
+  const msg = document.getElementById('waInput').value.trim();
+  window.open('https://wa.me/17039309011' + (msg ? '?text=' + encodeURIComponent(msg) : ''), '_blank');
+}
+document.getElementById('waSend').addEventListener('click', openWhatsApp);
+document.getElementById('waStart').addEventListener('click', openWhatsApp);
+</script>
 </body>
 </html>
