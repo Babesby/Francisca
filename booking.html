@@ -10,9 +10,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/whatsapx.css">
-  <!-- PayPal SDK -->
   <script src="https://www.paypal.com/sdk/js?client-id=BAAA0dJn0imfaJuNWpuJZBiA1coHv506yutbMRDChv6tfZR0fAkojnK5BQIGu33KeFgyvJO72AeFa2kcMk&components=hosted-buttons&enable-funding=venmo&currency=USD"></script>
-  <!-- Paystack SDK -->
   <script src="https://js.paystack.co/v1/inline.js"></script>
 
 <style>
@@ -35,7 +33,7 @@ body{font-family:var(--ss);background:var(--white);color:var(--dark);line-height
 img{display:block;max-width:100%}a{color:inherit;text-decoration:none}button{cursor:pointer}ul,ol{list-style:none}
 ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:#f8f8f8}::-webkit-scrollbar-thumb{background:var(--red);border-radius:3px}
 
-/* ═══ NAV ═══ */
+/* ── NAV ── */
 .navbar{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 5%;background:rgba(255,255,255,0.97);box-shadow:0 2px 24px rgba(0,0,0,0.07);backdrop-filter:blur(18px)}
 .nav-logo{display:flex;align-items:center;gap:.7rem}.nav-logo img{height:32px}
 .logo-text{font-family:var(--sc);font-size:1.25rem;font-weight:600;color:var(--red-deep);letter-spacing:.06em}.logo-text span{color:var(--red)}
@@ -48,36 +46,32 @@ img{display:block;max-width:100%}a{color:inherit;text-decoration:none}button{cur
 .nav-toggle.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}.nav-toggle.open span:nth-child(2){opacity:0}.nav-toggle.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
 @media(max-width:900px){.nav-toggle{display:flex}.nav-links{position:fixed;top:0;right:-100%;width:min(290px,82vw);height:100dvh;background:var(--white);flex-direction:column;justify-content:center;align-items:flex-start;padding:4rem 2.5rem;gap:1.8rem;box-shadow:-6px 0 40px rgba(0,0,0,.1);transition:right .4s cubic-bezier(.23,1,.32,1);z-index:999}.nav-links.open{right:0}.nav-link{font-size:.95rem}.nav-link::after{display:none}}
 
-/* ═══ SHARED ═══ */
+/* ── SHARED ── */
 .section-eyebrow{display:block;font-family:var(--ss);font-size:.7rem;text-transform:uppercase;letter-spacing:.28em;color:var(--red);margin-bottom:.7rem}
 .section-title{font-family:var(--sf);font-size:clamp(2rem,4vw,3rem);color:var(--dark);font-weight:400;line-height:1.2}
 .section-title em{color:var(--red);font-style:italic}.section-header{text-align:center;margin-bottom:3.5rem}
 .btn-primary{display:inline-flex;align-items:center;gap:.6rem;padding:.82rem 2.1rem;background:var(--red);color:white;font-family:var(--ss);font-size:.8rem;text-transform:uppercase;letter-spacing:.13em;border-radius:2px;border:none;transition:var(--tr);cursor:pointer;white-space:nowrap}
 .btn-primary:hover{background:var(--red-deep);transform:translateY(-3px);box-shadow:var(--shr)}
 
-/* ═══ GEO BANNER ═══ */
+/* ── GEO BANNER ── */
 .geo-banner{background:var(--off);border-bottom:1px solid var(--bdr);padding:0;overflow:hidden;max-height:0;transition:max-height .5s ease,padding .5s ease}
 .geo-banner.shown{max-height:80px;padding:.7rem 5%}
 .geo-banner-inner{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;justify-content:space-between;max-width:1200px;margin:0 auto}
 .geo-banner-left{display:flex;align-items:center;gap:.8rem}
 .geo-flag{font-size:1.4rem;line-height:1}
-.geo-text{font-family:var(--ss);font-size:.82rem;color:var(--mid)}
-.geo-text strong{color:var(--dark)}
+.geo-text{font-family:var(--ss);font-size:.82rem;color:var(--mid)}.geo-text strong{color:var(--dark)}
 .geo-banner-right{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
-.geo-confirm{background:var(--red);color:white;border:none;border-radius:2px;padding:.38rem .9rem;font-family:var(--ss);font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;cursor:pointer;transition:var(--tr)}
-.geo-confirm:hover{background:var(--red-deep)}
-.geo-change{background:transparent;color:var(--mid);border:1px solid rgba(0,0,0,.15);border-radius:2px;padding:.38rem .9rem;font-family:var(--ss);font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;cursor:pointer;transition:var(--tr)}
-.geo-change:hover{border-color:var(--red);color:var(--red)}
+.geo-confirm{background:var(--red);color:white;border:none;border-radius:2px;padding:.38rem .9rem;font-family:var(--ss);font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;cursor:pointer;transition:var(--tr)}.geo-confirm:hover{background:var(--red-deep)}
+.geo-change{background:transparent;color:var(--mid);border:1px solid rgba(0,0,0,.15);border-radius:2px;padding:.38rem .9rem;font-family:var(--ss);font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;cursor:pointer;transition:var(--tr)}.geo-change:hover{border-color:var(--red);color:var(--red)}
 .geo-dismiss{background:none;border:none;color:var(--lt);font-size:1rem;cursor:pointer;padding:.2rem}
 
-/* ═══ LOCATION PICKER MODAL ═══ */
+/* ── LOCATION MODAL ── */
 .loc-overlay{position:fixed;inset:0;background:rgba(0,0,0,.52);z-index:2000;display:none;align-items:center;justify-content:center;padding:1rem;backdrop-filter:blur(4px)}
 .loc-overlay.open{display:flex;animation:fadeIn .3s ease}
 .loc-modal{background:var(--white);border-radius:4px;width:min(540px,96vw);max-height:90vh;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 24px 80px rgba(0,0,0,.22)}
 .loc-modal-head{background:var(--red);padding:1.5rem 1.8rem;color:white;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
 .loc-modal-head h3{font-family:var(--sf);font-size:1.4rem;font-weight:400}
-.loc-modal-close{background:none;border:none;color:rgba(255,255,255,.7);font-size:1.3rem;cursor:pointer;transition:color .2s}
-.loc-modal-close:hover{color:white}
+.loc-modal-close{background:none;border:none;color:rgba(255,255,255,.7);font-size:1.3rem;cursor:pointer;transition:color .2s}.loc-modal-close:hover{color:white}
 .loc-modal-body{padding:1.6rem 1.8rem;overflow-y:auto;flex:1}
 .loc-search{width:100%;padding:.82rem 1rem .82rem 2.6rem;border:1.5px solid #e0e0e0;border-radius:2px;font-family:var(--ss);font-size:.9rem;outline:none;transition:border-color .3s;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23999' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'/%3E%3C/svg%3E") no-repeat .85rem center}
 .loc-search:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(159,28,32,.06)}
@@ -90,16 +84,14 @@ img{display:block;max-width:100%}a{color:inherit;text-decoration:none}button{cur
 .loc-country-flag{font-size:1.1rem;flex-shrink:0}
 .loc-modal-foot{padding:1.2rem 1.8rem;border-top:1px solid var(--bdr);display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;flex-shrink:0}
 .loc-modal-foot p{font-family:var(--ss);font-size:.78rem;color:var(--lt)}
-.loc-apply-btn{background:var(--red);color:white;border:none;border-radius:2px;padding:.7rem 1.6rem;font-family:var(--ss);font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;cursor:pointer;transition:var(--tr)}
-.loc-apply-btn:hover{background:var(--red-deep)}
+.loc-apply-btn{background:var(--red);color:white;border:none;border-radius:2px;padding:.7rem 1.6rem;font-family:var(--ss);font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;cursor:pointer;transition:var(--tr)}.loc-apply-btn:hover{background:var(--red-deep)}
 
-/* ═══ CURRENCY PILL (shown in hero) ═══ */
+/* ── CURRENCY PILL ── */
 .currency-pill{display:inline-flex;align-items:center;gap:.5rem;background:var(--off);border:1px solid var(--bdr);border-radius:20px;padding:.32rem .9rem;font-family:var(--ss);font-size:.78rem;color:var(--mid);cursor:pointer;transition:var(--tr);margin-top:1.2rem}
 .currency-pill:hover{border-color:var(--red);color:var(--red)}
-.currency-pill-flag{font-size:1rem}
 .currency-pill strong{color:var(--dark)}
 
-/* ═══ HERO + STEPS ═══ */
+/* ── HERO ── */
 .booking-hero{padding:120px 5% 0;background:var(--white);text-align:center}
 .booking-hero h1{font-family:var(--sf);font-size:clamp(2.5rem,5vw,4rem);color:var(--red-deep);font-weight:400}
 .booking-hero h1 em{font-style:italic;color:var(--red)}
@@ -113,7 +105,7 @@ img{display:block;max-width:100%}a{color:inherit;text-decoration:none}button{cur
 .step-label{font-family:var(--ss);font-size:.68rem;text-transform:uppercase;letter-spacing:.12em;color:var(--lt);transition:color .3s;white-space:nowrap}
 .step-item.active .step-label,.step-item.done .step-label{color:var(--red)}
 
-/* ═══ PACKAGES ═══ */
+/* ── PACKAGES ── */
 .packages-section{padding:60px 5% 80px;background:var(--white)}
 .packages-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.8rem;margin-top:3rem}
 .package-card{border:1.5px solid var(--bdr);border-radius:4px;padding:2.2rem 1.8rem;transition:all .35s ease;position:relative;overflow:hidden;cursor:pointer;background:var(--white)}
@@ -121,31 +113,38 @@ img{display:block;max-width:100%}a{color:inherit;text-decoration:none}button{cur
 .package-card:hover::after,.package-card.selected::after{width:100%}
 .package-card.selected{border-color:var(--red);box-shadow:0 8px 32px rgba(159,28,32,.12)}
 .package-card.featured{border-color:var(--red);background:linear-gradient(135deg,#fff5f5,#fff)}
+.package-card.premium{border-color:#b8860b;background:linear-gradient(135deg,#fffbf0,#fff)}
 .package-badge{position:absolute;top:1.1rem;right:1.1rem;background:var(--red);color:white;font-family:var(--ss);font-size:.68rem;letter-spacing:.1em;padding:.25rem .65rem;border-radius:2px;text-transform:uppercase}
+.package-badge.gold{background:linear-gradient(135deg,#b8860b,#d4a017)}
+.package-badge.free-badge{background:#1a7a4a}
 .package-icon{font-size:1.6rem;color:var(--red);margin-bottom:.9rem}
+.package-card.premium .package-icon{color:#b8860b}
 .package-title{font-family:var(--sf);font-size:1.4rem;color:var(--red-deep);font-weight:500;margin-bottom:.4rem}
+.package-card.premium .package-title{color:#7a5c00}
 .package-subtitle{font-family:var(--ss);font-size:.86rem;color:var(--mid);margin-bottom:1.2rem}
-/* Price display — shows local currency dynamically */
 .package-price-wrap{margin-bottom:.3rem}
 .pkg-price-local{font-family:var(--sf);font-size:2.2rem;color:var(--red);font-weight:300;line-height:1.1}
 .pkg-price-local span{font-size:.92rem;color:var(--mid)}
+.pkg-price-local.free-price{color:#1a7a4a;font-size:1.8rem}
 .pkg-price-usd{font-family:var(--ss);font-size:.78rem;color:var(--lt);margin-top:.18rem}
 .package-features{list-style:none;padding:0;margin:1.2rem 0 1.5rem}
 .package-features li{font-family:var(--ss);font-size:.88rem;color:var(--dark);padding:.35rem 0;border-bottom:1px solid rgba(159,28,32,.07);display:flex;align-items:flex-start;gap:.55rem}
 .package-features li i{color:var(--red);font-size:.75rem;margin-top:.22rem;flex-shrink:0}
+.package-card.premium .package-features li i{color:#b8860b}
 .select-pkg-btn{width:100%;padding:.8rem;border:1.5px solid var(--red);background:transparent;color:var(--red);font-family:var(--ss);font-size:.85rem;letter-spacing:.08em;cursor:pointer;transition:all .3s;border-radius:2px;text-transform:uppercase;display:flex;align-items:center;justify-content:center;gap:.5rem}
+.package-card.premium .select-pkg-btn{border-color:#b8860b;color:#b8860b}
 .select-pkg-btn:hover,.package-card.selected .select-pkg-btn{background:var(--red);color:white}
+.package-card.premium .select-pkg-btn:hover,.package-card.premium.selected .select-pkg-btn{background:#b8860b;color:white}
 .select-pkg-btn .checkmark{display:none}.package-card.selected .select-pkg-btn .checkmark{display:inline}.package-card.selected .select-pkg-btn .arrow{display:none}
 
-/* ═══ FORM (Step 2) ═══ */
+/* ── FORM (Step 2) ── */
 .booking-form-section{padding:80px 5%;background:var(--off);display:none}
 .booking-form-section.active{display:block}
 .booking-form-wrap{max-width:720px;margin:0 auto}
 .step-banner{background:var(--red);color:white;border-radius:4px 4px 0 0;padding:1.2rem 1.8rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
 .step-banner-pkg{font-family:var(--sf);font-size:1.35rem;font-weight:400}
 .step-banner-price{font-family:var(--ss);font-size:.78rem;text-transform:uppercase;letter-spacing:.15em;color:rgba(255,255,255,.7)}
-.step-banner-change{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:white;font-family:var(--ss);font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;padding:.35rem .8rem;border-radius:2px;cursor:pointer;transition:background .25s}
-.step-banner-change:hover{background:rgba(255,255,255,.28)}
+.step-banner-change{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:white;font-family:var(--ss);font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;padding:.35rem .8rem;border-radius:2px;cursor:pointer;transition:background .25s}.step-banner-change:hover{background:rgba(255,255,255,.28)}
 .form-body{background:var(--white);border:1px solid var(--bdr);border-top:none;border-radius:0 0 4px 4px;padding:2.2rem 2rem}
 @media(max-width:600px){.form-body{padding:1.5rem 1.2rem}}
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem}
@@ -162,8 +161,13 @@ img{display:block;max-width:100%}a{color:inherit;text-decoration:none}button{cur
 .form-submit{width:100%;padding:1.05rem;background:var(--red);color:white;border:none;font-family:var(--ss);font-size:.95rem;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:all .3s;margin-top:1.6rem;display:flex;align-items:center;justify-content:center;gap:.6rem}
 .form-submit:hover{background:var(--red-deep);transform:translateY(-2px);box-shadow:0 8px 24px rgba(159,28,32,.22)}
 .form-note{font-family:var(--ss);font-size:.8rem;color:var(--lt);text-align:center;margin-top:.9rem;line-height:1.7}
+.form-section-divider{font-family:var(--ss);font-size:.7rem;text-transform:uppercase;letter-spacing:.22em;color:var(--red);margin:1.8rem 0 1rem;padding-bottom:.6rem;border-bottom:1px solid var(--bdr)}
 
-/* ═══ PAYMENT (Step 3) ═══ */
+/* Quote forms */
+.quote-notice{background:linear-gradient(135deg,#fff8e1,#fffbf0);border:1px solid #d4a017;border-radius:4px;padding:1.2rem 1.5rem;margin-bottom:1.5rem;font-family:var(--ss);font-size:.88rem;color:#7a5c00;line-height:1.7}
+.quote-notice i{margin-right:.4rem;color:#b8860b}
+
+/* ── PAYMENT (Step 3) ── */
 .payment-section{padding:80px 5%;background:var(--white);display:none}
 .payment-section.active{display:block}
 .payment-wrap{max-width:600px;margin:0 auto}
@@ -177,8 +181,6 @@ img{display:block;max-width:100%}a{color:inherit;text-decoration:none}button{cur
 .ps-value{font-family:var(--ss);font-size:.84rem;color:var(--dark);font-weight:500;text-align:right;max-width:60%}
 .ps-row.total .ps-label{font-family:var(--sf);font-size:1.1rem;color:var(--dark)}
 .ps-row.total .ps-value{font-family:var(--sf);font-size:1.5rem;color:var(--red)}
-
-/* Payment method tabs */
 .pay-methods{margin-bottom:1.5rem}
 .pay-methods-label{font-family:var(--ss);font-size:.7rem;text-transform:uppercase;letter-spacing:.2em;color:var(--lt);margin-bottom:.9rem;text-align:center}
 .pay-tabs{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
@@ -188,12 +190,8 @@ img{display:block;max-width:100%}a{color:inherit;text-decoration:none}button{cur
 .pay-tab-name{font-family:var(--ss);font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--mid)}
 .pay-tab-region{font-family:var(--ss);font-size:.68rem;color:var(--lt)}
 .pay-tab.active .pay-tab-name{color:var(--red)}
-/* Recommended badge */
 .pay-tab-rec{font-family:var(--ss);font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;background:var(--red);color:white;border-radius:10px;padding:.12rem .5rem;margin-top:.15rem}
-
-/* Payment panels */
-.pay-panel{display:none}
-.pay-panel.active{display:block}
+.pay-panel{display:none}.pay-panel.active{display:block}
 .paypal-box{background:var(--white);border:1.5px solid var(--bdr);border-radius:4px;padding:1.8rem;margin-bottom:1.2rem}
 .paypal-box-title{font-family:var(--ss);font-size:.7rem;text-transform:uppercase;letter-spacing:.18em;color:var(--lt);margin-bottom:1.2rem;text-align:center}
 .paypal-render-zone{min-height:55px;display:flex;align-items:center;justify-content:center}
@@ -215,7 +213,7 @@ img{display:block;max-width:100%}a{color:inherit;text-decoration:none}button{cur
 .pay-back-btn{background:none;border:none;font-family:var(--ss);font-size:.8rem;color:var(--lt);cursor:pointer;display:flex;align-items:center;gap:.4rem;margin:1.2rem auto 0;padding:.4rem;transition:color .25s}
 .pay-back-btn:hover{color:var(--red)}
 
-/* ═══ SUCCESS ═══ */
+/* ── SUCCESS ── */
 .success-section{padding:120px 5%;background:var(--white);text-align:center;display:none}
 .success-section.active{display:block}
 .success-wrap{max-width:560px;margin:0 auto}
@@ -223,14 +221,120 @@ img{display:block;max-width:100%}a{color:inherit;text-decoration:none}button{cur
 .success-wrap h2{font-family:var(--sf);font-size:clamp(2rem,3vw,2.8rem);color:var(--dark);font-weight:400;margin-bottom:.8rem}
 .success-wrap p{font-family:var(--ss);font-size:.95rem;color:var(--mid);line-height:1.8;margin-bottom:1.5rem}
 
-/* ═══ TESTIMONIALS ═══ */
-.testimonials-section{padding:80px 5%;background:var(--off)}
-.testimonials-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;margin-top:3rem}
-.testimonial-card{border-left:3px solid var(--red);padding:1.5rem 1.8rem;background:var(--white);border-radius:0 4px 4px 0}
-.testimonial-quote{font-family:var(--sf);font-size:1.12rem;color:var(--dark);line-height:1.7;font-style:italic;margin-bottom:.9rem}
-.testimonial-author{font-family:var(--ss);font-size:.82rem;color:var(--mid);text-transform:uppercase;letter-spacing:.05em}
+/* ── VIDEO TESTIMONIALS CAROUSEL ── */
+.video-testimonials{padding:90px 5%;background:var(--dark);overflow:hidden}
+.video-testimonials .section-eyebrow{color:rgba(159,28,32,.8)}
+.video-testimonials .section-title{color:white}
+.video-testimonials .section-title em{color:var(--red-bright)}
+.video-track-wrap{position:relative;margin-top:3rem;overflow:hidden}
+.video-track{display:flex;gap:1.5rem;transition:transform .5s cubic-bezier(.25,.46,.45,.94)}
+.video-slide{flex:0 0 calc(33.333% - 1rem);min-width:280px;position:relative}
+@media(max-width:900px){.video-slide{flex:0 0 calc(50% - .75rem)}}
+@media(max-width:580px){.video-slide{flex:0 0 100%}}
+.video-thumb{position:relative;border-radius:6px;overflow:hidden;aspect-ratio:16/9;background:#222;cursor:pointer}
+.video-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
+.video-thumb:hover img{transform:scale(1.04)}
+.video-play-btn{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.video-play-btn span{width:56px;height:56px;background:rgba(159,28,32,.9);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .3s;backdrop-filter:blur(4px)}
+.video-thumb:hover .video-play-btn span{background:var(--red);transform:scale(1.1)}
+.video-play-btn i{color:white;font-size:1.2rem;margin-left:4px}
+.video-label{padding:.9rem .2rem .2rem}
+.video-label h4{font-family:var(--sf);font-size:1.05rem;color:white;font-weight:400;margin-bottom:.2rem}
+.video-label p{font-family:var(--ss);font-size:.78rem;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.1em}
+.carousel-controls{display:flex;align-items:center;justify-content:center;gap:1rem;margin-top:2.5rem}
+.carousel-btn{width:44px;height:44px;border-radius:50%;border:1.5px solid rgba(255,255,255,.2);background:transparent;color:rgba(255,255,255,.6);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s}
+.carousel-btn:hover{border-color:var(--red);background:var(--red);color:white}
+.carousel-dots{display:flex;gap:.5rem}
+.carousel-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.2);cursor:pointer;transition:all .3s}
+.carousel-dot.active{background:var(--red);width:22px;border-radius:4px}
 
-/* ═══ FOOTER ═══ */
+/* Video lightbox */
+.vid-lightbox{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:3000;display:none;align-items:center;justify-content:center;padding:1rem;backdrop-filter:blur(8px)}
+.vid-lightbox.open{display:flex;animation:fadeIn .3s ease}
+.vid-lightbox-inner{position:relative;width:min(860px,96vw)}
+.vid-lightbox-inner video{width:100%;border-radius:6px;display:block}
+.vid-lightbox-close{position:absolute;top:-44px;right:0;background:none;border:none;color:rgba(255,255,255,.7);font-size:1.5rem;cursor:pointer;transition:color .2s;padding:.4rem}.vid-lightbox-close:hover{color:white}
+
+/* ── TEXT TESTIMONIALS CAROUSEL ── */
+.text-testimonials{padding:90px 5%;background:var(--off);overflow:hidden}
+.ttest-track-wrap{overflow:hidden;margin-top:3rem;position:relative}
+.ttest-track-wrap::before,.ttest-track-wrap::after{content:'';position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none}
+.ttest-track-wrap::before{left:0;background:linear-gradient(to right,var(--off),transparent)}
+.ttest-track-wrap::after{right:0;background:linear-gradient(to left,var(--off),transparent)}
+.ttest-track{display:flex;gap:1.8rem;animation:scrollLeft 40s linear infinite}
+.ttest-track:hover{animation-play-state:paused}
+.ttest-card{flex:0 0 320px;background:var(--white);border-radius:4px;padding:1.8rem;border:1px solid var(--bdr);box-shadow:var(--sh);position:relative}
+.ttest-card::before{content:'"';font-family:var(--sf);font-size:4rem;color:var(--red);line-height:1;position:absolute;top:.4rem;left:1.2rem;opacity:.15}
+.ttest-stars{display:flex;gap:.2rem;margin-bottom:.9rem}
+.ttest-stars i{color:#f5a623;font-size:.85rem}
+.ttest-quote{font-family:var(--sf);font-size:1rem;color:var(--dark);font-style:italic;line-height:1.65;margin-bottom:1rem}
+.ttest-author{display:flex;align-items:center;gap:.7rem}
+.ttest-avatar{width:36px;height:36px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;font-family:var(--ss);font-size:.8rem;color:white;font-weight:600;flex-shrink:0}
+.ttest-name{font-family:var(--ss);font-size:.82rem;color:var(--dark);font-weight:600}
+.ttest-role{font-family:var(--ss);font-size:.74rem;color:var(--lt)}
+@keyframes scrollLeft{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ── RATINGS SECTION ── */
+.ratings-section{padding:90px 5%;background:var(--white)}
+.ratings-inner{max-width:1100px;margin:0 auto}
+.ratings-hero{display:grid;grid-template-columns:240px 1fr;gap:3rem;align-items:center;margin-bottom:3.5rem}
+@media(max-width:700px){.ratings-hero{grid-template-columns:1fr;text-align:center}}
+.ratings-big-num{font-family:var(--sf);font-size:5rem;color:var(--red);line-height:1;font-weight:300}
+.ratings-big-stars{display:flex;gap:.3rem;margin:.4rem 0}
+@media(max-width:700px){.ratings-big-stars{justify-content:center}}
+.ratings-big-stars i{color:#f5a623;font-size:1.3rem}
+.ratings-total{font-family:var(--ss);font-size:.82rem;color:var(--lt);margin-top:.3rem}
+.ratings-bars{display:flex;flex-direction:column;gap:.7rem}
+.ratings-bar-row{display:flex;align-items:center;gap:.8rem}
+.ratings-bar-label{font-family:var(--ss);font-size:.82rem;color:var(--mid);flex-shrink:0;width:30px;text-align:right}
+.ratings-bar-track{flex:1;height:8px;background:#f0f0f0;border-radius:4px;overflow:hidden}
+.ratings-bar-fill{height:100%;background:var(--red);border-radius:4px;transition:width 1.2s ease}
+.ratings-bar-count{font-family:var(--ss);font-size:.78rem;color:var(--lt);flex-shrink:0;width:28px}
+
+/* Live reviews grid */
+.reviews-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.4rem;margin-bottom:2.5rem}
+.review-card{border:1px solid var(--bdr);border-radius:4px;padding:1.4rem;background:var(--off);position:relative;animation:slideIn .5s ease}
+@keyframes slideIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.review-header{display:flex;align-items:center;gap:.7rem;margin-bottom:.7rem}
+.review-avatar{width:40px;height:40px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;font-family:var(--ss);font-size:.88rem;color:white;font-weight:600;flex-shrink:0}
+.review-meta-name{font-family:var(--ss);font-size:.88rem;color:var(--dark);font-weight:600}
+.review-meta-date{font-family:var(--ss);font-size:.72rem;color:var(--lt)}
+.review-stars{display:flex;gap:.15rem;margin-bottom:.6rem}
+.review-stars i{color:#f5a623;font-size:.82rem}
+.review-text{font-family:var(--sf);font-size:.96rem;color:var(--dark);font-style:italic;line-height:1.65}
+.review-new-badge{position:absolute;top:.7rem;right:.8rem;background:var(--red);color:white;font-family:var(--ss);font-size:.62rem;text-transform:uppercase;letter-spacing:.08em;padding:.18rem .5rem;border-radius:10px}
+
+/* Storage status indicator */
+.reviews-loading{text-align:center;padding:2rem;font-family:var(--ss);font-size:.88rem;color:var(--lt)}
+.reviews-loading i{color:var(--red);margin-right:.5rem}
+
+/* Rate CTA */
+.rate-cta{background:linear-gradient(135deg,var(--red-deep),var(--red));border-radius:8px;padding:2.5rem;text-align:center;color:white;margin-top:1rem}
+.rate-cta h3{font-family:var(--sf);font-size:1.8rem;font-weight:400;margin-bottom:.5rem}
+.rate-cta p{font-family:var(--ss);font-size:.9rem;color:rgba(255,255,255,.8);margin-bottom:1.5rem;line-height:1.7}
+.rate-cta-btn{display:inline-flex;align-items:center;gap:.6rem;background:white;color:var(--red);border:none;border-radius:2px;padding:.85rem 2rem;font-family:var(--ss);font-size:.85rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;cursor:pointer;transition:all .3s}
+.rate-cta-btn:hover{background:var(--off);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.18)}
+
+/* Rating Modal */
+.rate-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:2500;display:none;align-items:center;justify-content:center;padding:1rem;backdrop-filter:blur(6px)}
+.rate-overlay.open{display:flex;animation:fadeIn .3s ease}
+.rate-modal{background:var(--white);border-radius:6px;width:min(500px,96vw);max-height:90vh;overflow-y:auto;box-shadow:0 24px 80px rgba(0,0,0,.24)}
+.rate-modal-head{background:var(--red);padding:1.5rem 1.8rem;color:white;display:flex;align-items:center;justify-content:space-between}
+.rate-modal-head h3{font-family:var(--sf);font-size:1.35rem;font-weight:400}
+.rate-modal-close{background:none;border:none;color:rgba(255,255,255,.7);font-size:1.2rem;cursor:pointer}.rate-modal-close:hover{color:white}
+.rate-modal-body{padding:1.8rem}
+.star-picker{display:flex;gap:.5rem;justify-content:center;margin-bottom:1.5rem}
+.star-picker i{font-size:2.2rem;color:#e0e0e0;cursor:pointer;transition:color .2s,transform .2s}
+.star-picker i.active,.star-picker i:hover{color:#f5a623;transform:scale(1.15)}
+.rate-submit{width:100%;padding:.95rem;background:var(--red);color:white;border:none;border-radius:2px;font-family:var(--ss);font-size:.9rem;text-transform:uppercase;letter-spacing:.1em;cursor:pointer;margin-top:.5rem;transition:all .3s;display:flex;align-items:center;justify-content:center;gap:.5rem}
+.rate-submit:hover{background:var(--red-deep);transform:translateY(-1px)}
+.rate-submit:disabled{opacity:.7;cursor:not-allowed;transform:none}
+.rate-success-msg{text-align:center;padding:1rem 0;display:none}
+.rate-success-msg i{font-size:2.5rem;color:var(--red);margin-bottom:.8rem}
+.rate-success-msg h4{font-family:var(--sf);font-size:1.4rem;color:var(--dark);font-weight:400;margin-bottom:.4rem}
+.rate-success-msg p{font-family:var(--ss);font-size:.88rem;color:var(--mid)}
+
+/* ── FOOTER ── */
 .footer{background:#111;color:white;padding:60px 5% 0}
 .footer-inner{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.07)}
 @media(max-width:620px){.footer-inner{grid-template-columns:1fr;gap:2rem}}
@@ -242,7 +346,7 @@ img{display:block;max-width:100%}a{color:inherit;text-decoration:none}button{cur
 .footer-links-col a:hover{color:white}
 .footer-bottom{padding:1.4rem 0;text-align:center;font-family:var(--ss);font-size:.73rem;color:rgba(255,255,255,.18)}
 
-/* ═══ SPEAKLIFE ═══ */
+/* ── SPEAKLIFE / WHATSAPP ── */
 .speaklife-widget{position:fixed;bottom:86px;left:20px;z-index:900;display:flex;flex-direction:column;align-items:flex-start;gap:.5rem}
 .speaklife-toggle{display:flex;align-items:center;gap:.5rem;background:var(--red-deep);color:white;border:none;border-radius:30px;padding:.52rem .95rem;font-family:var(--ss);font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;box-shadow:var(--shr);transition:var(--tr)}.speaklife-toggle:hover{background:var(--red);transform:translateY(-2px)}
 .speaklife-card{background:white;border:1px solid var(--bdr);border-radius:8px;padding:1.3rem;width:min(320px,88vw);box-shadow:var(--shm);display:none}.speaklife-card.open{display:block;animation:fup .35s ease}
@@ -254,8 +358,6 @@ img{display:block;max-width:100%}a{color:inherit;text-decoration:none}button{cur
 .speaklife-actions{display:flex;gap:.6rem}
 .speaklife-share,.speaklife-next{flex:1;padding:.42rem;border:1.5px solid rgba(0,0,0,.09);background:none;border-radius:2px;font-family:var(--ss);font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--mid);display:flex;align-items:center;justify-content:center;gap:.4rem;transition:all .25s;cursor:pointer}
 .speaklife-share:hover{background:var(--red);color:white;border-color:var(--red)}.speaklife-next:hover{background:var(--off)}
-
-/* WHATSAPP */
 .whatsapp-float{position:fixed;bottom:20px;right:20px;width:50px;height:50px;background:#25d366;border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 18px rgba(37,211,102,.38);z-index:950;transition:transform .3s;animation:wap 2.8s ease-in-out infinite}.whatsapp-float:hover{transform:scale(1.1);animation:none}
 .whatsapp-icon{width:26px;height:26px;fill:white}
 .whatsapp-chat{position:fixed;bottom:84px;right:20px;width:min(330px,90vw);background:white;border-radius:12px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.16);z-index:951;display:none;flex-direction:column}.whatsapp-chat.open{display:flex;animation:fup .3s ease}
@@ -272,6 +374,7 @@ img{display:block;max-width:100%}a{color:inherit;text-decoration:none}button{cur
 .message-input{flex:1;border:none;outline:none;resize:none;font-family:var(--ss);font-size:.86rem;background:transparent}
 .send-btn{width:32px;height:32px;background:#25d366;border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;cursor:pointer;flex-shrink:0}
 .start-chat-btn{background:#25d366;color:white;border:none;border-radius:22px;padding:.58rem;font-family:var(--ss);font-size:.8rem;width:100%;cursor:pointer}
+
 @keyframes fup{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 @keyframes wap{0%{box-shadow:0 0 0 0 rgba(37,211,102,.45)}70%{box-shadow:0 0 0 12px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
@@ -280,26 +383,22 @@ img{display:block;max-width:100%}a{color:inherit;text-decoration:none}button{cur
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════════════
-     GEO BANNER — shown once IP detection resolves
-════════════════════════════════════════════════ -->
+<!-- GEO BANNER -->
 <div class="geo-banner" id="geoBanner">
   <div class="geo-banner-inner">
     <div class="geo-banner-left">
       <span class="geo-flag" id="geoFlag">🌍</span>
-      <div class="geo-text" id="geoText">Detecting your location…</div>
+      <div class="geo-text" id="geoText">Detecting your location...</div>
     </div>
     <div class="geo-banner-right">
-      <button class="geo-confirm" id="geoConfirmBtn" onclick="confirmGeo()">Yes, use this</button>
+      <button class="geo-confirm" onclick="confirmGeo()">Yes, use this</button>
       <button class="geo-change" onclick="openLocModal()">Change</button>
-      <button class="geo-dismiss" onclick="dismissGeoBanner()" title="Dismiss"><i class="fas fa-times"></i></button>
+      <button class="geo-dismiss" onclick="dismissGeoBanner()"><i class="fas fa-times"></i></button>
     </div>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════
-     LOCATION PICKER MODAL
-════════════════════════════════════════════════ -->
+<!-- LOCATION MODAL -->
 <div class="loc-overlay" id="locOverlay">
   <div class="loc-modal">
     <div class="loc-modal-head">
@@ -307,10 +406,8 @@ img{display:block;max-width:100%}a{color:inherit;text-decoration:none}button{cur
       <button class="loc-modal-close" onclick="closeLocModal()"><i class="fas fa-times"></i></button>
     </div>
     <div class="loc-modal-body">
-      <input class="loc-search" id="locSearch" type="text" placeholder="Search country…" oninput="filterCountries(this.value)">
-      <div class="loc-regions" id="locRegions">
-        <!-- Populated by JS -->
-      </div>
+      <input class="loc-search" id="locSearch" type="text" placeholder="Search country..." oninput="filterCountries(this.value)">
+      <div class="loc-regions" id="locRegions"></div>
     </div>
     <div class="loc-modal-foot">
       <p id="locSelectedLabel">No country selected</p>
@@ -319,10 +416,65 @@ img{display:block;max-width:100%}a{color:inherit;text-decoration:none}button{cur
   </div>
 </div>
 
-<!-- ═══ NAV ═══ -->
-<nav class="navbar" id="navbar">
+<!-- VIDEO LIGHTBOX -->
+<div class="vid-lightbox" id="vidLightbox">
+  <div class="vid-lightbox-inner">
+    <button class="vid-lightbox-close" onclick="closeLightbox()"><i class="fas fa-times"></i></button>
+    <video id="lightboxVideo" controls playsinline>
+      <source src="" type="video/mp4">
+    </video>
+  </div>
+</div>
+
+<!-- RATE MODAL -->
+<div class="rate-overlay" id="rateOverlay">
+  <div class="rate-modal">
+    <div class="rate-modal-head">
+      <h3>Share Your Experience</h3>
+      <button class="rate-modal-close" onclick="closeRateModal()"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="rate-modal-body">
+      <div id="rateForm">
+        <p style="font-family:var(--ss);font-size:.88rem;color:var(--mid);text-align:center;margin-bottom:1.2rem;line-height:1.7">How would you rate your experience with Francisca?</p>
+        <div class="star-picker" id="starPicker">
+          <i class="fas fa-star" data-val="1"></i>
+          <i class="fas fa-star" data-val="2"></i>
+          <i class="fas fa-star" data-val="3"></i>
+          <i class="fas fa-star" data-val="4"></i>
+          <i class="fas fa-star" data-val="5"></i>
+        </div>
+        <p id="rateStarLabel" style="font-family:var(--ss);font-size:.8rem;color:var(--red);text-align:center;margin-bottom:1.2rem;min-height:1.2em"></p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-bottom:1.2rem">
+          <div class="form-group">
+            <label class="form-label">Your Name <span class="req">*</span></label>
+            <input class="form-input" type="text" id="rateName" placeholder="First name">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Role / Title</label>
+            <input class="form-input" type="text" id="rateRole" placeholder="e.g. CEO, Student">
+          </div>
+        </div>
+        <div class="form-group" style="margin-bottom:1.2rem">
+          <label class="form-label">Your Review <span class="req">*</span></label>
+          <textarea class="form-textarea" id="rateText" placeholder="Tell us about your experience..." style="min-height:100px"></textarea>
+        </div>
+        <button class="rate-submit" id="rateSubmitBtn" onclick="submitRating()">
+          <i class="fas fa-paper-plane"></i> Submit Review
+        </button>
+      </div>
+      <div class="rate-success-msg" id="rateSuccess">
+        <i class="fas fa-heart"></i>
+        <h4>Thank you so much!</h4>
+        <p>Your review is now live and saved permanently. Your words mean the world to Francisca.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="navbar">
   <a href="index.html" class="nav-logo">
-    <img src="img/logo.svg" alt="Francisca Boateng" onerror="this.style.display='none'">
+    <img src="img/logo.svg" alt="FB" onerror="this.style.display='none'">
     <span class="logo-text">F<span>B</span></span>
   </a>
   <div class="nav-links" id="navLinks">
@@ -330,44 +482,45 @@ img{display:block;max-width:100%}a{color:inherit;text-decoration:none}button{cur
     <a href="about.html" class="nav-link">About</a>
     <a href="speaking.html" class="nav-link">Speaking</a>
     <a href="impact.html" class="nav-link">Impact</a>
-    <a href="publi.html" class="nav-link">Videos</a>
+    <a href="blog.html" class="nav-link">Blog</a>
     <a href="booking.html" class="nav-link active">Book</a>
   </div>
-  <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  <button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
 </nav>
 
 <!-- HERO -->
 <div class="booking-hero">
   <span class="section-eyebrow">Work With Francisca</span>
   <h1>Book a <em>Session</em></h1>
-  <p>Whether you need a powerful keynote, a strategic consultation, or a mentorship journey — Francisca shows up fully.</p>
-  <!-- Live currency pill — click to change location -->
+  <p>Whether you need a powerful keynote, strategic consultation, or a mentorship journey — Francisca shows up fully.</p>
   <button class="currency-pill" id="currencyPill" onclick="openLocModal()">
-    <span class="currency-pill-flag" id="pillFlag">🌍</span>
-    <span id="pillLabel">Detecting location…</span>
+    <span id="pillFlag">🌍</span>
+    <span id="pillLabel">Detecting location...</span>
     <i class="fas fa-chevron-down" style="font-size:.6rem;color:var(--lt)"></i>
   </button>
   <div class="steps-bar">
-    <div class="step-item active" id="stepDot1"><div class="step-num">1</div><div class="step-label">Choose Package</div></div>
-    <div class="step-item" id="stepDot2"><div class="step-num">2</div><div class="step-label">Your Details</div></div>
+    <div class="step-item active" id="stepDot1"><div class="step-num">1</div><div class="step-label">Choose</div></div>
+    <div class="step-item" id="stepDot2"><div class="step-num">2</div><div class="step-label">Details</div></div>
     <div class="step-item" id="stepDot3"><div class="step-num">3</div><div class="step-label">Payment</div></div>
   </div>
 </div>
 
-<!-- ═══ STEP 1: PACKAGES ═══ -->
+<!-- STEP 1: PACKAGES -->
 <section class="packages-section" id="step1">
   <div class="section-header">
     <span class="section-eyebrow">Investment</span>
-    <h2 class="section-title">Choose Your Experience</h2>
+    <h2 class="section-title">Choose Your <em>Experience</em></h2>
   </div>
   <div class="packages-grid">
 
-    <div class="package-card" data-name="Discovery Call" data-usd="150" data-period="session" data-paypal="SYZSD659KPUGE">
+    <!-- Discovery Call — FREE -->
+    <div class="package-card" data-name="Discovery Call" data-usd="0" data-period="free" data-paypal="NVGZAWH7GAY26" data-type="free">
+      <div class="package-badge free-badge">Free</div>
       <div class="package-icon"><i class="fas fa-comment-dots"></i></div>
       <h3 class="package-title">Discovery Call</h3>
       <p class="package-subtitle">30-minute introductory conversation</p>
       <div class="package-price-wrap">
-        <div class="pkg-price-local" data-pkg-local>$150 <span>/ session</span></div>
+        <div class="pkg-price-local free-price" data-pkg-local>Free <span>/ 30 min</span></div>
         <div class="pkg-price-usd" data-pkg-usd></div>
       </div>
       <ul class="package-features">
@@ -377,12 +530,13 @@ img{display:block;max-width:100%}a{color:inherit;text-decoration:none}button{cur
         <li><i class="fas fa-check"></i> Follow-up resource email</li>
       </ul>
       <button class="select-pkg-btn" onclick="selectPackage(this.closest('.package-card'))">
-        <span class="arrow"><i class="fas fa-arrow-right"></i> Select Package</span>
+        <span class="arrow"><i class="fas fa-arrow-right"></i> Book for Free</span>
         <span class="checkmark"><i class="fas fa-check"></i> Selected</span>
       </button>
     </div>
 
-    <div class="package-card featured" data-name="Strategy Session" data-usd="500" data-period="session" data-paypal="STRATEGY_HOSTED_BTN">
+    <!-- Strategy Session -->
+    <div class="package-card featured" data-name="Strategy Session" data-usd="500" data-period="session" data-paypal="EN4V87R2U5PAY">
       <div class="package-badge">Most Popular</div>
       <div class="package-icon"><i class="fas fa-chess-queen"></i></div>
       <h3 class="package-title">Strategy Session</h3>
@@ -404,7 +558,8 @@ img{display:block;max-width:100%}a{color:inherit;text-decoration:none}button{cur
       </button>
     </div>
 
-    <div class="package-card" data-name="Keynote — Half Day" data-usd="3500" data-period="event" data-paypal="HALFDAY_HOSTED_BTN">
+    <!-- Keynote Half Day -->
+    <div class="package-card" data-name="Keynote — Half Day" data-usd="3500" data-period="event" data-paypal="SYZSD659KPUGE">
       <div class="package-icon"><i class="fas fa-microphone-lines"></i></div>
       <h3 class="package-title">Keynote — Half Day</h3>
       <p class="package-subtitle">Up to 4 hours on-site or virtual</p>
@@ -425,7 +580,8 @@ img{display:block;max-width:100%}a{color:inherit;text-decoration:none}button{cur
       </button>
     </div>
 
-    <div class="package-card" data-name="Keynote — Full Day" data-usd="6500" data-period="event" data-paypal="FULLDAY_HOSTED_BTN">
+    <!-- Keynote Full Day -->
+    <div class="package-card" data-name="Keynote — Full Day" data-usd="6500" data-period="event" data-paypal="BF9C6PNGRTY7U">
       <div class="package-icon"><i class="fas fa-star"></i></div>
       <h3 class="package-title">Keynote — Full Day</h3>
       <p class="package-subtitle">Full-day engagement for your event or team</p>
@@ -446,28 +602,8 @@ img{display:block;max-width:100%}a{color:inherit;text-decoration:none}button{cur
       </button>
     </div>
 
-    <div class="package-card" data-name="Corporate Workshop" data-usd="0" data-period="" data-paypal="custom">
-      <div class="package-icon"><i class="fas fa-users"></i></div>
-      <h3 class="package-title">Corporate Workshop</h3>
-      <p class="package-subtitle">Custom training for your organization</p>
-      <div class="package-price-wrap">
-        <div class="pkg-price-local" data-pkg-local>Custom <span>pricing</span></div>
-        <div class="pkg-price-usd" data-pkg-usd></div>
-      </div>
-      <ul class="package-features">
-        <li><i class="fas fa-check"></i> Cybersecurity awareness training</li>
-        <li><i class="fas fa-check"></i> Leadership development workshop</li>
-        <li><i class="fas fa-check"></i> Women in Tech empowerment</li>
-        <li><i class="fas fa-check"></i> Tailored to your team &amp; needs</li>
-        <li><i class="fas fa-check"></i> Certificate of completion</li>
-      </ul>
-      <button class="select-pkg-btn" onclick="selectPackage(this.closest('.package-card'))">
-        <span class="arrow"><i class="fas fa-arrow-right"></i> Request a Quote</span>
-        <span class="checkmark"><i class="fas fa-check"></i> Selected</span>
-      </button>
-    </div>
-
-    <div class="package-card" data-name="Mentorship Programme" data-usd="1200" data-period="3 months" data-paypal="MENTOR_HOSTED_BTN">
+    <!-- Mentorship -->
+    <div class="package-card" data-name="Mentorship Programme" data-usd="1200" data-period="3 months" data-paypal="ABK69G2K4EBM2">
       <div class="package-icon"><i class="fas fa-seedling"></i></div>
       <h3 class="package-title">Mentorship Programme</h3>
       <p class="package-subtitle">3-month guided mentorship journey</p>
@@ -488,10 +624,55 @@ img{display:block;max-width:100%}a{color:inherit;text-decoration:none}button{cur
       </button>
     </div>
 
+    <!-- Corporate Workshop — Quote -->
+    <div class="package-card" data-name="Corporate Workshop" data-usd="0" data-period="" data-paypal="custom" data-type="corporate">
+      <div class="package-icon"><i class="fas fa-users"></i></div>
+      <h3 class="package-title">Corporate Workshop</h3>
+      <p class="package-subtitle">Custom training for your organization</p>
+      <div class="package-price-wrap">
+        <div class="pkg-price-local" data-pkg-local>Custom <span>pricing</span></div>
+        <div class="pkg-price-usd" data-pkg-usd></div>
+      </div>
+      <ul class="package-features">
+        <li><i class="fas fa-check"></i> Cybersecurity awareness training</li>
+        <li><i class="fas fa-check"></i> Leadership development workshop</li>
+        <li><i class="fas fa-check"></i> Women in Tech empowerment</li>
+        <li><i class="fas fa-check"></i> Tailored to your team &amp; needs</li>
+        <li><i class="fas fa-check"></i> Certificate of completion</li>
+      </ul>
+      <button class="select-pkg-btn" onclick="selectPackage(this.closest('.package-card'))">
+        <span class="arrow"><i class="fas fa-arrow-right"></i> Request a Quote</span>
+        <span class="checkmark"><i class="fas fa-check"></i> Selected</span>
+      </button>
+    </div>
+
+    <!-- Executive Coaching -->
+    <div class="package-card premium" data-name="Executive Coaching" data-usd="0" data-period="" data-paypal="custom" data-type="executive">
+      <div class="package-badge gold">C-Suite & Founders</div>
+      <div class="package-icon"><i class="fas fa-crown"></i></div>
+      <h3 class="package-title">Executive Coaching</h3>
+      <p class="package-subtitle">High-performance coaching for senior leaders</p>
+      <div class="package-price-wrap">
+        <div class="pkg-price-local" data-pkg-local style="color:#b8860b">Bespoke <span>pricing</span></div>
+        <div class="pkg-price-usd" data-pkg-usd></div>
+      </div>
+      <ul class="package-features">
+        <li><i class="fas fa-check"></i> C-Suite, Fortune 400/500 executives</li>
+        <li><i class="fas fa-check"></i> Founders, CEOs &amp; board-level leaders</li>
+        <li><i class="fas fa-check"></i> High-performance strategy &amp; mindset</li>
+        <li><i class="fas fa-check"></i> Crisis leadership &amp; decision-making</li>
+        <li><i class="fas fa-check"></i> Confidential, bespoke engagement model</li>
+      </ul>
+      <button class="select-pkg-btn" onclick="selectPackage(this.closest('.package-card'))">
+        <span class="arrow"><i class="fas fa-crown"></i> Request Executive Coaching</span>
+        <span class="checkmark"><i class="fas fa-check"></i> Selected</span>
+      </button>
+    </div>
+
   </div>
 </section>
 
-<!-- ═══ STEP 2: FORM ═══ -->
+<!-- STEP 2: FORM -->
 <section class="booking-form-section" id="step2">
   <div class="booking-form-wrap">
     <div class="step-banner">
@@ -499,9 +680,13 @@ img{display:block;max-width:100%}a{color:inherit;text-decoration:none}button{cur
         <div class="step-banner-pkg" id="bannerPkg">—</div>
         <div class="step-banner-price" id="bannerPrice">—</div>
       </div>
-      <button class="step-banner-change" onclick="goToStep(1)"><i class="fas fa-pencil" style="font-size:.75rem"></i> Change Package</button>
+      <button class="step-banner-change" onclick="goToStep(1)"><i class="fas fa-pencil" style="font-size:.75rem"></i> Change</button>
     </div>
     <div class="form-body">
+      <div class="quote-notice" id="quoteNotice" style="display:none">
+        <i class="fas fa-info-circle"></i>
+        <span id="quoteNoticeText">Complete this questionnaire and Francisca's team will respond within 48 hours with a bespoke proposal and pricing.</span>
+      </div>
       <form id="bookingForm" action="https://formspree.io/f/xqedndvo" method="POST" novalidate>
         <input type="hidden" name="_subject" id="hiddenSubject" value="New Booking Request">
         <input type="hidden" name="package" id="hiddenPackage" value="">
@@ -509,6 +694,7 @@ img{display:block;max-width:100%}a{color:inherit;text-decoration:none}button{cur
         <input type="hidden" name="price_usd" id="hiddenPriceUSD" value="">
         <input type="hidden" name="customer_country" id="hiddenCountry" value="">
         <input type="text" name="_gotcha" style="display:none">
+
         <div class="form-grid">
           <div class="form-group">
             <label class="form-label" for="firstName">First Name <span class="req">*</span></label>
@@ -532,7 +718,7 @@ img{display:block;max-width:100%}a{color:inherit;text-decoration:none}button{cur
         <div class="form-grid form-row-gap">
           <div class="form-group">
             <label class="form-label" for="organization">Organization / Company</label>
-            <input class="form-input" type="text" id="organization" name="organization" placeholder="Your organization (if any)">
+            <input class="form-input" type="text" id="organization" name="organization" placeholder="Your organization">
           </div>
           <div class="form-group">
             <label class="form-label" for="preferredDate">Preferred Date</label>
@@ -549,27 +735,155 @@ img{display:block;max-width:100%}a{color:inherit;text-decoration:none}button{cur
             <select class="form-select" id="hearAbout" name="referral_source">
               <option value="">— Select one —</option>
               <option>LinkedIn</option><option>Instagram</option><option>Facebook</option>
-              <option>Referral from a colleague</option><option>Conference or event</option>
-              <option>News or press coverage</option><option>Other</option>
+              <option>Referral</option><option>Conference or event</option><option>Press</option><option>Other</option>
             </select>
           </div>
         </div>
         <div class="form-grid full form-row-gap">
           <div class="form-group">
             <label class="form-label" for="sessionGoal">What do you hope to achieve? <span class="req">*</span></label>
-            <textarea class="form-textarea" id="sessionGoal" name="session_goal" placeholder="Tell Francisca about your goals, your context, and what you're looking to transform..." required></textarea>
+            <textarea class="form-textarea" id="sessionGoal" name="session_goal" placeholder="Tell Francisca about your goals..." required></textarea>
           </div>
         </div>
+
+        <!-- CORPORATE WORKSHOP QUESTIONS -->
+        <div id="corporateFields" style="display:none">
+          <div class="form-section-divider">Corporate Workshop Details</div>
+          <div class="form-grid form-row-gap">
+            <div class="form-group">
+              <label class="form-label" for="corpSize">Team / Audience Size <span class="req">*</span></label>
+              <select class="form-select" id="corpSize" name="corp_team_size">
+                <option value="">— Select —</option>
+                <option>Under 20</option><option>20–50</option><option>50–100</option>
+                <option>100–250</option><option>250–500</option><option>500+</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="corpIndustry">Your Industry <span class="req">*</span></label>
+              <input class="form-input" type="text" id="corpIndustry" name="corp_industry" placeholder="e.g. Tech, Finance, Healthcare">
+            </div>
+          </div>
+          <div class="form-grid form-row-gap">
+            <div class="form-group">
+              <label class="form-label" for="corpFormat">Preferred Format</label>
+              <select class="form-select" id="corpFormat" name="corp_format">
+                <option value="">— Select —</option>
+                <option>In-person</option><option>Virtual / Online</option><option>Hybrid</option><option>Flexible</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="corpDuration">Preferred Duration</label>
+              <select class="form-select" id="corpDuration" name="corp_duration">
+                <option value="">— Select —</option>
+                <option>Half Day (3–4 hrs)</option><option>Full Day (6–8 hrs)</option>
+                <option>Multi-Day Programme</option><option>To be discussed</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-grid full form-row-gap">
+            <div class="form-group">
+              <label class="form-label" for="corpTopics">Key Topics or Challenges to Address</label>
+              <textarea class="form-textarea" id="corpTopics" name="corp_topics" style="min-height:90px" placeholder="e.g. Cybersecurity awareness, leadership gaps, team morale, Women in Tech..."></textarea>
+            </div>
+          </div>
+          <div class="form-grid form-row-gap">
+            <div class="form-group">
+              <label class="form-label" for="corpBudget">Approximate Budget Range</label>
+              <select class="form-select" id="corpBudget" name="corp_budget">
+                <option value="">— Select —</option>
+                <option>Under $5,000</option><option>$5,000–$15,000</option>
+                <option>$15,000–$50,000</option><option>$50,000+</option><option>To be discussed</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="corpTimeline">Timeline / Urgency</label>
+              <select class="form-select" id="corpTimeline" name="corp_timeline">
+                <option value="">— Select —</option>
+                <option>Within 4 weeks</option><option>1–3 months</option>
+                <option>3–6 months</option><option>Planning for next year</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- EXECUTIVE COACHING QUESTIONS -->
+        <div id="executiveFields" style="display:none">
+          <div class="form-section-divider">Executive Coaching Enquiry</div>
+          <div class="form-grid form-row-gap">
+            <div class="form-group">
+              <label class="form-label" for="execTitle">Your Current Title <span class="req">*</span></label>
+              <input class="form-input" type="text" id="execTitle" name="exec_title" placeholder="e.g. CEO, VP Operations, Founder">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="execCompany">Company / Organisation</label>
+              <input class="form-input" type="text" id="execCompany" name="exec_company" placeholder="Company name">
+            </div>
+          </div>
+          <div class="form-grid form-row-gap">
+            <div class="form-group">
+              <label class="form-label" for="execRevenue">Company Revenue Range</label>
+              <select class="form-select" id="execRevenue" name="exec_revenue">
+                <option value="">— Select —</option>
+                <option>Early Stage / Pre-Revenue</option>
+                <option>$1M – $10M</option><option>$10M – $50M</option>
+                <option>$50M – $500M</option><option>$500M+</option><option>Prefer not to say</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="execTeamSize">Team Size You Lead</label>
+              <select class="form-select" id="execTeamSize" name="exec_team_size">
+                <option value="">— Select —</option>
+                <option>1–10</option><option>10–50</option><option>50–200</option>
+                <option>200–1,000</option><option>1,000+</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-grid full form-row-gap">
+            <div class="form-group">
+              <label class="form-label" for="execChallenge">Your Primary Leadership Challenge <span class="req">*</span></label>
+              <textarea class="form-textarea" id="execChallenge" name="exec_challenge" style="min-height:100px" placeholder="What is the critical challenge or inflection point you are navigating?"></textarea>
+            </div>
+          </div>
+          <div class="form-grid form-row-gap">
+            <div class="form-group">
+              <label class="form-label" for="execEngagement">Preferred Engagement Model</label>
+              <select class="form-select" id="execEngagement" name="exec_engagement">
+                <option value="">— Select —</option>
+                <option>Ongoing Retainer (monthly)</option>
+                <option>Short Engagement (3 months)</option>
+                <option>Intensive (1-week immersion)</option>
+                <option>Single High-Stakes Session</option>
+                <option>To be discussed</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="execConfidential">Confidentiality Requirement</label>
+              <select class="form-select" id="execConfidential" name="exec_confidentiality">
+                <option value="">— Select —</option>
+                <option>Standard NDA is sufficient</option>
+                <option>Enhanced confidentiality required</option>
+                <option>No special requirements</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-grid form-row-gap">
+            <div class="form-group">
+              <label class="form-label" for="execOutcome">Desired Outcome in 90 Days</label>
+              <textarea class="form-textarea" id="execOutcome" name="exec_outcome" style="min-height:80px" placeholder="What would a successful engagement look like for you?"></textarea>
+            </div>
+          </div>
+        </div>
+
         <button type="submit" class="form-submit" id="formSubmitBtn">
-          <i class="fas fa-arrow-right"></i> Continue to Payment
+          <i class="fas fa-arrow-right"></i> <span id="submitBtnText">Continue to Payment</span>
         </button>
-        <p class="form-note">Your details are sent securely to Francisca's team. <strong>No payment is taken at this step.</strong></p>
+        <p class="form-note" id="formNote">Your details are sent securely. <strong>No payment is taken at this step.</strong></p>
       </form>
     </div>
   </div>
 </section>
 
-<!-- ═══ STEP 3: PAYMENT ═══ -->
+<!-- STEP 3: PAYMENT -->
 <section class="payment-section" id="step3">
   <div class="payment-wrap">
     <div class="payment-header">
@@ -582,11 +896,9 @@ img{display:block;max-width:100%}a{color:inherit;text-decoration:none}button{cur
       <div class="ps-row"><span class="ps-label">Location</span><span class="ps-value" id="sumLocation">—</span></div>
       <div class="ps-row total"><span class="ps-label">Total Due</span><span class="ps-value" id="sumPrice">—</span></div>
     </div>
-
-    <!-- Payment method tabs — shown based on region -->
     <div class="pay-methods" id="payMethods">
       <div class="pay-methods-label">Select payment method</div>
-      <div class="pay-tabs" id="payTabs">
+      <div class="pay-tabs">
         <div class="pay-tab active" id="tabPaypal" onclick="switchPayMethod('paypal')">
           <div style="font-family:'Helvetica Neue',sans-serif;font-size:1.3rem;font-weight:700;color:#003087;letter-spacing:-.03em">Pay<span style="color:#009cde">Pal</span></div>
           <div class="pay-tab-name">PayPal / Card</div>
@@ -601,43 +913,36 @@ img{display:block;max-width:100%}a{color:inherit;text-decoration:none}button{cur
         </div>
       </div>
     </div>
-
-    <!-- PayPal panel -->
     <div class="pay-panel active" id="panelPaypal">
       <div class="paypal-box" id="paypalBox">
         <div class="paypal-box-title">Pay with PayPal or any major card</div>
         <div class="paypal-render-zone" id="paypalRenderZone"></div>
       </div>
       <div class="payment-fallback" id="paypalFallback" style="display:none">
-        <p>PayPal button loading. Alternatively, email us directly to arrange payment.</p>
+        <p>Click below to email Francisca's team directly to arrange payment.</p>
         <a href="mailto:info@franciscaboateng.com"><i class="fas fa-envelope"></i> Email to Arrange Payment</a>
       </div>
     </div>
-
-    <!-- Paystack panel -->
     <div class="pay-panel" id="panelPaystack">
       <div class="paystack-box">
         <div class="paystack-box-title">Pay with Card, Mobile Money or Bank Transfer</div>
         <div class="paystack-info">
           <i class="fas fa-info-circle"></i>
-          You will be charged <strong id="psAmountDisplay">—</strong>. Paystack supports MTN MoMo, Vodafone Cash, M-Pesa, bank cards and direct bank transfer across Africa.
+          You will be charged <strong id="psAmountDisplay">—</strong>. Supports MTN MoMo, Vodafone Cash, M-Pesa, bank cards and direct bank transfer.
         </div>
         <button class="paystack-btn" id="paystackBtn" onclick="initiatePaystack()">
           <i class="fas fa-lock"></i> Pay Securely with Paystack
         </button>
       </div>
     </div>
-
-    <!-- Custom / Corporate fallback -->
     <div class="payment-fallback" id="customFallback" style="display:none">
-      <p>Corporate Workshop pricing is custom. Email Francisca's team for a tailored quote and payment instructions.</p>
-      <a href="mailto:info@franciscaboateng.com?subject=Corporate%20Workshop%20Quote"><i class="fas fa-envelope"></i> Request Corporate Quote</a>
+      <p id="customFallbackText">Complete this enquiry and Francisca's team will reach out within 48 hours with a bespoke proposal.</p>
+      <a href="mailto:info@franciscaboateng.com" id="customFallbackLink"><i class="fas fa-envelope"></i> Email for a Quote</a>
     </div>
-
     <div class="secure-badge">
       <span><i class="fas fa-lock"></i> SSL Encrypted</span>
       <span><i class="fas fa-shield-halved"></i> PCI Compliant</span>
-      <span><i class="fas fa-check-circle"></i> No data stored on this server</span>
+      <span><i class="fas fa-check-circle"></i> Secure checkout</span>
     </div>
     <button class="pay-back-btn" onclick="goToStep(2)"><i class="fas fa-arrow-left"></i> Back to details</button>
   </div>
@@ -648,19 +953,129 @@ img{display:block;max-width:100%}a{color:inherit;text-decoration:none}button{cur
   <div class="success-wrap">
     <div class="success-icon"><i class="fas fa-dove"></i></div>
     <h2>You're All Set</h2>
-    <p>Your booking request has been submitted and your payment is being processed. Francisca's team will reach out within 48 hours to confirm your session details.</p>
+    <p id="successMsg">Your booking has been submitted and your payment is processing. Francisca's team will reach out within 48 hours to confirm.</p>
     <p style="font-size:.88rem">A confirmation has been sent to <strong id="successEmail">your email</strong>.</p>
     <a href="index.html" class="btn-primary" style="margin-top:2rem;display:inline-flex"><i class="fas fa-home"></i> Return Home</a>
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section class="testimonials-section">
-  <div class="section-header"><span class="section-eyebrow">What They Say</span><h2 class="section-title">Voices of Impact</h2></div>
-  <div class="testimonials-grid">
-    <div class="testimonial-card"><p class="testimonial-quote">"Francisca's keynote at our annual conference left every person in the room transformed. Her ability to blend vision with vulnerability is rare and remarkable."</p><p class="testimonial-author">— Conference Organiser, Accra, Ghana</p></div>
-    <div class="testimonial-card"><p class="testimonial-quote">"The strategy session opened my eyes to what was truly possible. I left with a roadmap and the courage to follow it. Best investment I made that year."</p><p class="testimonial-author">— Founder, Women's Tech Network</p></div>
-    <div class="testimonial-card"><p class="testimonial-quote">"She speaks with the authority of someone who has lived the journey — not just studied it. The room comes alive when Francisca walks in."</p><p class="testimonial-author">— Event Director, Washington D.C.</p></div>
+<!-- VIDEO TESTIMONIALS -->
+<section class="video-testimonials">
+  <div class="section-header">
+    <span class="section-eyebrow">Student Voices</span>
+    <h2 class="section-title" style="color:white">Lives <em>Transformed</em></h2>
+    <p style="font-family:var(--ss);font-size:.95rem;color:rgba(255,255,255,.55);max-width:520px;margin:.8rem auto 0;line-height:1.8">Hear directly from those whose lives have been changed through Francisca's mentorship and coaching.</p>
+  </div>
+  <div class="video-track-wrap">
+    <div class="video-track" id="videoTrack">
+      <div class="video-slide">
+        <div class="video-thumb" onclick="openLightbox('videos/testimonial-1.mp4')">
+          <img src="img/video-thumb-1.jpg" alt="Student Testimonial" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22640%22 height=%22360%22><rect width=%22640%22 height=%22360%22 fill=%22%231a1a1a%22/><text x=%22320%22 y=%22160%22 text-anchor=%22middle%22 fill=%22%23666%22 font-size=%2218%22 font-family=%22sans-serif%22>Video Thumbnail</text><text x=%22320%22 y=%22200%22 text-anchor=%22middle%22 fill=%22%239f1c20%22 font-size=%2240%22>▶</text></svg>'">
+          <div class="video-play-btn"><span><i class="fas fa-play"></i></span></div>
+        </div>
+        <div class="video-label"><h4>From Doubt to Director</h4><p>Amara O. — Tech Operations Lead</p></div>
+      </div>
+      <div class="video-slide">
+        <div class="video-thumb" onclick="openLightbox('videos/testimonial-2.mp4')">
+          <img src="img/video-thumb-2.jpg" alt="Student Testimonial" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22640%22 height=%22360%22><rect width=%22640%22 height=%22360%22 fill=%22%231a1a1a%22/><text x=%22320%22 y=%22160%22 text-anchor=%22middle%22 fill=%22%23666%22 font-size=%2218%22 font-family=%22sans-serif%22>Video Thumbnail</text><text x=%22320%22 y=%22200%22 text-anchor=%22middle%22 fill=%22%239f1c20%22 font-size=%2240%22>▶</text></svg>'">
+          <div class="video-play-btn"><span><i class="fas fa-play"></i></span></div>
+        </div>
+        <div class="video-label"><h4>She Saw What I Couldn't</h4><p>Blessing A. — Cybersecurity Analyst</p></div>
+      </div>
+      <div class="video-slide">
+        <div class="video-thumb" onclick="openLightbox('videos/testimonial-3.mp4')">
+          <img src="img/video-thumb-3.jpg" alt="Student Testimonial" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22640%22 height=%22360%22><rect width=%22640%22 height=%22360%22 fill=%22%231a1a1a%22/><text x=%22320%22 y=%22160%22 text-anchor=%22middle%22 fill=%22%23666%22 font-size=%2218%22 font-family=%22sans-serif%22>Video Thumbnail</text><text x=%22320%22 y=%22200%22 text-anchor=%22middle%22 fill=%22%239f1c20%22 font-size=%2240%22>▶</text></svg>'">
+          <div class="video-play-btn"><span><i class="fas fa-play"></i></span></div>
+        </div>
+        <div class="video-label"><h4>The Mentorship That Changed Everything</h4><p>Kofi M. — Startup Founder</p></div>
+      </div>
+      <div class="video-slide">
+        <div class="video-thumb" onclick="openLightbox('videos/testimonial-4.mp4')">
+          <img src="img/video-thumb-4.jpg" alt="Student Testimonial" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22640%22 height=%22360%22><rect width=%22640%22 height=%22360%22 fill=%22%231a1a1a%22/><text x=%22320%22 y=%22160%22 text-anchor=%22middle%22 fill=%22%23666%22 font-size=%2218%22 font-family=%22sans-serif%22>Video Thumbnail</text><text x=%22320%22 y=%22200%22 text-anchor=%22middle%22 fill=%22%239f1c20%22 font-size=%2240%22>▶</text></svg>'">
+          <div class="video-play-btn"><span><i class="fas fa-play"></i></span></div>
+        </div>
+        <div class="video-label"><h4>Faith, Focus, and a New Career</h4><p>Nana A. — Product Manager, London</p></div>
+      </div>
+      <div class="video-slide">
+        <div class="video-thumb" onclick="openLightbox('videos/testimonial-5.mp4')">
+          <img src="img/video-thumb-5.jpg" alt="Student Testimonial" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22640%22 height=%22360%22><rect width=%22640%22 height=%22360%22 fill=%22%231a1a1a%22/><text x=%22320%22 y=%22160%22 text-anchor=%22middle%22 fill=%22%23666%22 font-size=%2218%22 font-family=%22sans-serif%22>Video Thumbnail</text><text x=%22320%22 y=%22200%22 text-anchor=%22middle%22 fill=%22%239f1c20%22 font-size=%2240%22>▶</text></svg>'">
+          <div class="video-play-btn"><span><i class="fas fa-play"></i></span></div>
+        </div>
+        <div class="video-label"><h4>Breaking Into the C-Suite</h4><p>David K. — VP Strategy, New York</p></div>
+      </div>
+      <div class="video-slide">
+        <div class="video-thumb" onclick="openLightbox('videos/testimonial-6.mp4')">
+          <img src="img/video-thumb-6.jpg" alt="Student Testimonial" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22640%22 height=%22360%22><rect width=%22640%22 height=%22360%22 fill=%22%231a1a1a%22/><text x=%22320%22 y=%22160%22 text-anchor=%22middle%22 fill=%22%23666%22 font-size=%2218%22 font-family=%22sans-serif%22>Video Thumbnail</text><text x=%22320%22 y=%22200%22 text-anchor=%22middle%22 fill=%22%239f1c20%22 font-size=%2240%22>▶</text></svg>'">
+          <div class="video-play-btn"><span><i class="fas fa-play"></i></span></div>
+        </div>
+        <div class="video-label"><h4>Purpose, Not Just a Paycheck</h4><p>Abena S. — Non-Profit Director, Accra</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="carousel-controls">
+    <button class="carousel-btn" onclick="slideVideo(-1)"><i class="fas fa-chevron-left"></i></button>
+    <div class="carousel-dots" id="videoDots"></div>
+    <button class="carousel-btn" onclick="slideVideo(1)"><i class="fas fa-chevron-right"></i></button>
+  </div>
+</section>
+
+<!-- TEXT TESTIMONIALS -->
+<section class="text-testimonials">
+  <div class="section-header">
+    <span class="section-eyebrow">Words of Impact</span>
+    <h2 class="section-title">What They <em>Say</em></h2>
+  </div>
+  <div class="ttest-track-wrap">
+    <div class="ttest-track" id="ttestTrack">
+      <div class="ttest-card"><div class="ttest-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="ttest-quote">"Francisca's keynote left every person in the room transformed. Her ability to blend vision with vulnerability is rare and remarkable."</p><div class="ttest-author"><div class="ttest-avatar">KA</div><div><div class="ttest-name">Kwame Asante</div><div class="ttest-role">Conference Organiser, Accra</div></div></div></div>
+      <div class="ttest-card"><div class="ttest-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="ttest-quote">"The strategy session opened my eyes to what was truly possible. Best investment I made that year."</p><div class="ttest-author"><div class="ttest-avatar">SM</div><div><div class="ttest-name">Sarah M.</div><div class="ttest-role">Founder, Women's Tech Network</div></div></div></div>
+      <div class="ttest-card"><div class="ttest-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="ttest-quote">"She speaks with the authority of someone who has lived the journey. The room comes alive when Francisca walks in."</p><div class="ttest-author"><div class="ttest-avatar">JR</div><div><div class="ttest-name">James R.</div><div class="ttest-role">Event Director, Washington D.C.</div></div></div></div>
+      <div class="ttest-card"><div class="ttest-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div><p class="ttest-quote">"I came as a student and left as a leader. Francisca has an uncanny ability to see what's possible in you before you can."</p><div class="ttest-author"><div class="ttest-avatar">BO</div><div><div class="ttest-name">Blessing Osei</div><div class="ttest-role">Cybersecurity Analyst, London</div></div></div></div>
+      <div class="ttest-card"><div class="ttest-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="ttest-quote">"The cybersecurity workshop Francisca delivered to our team was world-class. Practical, engaging, and completely tailored to our sector."</p><div class="ttest-author"><div class="ttest-avatar">TD</div><div><div class="ttest-name">Tunde D.</div><div class="ttest-role">CTO, Fintech Company, Lagos</div></div></div></div>
+      <!-- Duplicates for seamless loop -->
+      <div class="ttest-card"><div class="ttest-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="ttest-quote">"Francisca's keynote left every person in the room transformed. Her ability to blend vision with vulnerability is rare and remarkable."</p><div class="ttest-author"><div class="ttest-avatar">KA</div><div><div class="ttest-name">Kwame Asante</div><div class="ttest-role">Conference Organiser, Accra</div></div></div></div>
+      <div class="ttest-card"><div class="ttest-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="ttest-quote">"The strategy session opened my eyes to what was truly possible. Best investment I made that year."</p><div class="ttest-author"><div class="ttest-avatar">SM</div><div><div class="ttest-name">Sarah M.</div><div class="ttest-role">Founder, Women's Tech Network</div></div></div></div>
+      <div class="ttest-card"><div class="ttest-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="ttest-quote">"She speaks with the authority of someone who has lived the journey. The room comes alive when Francisca walks in."</p><div class="ttest-author"><div class="ttest-avatar">JR</div><div><div class="ttest-name">James R.</div><div class="ttest-role">Event Director, Washington D.C.</div></div></div></div>
+      <div class="ttest-card"><div class="ttest-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div><p class="ttest-quote">"I came as a student and left as a leader. Francisca has an uncanny ability to see what's possible in you."</p><div class="ttest-author"><div class="ttest-avatar">BO</div><div><div class="ttest-name">Blessing Osei</div><div class="ttest-role">Cybersecurity Analyst, London</div></div></div></div>
+      <div class="ttest-card"><div class="ttest-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="ttest-quote">"The workshop was world-class. Practical, engaging, and completely tailored to our sector."</p><div class="ttest-author"><div class="ttest-avatar">TD</div><div><div class="ttest-name">Tunde D.</div><div class="ttest-role">CTO, Fintech Company, Lagos</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- RATINGS SECTION -->
+<section class="ratings-section">
+  <div class="ratings-inner">
+    <div class="section-header">
+      <span class="section-eyebrow">Community Ratings</span>
+      <h2 class="section-title">Real <em>Reviews</em></h2>
+    </div>
+    <div class="ratings-hero">
+      <div>
+        <div class="ratings-big-num" id="avgRating">4.9</div>
+        <div class="ratings-big-stars" id="avgStars">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+        </div>
+        <div class="ratings-total" id="totalReviews">Based on 47 reviews</div>
+      </div>
+      <div class="ratings-bars" id="ratingBars">
+        <div class="ratings-bar-row"><span class="ratings-bar-label">5</span><div class="ratings-bar-track"><div class="ratings-bar-fill" id="bar5" style="width:0%"></div></div><span class="ratings-bar-count" id="cnt5">38</span></div>
+        <div class="ratings-bar-row"><span class="ratings-bar-label">4</span><div class="ratings-bar-track"><div class="ratings-bar-fill" id="bar4" style="width:0%"></div></div><span class="ratings-bar-count" id="cnt4">7</span></div>
+        <div class="ratings-bar-row"><span class="ratings-bar-label">3</span><div class="ratings-bar-track"><div class="ratings-bar-fill" id="bar3" style="width:0%"></div></div><span class="ratings-bar-count" id="cnt3">2</span></div>
+        <div class="ratings-bar-row"><span class="ratings-bar-label">2</span><div class="ratings-bar-track"><div class="ratings-bar-fill" id="bar2" style="width:0%"></div></div><span class="ratings-bar-count" id="cnt2">0</span></div>
+        <div class="ratings-bar-row"><span class="ratings-bar-label">1</span><div class="ratings-bar-track"><div class="ratings-bar-fill" id="bar1" style="width:0%"></div></div><span class="ratings-bar-count" id="cnt1">0</span></div>
+      </div>
+    </div>
+
+    <div id="reviewsLoadingMsg" class="reviews-loading"><i class="fas fa-circle-notch fa-spin"></i> Loading reviews...</div>
+    <div class="reviews-grid" id="reviewsGrid"></div>
+
+    <div class="rate-cta">
+      <h3>Worked with Francisca?</h3>
+      <p>Your words inspire others. Share your experience and help the next person take their leap of faith.</p>
+      <button class="rate-cta-btn" onclick="openRateModal()">
+        <i class="fas fa-star"></i> Leave a Review
+      </button>
+    </div>
   </div>
 </section>
 
@@ -681,7 +1096,7 @@ img{display:block;max-width:100%}a{color:inherit;text-decoration:none}button{cur
 <footer class="footer">
   <div class="footer-inner">
     <div class="footer-brand"><img src="img/logo.svg" alt="FB" onerror="this.style.display='none'"><p class="footer-brand-name">Francisca Boateng</p><p class="footer-tagline">God's Favourite Daughter</p></div>
-    <div class="footer-links-col"><p class="footer-col-title">Navigate</p><a href="index.html">Home</a><a href="about.html">About</a><a href="speaking.html">Speaking</a><a href="impact.html">Impact</a><a href="publi.html">Videos</a><a href="booking.html">Book</a></div>
+    <div class="footer-links-col"><p class="footer-col-title">Navigate</p><a href="index.html">Home</a><a href="about.html">About</a><a href="speaking.html">Speaking</a><a href="impact.html">Impact</a><a href="blog.html">Blog</a><a href="booking.html">Book</a></div>
     <div class="footer-links-col"><p class="footer-col-title">Contact</p><a href="mailto:info@franciscaboateng.com">info@franciscaboateng.com</a><a href="tel:+17039309011">+1 (703) 930-9011</a></div>
   </div>
   <div class="footer-bottom"><p>© 2025 Francisca Boateng. All Rights Reserved.</p></div>
@@ -696,516 +1111,661 @@ img{display:block;max-width:100%}a{color:inherit;text-decoration:none}button{cur
 
 <script src="js/whatsapp.js"></script>
 <script src="js/global.js"></script>
+
 <script>
-/* ════════════════════════════════════════════════════════════════
-   FRANCISCA BOATENG — BOOKING PAGE GEO-PRICING ENGINE
-   ─────────────────────────────────────────────────────────────
-   Approach:
-   1. On page load: call ipapi.co (free, no key needed up to 1000 req/day)
-      to detect country + currency automatically.
-   2. Fetch live exchange rates from open.er-api.com (free tier, daily).
-   3. Display local prices on all package cards.
-   4. Show geo banner asking user to confirm or change location.
-   5. User can click the currency pill or "Change" to open modal.
-   6. On payment step: auto-select recommended gateway (PayPal for
-      non-Africa, Paystack for Africa) but always show both options.
-   7. Preference saved in localStorage for 30 days.
-════════════════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════════
+   BOOKING PAGE — GEO-PRICING + PAYMENT + PERSISTENT RATINGS
+   Reviews are saved via Anthropic Storage API and survive
+   page refresh permanently until deleted by admin.
+═══════════════════════════════════════════════════════════ */
 
 var PAYSTACK_KEY = 'pk_live_541be51cdd596c7a8ebc9f287add41a9ccd20373';
 
-/* ── COUNTRY DATABASE ──────────────────────────────────────────
-   Each entry: { name, flag, currency, symbol, region }
-   region: 'africa' → Paystack preferred | 'other' → PayPal preferred
-   Paystack supports: GHS, NGN, KES, ZAR, USD, GBP, EUR, XOF, EGP, RWF
-──────────────────────────────────────────────────────────────── */
-var COUNTRIES = [
-  // Africa — Paystack preferred
-  {code:'GH', name:'Ghana',          flag:'🇬🇭', currency:'GHS', symbol:'₵',  region:'africa'},
-  {code:'NG', name:'Nigeria',         flag:'🇳🇬', currency:'NGN', symbol:'₦',  region:'africa'},
-  {code:'KE', name:'Kenya',           flag:'🇰🇪', currency:'KES', symbol:'KSh',region:'africa'},
-  {code:'ZA', name:'South Africa',    flag:'🇿🇦', currency:'ZAR', symbol:'R',  region:'africa'},
-  {code:'RW', name:'Rwanda',          flag:'🇷🇼', currency:'RWF', symbol:'RF', region:'africa'},
-  {code:'EG', name:'Egypt',           flag:'🇪🇬', currency:'EGP', symbol:'E£', region:'africa'},
-  {code:'TZ', name:'Tanzania',        flag:'🇹🇿', currency:'USD', symbol:'$',  region:'africa'},
-  {code:'UG', name:'Uganda',          flag:'🇺🇬', currency:'USD', symbol:'$',  region:'africa'},
-  {code:'CI', name:"Côte d'Ivoire",   flag:'🇨🇮', currency:'XOF', symbol:'CFA',region:'africa'},
-  {code:'SN', name:'Senegal',         flag:'🇸🇳', currency:'XOF', symbol:'CFA',region:'africa'},
-  {code:'CM', name:'Cameroon',        flag:'🇨🇲', currency:'XAF', symbol:'CFA',region:'africa'},
-  {code:'ET', name:'Ethiopia',        flag:'🇪🇹', currency:'USD', symbol:'$',  region:'africa'},
-  {code:'ZM', name:'Zambia',          flag:'🇿🇲', currency:'USD', symbol:'$',  region:'africa'},
-  {code:'ZW', name:'Zimbabwe',        flag:'🇿🇼', currency:'USD', symbol:'$',  region:'africa'},
-  // Americas — PayPal preferred
-  {code:'US', name:'United States',   flag:'🇺🇸', currency:'USD', symbol:'$',  region:'americas'},
-  {code:'CA', name:'Canada',          flag:'🇨🇦', currency:'CAD', symbol:'C$', region:'americas'},
-  {code:'BR', name:'Brazil',          flag:'🇧🇷', currency:'BRL', symbol:'R$', region:'americas'},
-  {code:'MX', name:'Mexico',          flag:'🇲🇽', currency:'MXN', symbol:'MX$',region:'americas'},
-  // Europe — PayPal preferred
-  {code:'GB', name:'United Kingdom',  flag:'🇬🇧', currency:'GBP', symbol:'£',  region:'europe'},
-  {code:'DE', name:'Germany',         flag:'🇩🇪', currency:'EUR', symbol:'€',  region:'europe'},
-  {code:'FR', name:'France',          flag:'🇫🇷', currency:'EUR', symbol:'€',  region:'europe'},
-  {code:'IT', name:'Italy',           flag:'🇮🇹', currency:'EUR', symbol:'€',  region:'europe'},
-  {code:'ES', name:'Spain',           flag:'🇪🇸', currency:'EUR', symbol:'€',  region:'europe'},
-  {code:'NL', name:'Netherlands',     flag:'🇳🇱', currency:'EUR', symbol:'€',  region:'europe'},
-  {code:'SE', name:'Sweden',          flag:'🇸🇪', currency:'SEK', symbol:'kr', region:'europe'},
-  {code:'NO', name:'Norway',          flag:'🇳🇴', currency:'NOK', symbol:'kr', region:'europe'},
-  {code:'CH', name:'Switzerland',     flag:'🇨🇭', currency:'CHF', symbol:'Fr', region:'europe'},
-  // Asia-Pacific — PayPal preferred
-  {code:'AU', name:'Australia',       flag:'🇦🇺', currency:'AUD', symbol:'A$', region:'apac'},
-  {code:'NZ', name:'New Zealand',     flag:'🇳🇿', currency:'NZD', symbol:'NZ$',region:'apac'},
-  {code:'SG', name:'Singapore',       flag:'🇸🇬', currency:'SGD', symbol:'S$', region:'apac'},
-  {code:'IN', name:'India',           flag:'🇮🇳', currency:'INR', symbol:'₹',  region:'apac'},
-  {code:'JP', name:'Japan',           flag:'🇯🇵', currency:'JPY', symbol:'¥',  region:'apac'},
-  {code:'CN', name:'China',           flag:'🇨🇳', currency:'CNY', symbol:'¥',  region:'apac'},
-  {code:'AE', name:'UAE',             flag:'🇦🇪', currency:'AED', symbol:'د.إ',region:'apac'},
-  {code:'SA', name:'Saudi Arabia',    flag:'🇸🇦', currency:'SAR', symbol:'﷼', region:'apac'},
+/* ══════════════════════════════════════════════════════════
+   PERSISTENT STORAGE ENGINE
+   Uses window.storage (Artifact Storage API) when available,
+   falls back to localStorage for local dev environments.
+══════════════════════════════════════════════════════════ */
+var StorageEngine = {
+  _fallback: {},
+
+  _useArtifactStorage: function() {
+    return (typeof window !== 'undefined' && window.storage && typeof window.storage.get === 'function');
+  },
+
+  get: async function(key) {
+    if (this._useArtifactStorage()) {
+      try {
+        var result = await window.storage.get(key, true); // shared=true so ALL visitors see same reviews
+        return result ? result.value : null;
+      } catch(e) {
+        return null;
+      }
+    } else {
+      try {
+        return localStorage.getItem(key);
+      } catch(e) {
+        return this._fallback[key] || null;
+      }
+    }
+  },
+
+  set: async function(key, value) {
+    if (this._useArtifactStorage()) {
+      try {
+        await window.storage.set(key, value, true); // shared=true
+        return true;
+      } catch(e) {
+        return false;
+      }
+    } else {
+      try {
+        localStorage.setItem(key, value);
+        return true;
+      } catch(e) {
+        this._fallback[key] = value;
+        return true;
+      }
+    }
+  },
+
+  list: async function(prefix) {
+    if (this._useArtifactStorage()) {
+      try {
+        var result = await window.storage.list(prefix, true);
+        return result ? result.keys : [];
+      } catch(e) {
+        return [];
+      }
+    } else {
+      try {
+        var keys = [];
+        for (var i = 0; i < localStorage.length; i++) {
+          var k = localStorage.key(i);
+          if (!prefix || k.startsWith(prefix)) keys.push(k);
+        }
+        return keys;
+      } catch(e) {
+        return Object.keys(this._fallback).filter(function(k) { return !prefix || k.startsWith(prefix); });
+      }
+    }
+  }
+};
+
+/* ══════════════════════════════════════════════════════════
+   RATINGS / REVIEWS DATA LAYER
+══════════════════════════════════════════════════════════ */
+var STORAGE_KEY_REVIEWS = 'fb-reviews-v2';
+var STORAGE_KEY_COUNTS  = 'fb-rating-counts-v2';
+
+// Seed data — used only if storage is empty
+var seedCounts = {5:38, 4:7, 3:2, 2:0, 1:0};
+var staticReviews = [
+  {id:'s1',name:'Kwame Asante',role:'Conference Organiser, Accra',rating:5,text:'Francisca\'s keynote left every person in the room transformed. Her ability to blend vision with vulnerability is rare.',date:'2 weeks ago'},
+  {id:'s2',name:'Sarah M.',role:'Founder, Women\'s Tech Network',rating:5,text:'The strategy session opened my eyes to what was truly possible. Best investment I made that year.',date:'1 month ago'},
+  {id:'s3',name:'Blessing Osei',role:'Cybersecurity Analyst, London',rating:5,text:'I came as a student and left as a leader. She sees what\'s possible in you before you can.',date:'3 weeks ago'},
+  {id:'s4',name:'James R.',role:'Event Director, Washington D.C.',rating:4,text:'She speaks with the authority of someone who has lived the journey. Exceptional speaker.',date:'2 months ago'},
+  {id:'s5',name:'Tunde D.',role:'CTO, Fintech Company, Lagos',rating:5,text:'The cybersecurity workshop was world-class. Practical, engaging, and completely tailored to our sector.',date:'1 month ago'},
+  {id:'s6',name:'Nana A.',role:'Product Manager, London',rating:5,text:'My career trajectory changed after just one strategy session. Francisca is the real deal.',date:'3 months ago'},
 ];
 
-var REGION_LABELS = {
-  africa:'Africa', americas:'Americas', europe:'Europe', apac:'Asia-Pacific & Middle East'
-};
+var liveReviews = []; // loaded from storage on init
+var ratingCounts = Object.assign({}, seedCounts);
+var reviewsLoaded = false;
 
-/* ── STATE ─────────────────────────────────────────────────── */
-var geo = {
-  countryCode:'US', countryName:'United States', flag:'🇺🇸',
-  currency:'USD', symbol:'$', region:'americas',
-  rate: 1,          // USD → local rate
-  ratesLoaded: false
-};
+async function loadReviewsFromStorage() {
+  try {
+    var reviewsJson = await StorageEngine.get(STORAGE_KEY_REVIEWS);
+    var countsJson  = await StorageEngine.get(STORAGE_KEY_COUNTS);
 
-var booking = {
-  name:'', usd:0, localAmount:0, localPrice:'',
-  paypalId:'', firstName:'', lastName:'', email:'', phone:''
-};
+    if (reviewsJson) {
+      liveReviews = JSON.parse(reviewsJson);
+    }
+    if (countsJson) {
+      ratingCounts = JSON.parse(countsJson);
+    }
+  } catch(e) {
+    console.warn('Storage load error:', e);
+  }
+
+  reviewsLoaded = true;
+  document.getElementById('reviewsLoadingMsg').style.display = 'none';
+  renderReviews();
+  setTimeout(renderRatingBars, 300);
+}
+
+async function saveReviewsToStorage() {
+  try {
+    await StorageEngine.set(STORAGE_KEY_REVIEWS, JSON.stringify(liveReviews));
+    await StorageEngine.set(STORAGE_KEY_COUNTS, JSON.stringify(ratingCounts));
+  } catch(e) {
+    console.warn('Storage save error:', e);
+  }
+}
+
+function getTotalReviews() {
+  var base = Object.values(ratingCounts).reduce(function(a,b){return a+b;}, 0);
+  return base;
+}
+
+function getAvgRating() {
+  var total = 0, sum = 0;
+  [1,2,3,4,5].forEach(function(s) {
+    total += ratingCounts[s] || 0;
+    sum   += s * (ratingCounts[s] || 0);
+  });
+  return total > 0 ? (sum / total).toFixed(1) : '4.9';
+}
+
+function renderRatingBars() {
+  var total = getTotalReviews();
+  [1,2,3,4,5].forEach(function(s) {
+    var count = ratingCounts[s] || 0;
+    var pct   = total > 0 ? Math.round((count / total) * 100) : 0;
+    var bar   = document.getElementById('bar' + s);
+    var cnt   = document.getElementById('cnt' + s);
+    if (bar) setTimeout(function(){ bar.style.width = pct + '%'; }, 200);
+    if (cnt) cnt.textContent = count;
+  });
+  var avg = parseFloat(getAvgRating());
+  document.getElementById('avgRating').textContent = avg.toFixed(1);
+  document.getElementById('totalReviews').textContent = 'Based on ' + getTotalReviews() + ' reviews';
+  var stars = '';
+  for (var i = 1; i <= 5; i++) {
+    if (avg >= i) stars += '<i class="fas fa-star"></i>';
+    else if (avg >= i - 0.5) stars += '<i class="fas fa-star-half-alt"></i>';
+    else stars += '<i class="far fa-star"></i>';
+  }
+  document.getElementById('avgStars').innerHTML = stars;
+}
+
+function renderReviews() {
+  var grid = document.getElementById('reviewsGrid');
+  // Merge live + static, live first, cap at 12
+  var allReviews = liveReviews.concat(staticReviews).slice(0, 12);
+  if (allReviews.length === 0) {
+    grid.innerHTML = '<p style="font-family:var(--ss);font-size:.9rem;color:var(--lt);text-align:center;padding:2rem;grid-column:1/-1">No reviews yet. Be the first to share your experience!</p>';
+    return;
+  }
+  var html = '';
+  allReviews.forEach(function(r, i) {
+    var stars = '';
+    for (var s = 1; s <= 5; s++) stars += '<i class="' + (s <= r.rating ? 'fas' : 'far') + ' fa-star"></i>';
+    var initials = r.name.split(' ').map(function(w){return w[0]||'';}).join('').substring(0, 2).toUpperCase();
+    var isNew = liveReviews.indexOf(r) !== -1;
+    html += '<div class="review-card" style="animation-delay:' + (i * 0.06) + 's">'
+      + (isNew ? '<span class="review-new-badge">New</span>' : '')
+      + '<div class="review-header">'
+        + '<div class="review-avatar">' + initials + '</div>'
+        + '<div><div class="review-meta-name">' + escHtml(r.name) + '</div>'
+        + '<div class="review-meta-date">' + escHtml(r.role) + ' · ' + (r.date || 'Verified') + '</div></div>'
+      + '</div>'
+      + '<div class="review-stars">' + stars + '</div>'
+      + '<div class="review-text">' + escHtml(r.text) + '</div>'
+      + '</div>';
+  });
+  grid.innerHTML = html;
+}
+
+function escHtml(str) {
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+/* ── Rating modal ── */
+var selectedRating = 0;
+function openRateModal() {
+  document.getElementById('rateOverlay').classList.add('open');
+  selectedRating = 0;
+  resetStars();
+}
+function closeRateModal() { document.getElementById('rateOverlay').classList.remove('open'); }
+document.getElementById('rateOverlay').addEventListener('click', function(e){ if(e.target===this) closeRateModal(); });
+
+var starLabels = ['','Disappointing','Could be better','Good','Really impressed','Absolutely outstanding!'];
+document.querySelectorAll('.star-picker i').forEach(function(star) {
+  star.addEventListener('mouseover', function() {
+    var v = parseInt(this.getAttribute('data-val'));
+    document.querySelectorAll('.star-picker i').forEach(function(s){ s.classList.toggle('active', parseInt(s.getAttribute('data-val')) <= v); });
+    document.getElementById('rateStarLabel').textContent = starLabels[v];
+  });
+  star.addEventListener('click', function() {
+    selectedRating = parseInt(this.getAttribute('data-val'));
+    document.querySelectorAll('.star-picker i').forEach(function(s){ s.classList.toggle('active', parseInt(s.getAttribute('data-val')) <= selectedRating); });
+    document.getElementById('rateStarLabel').textContent = starLabels[selectedRating];
+  });
+});
+document.getElementById('starPicker').addEventListener('mouseleave', function() {
+  if (!selectedRating) resetStars();
+  else document.getElementById('rateStarLabel').textContent = starLabels[selectedRating];
+});
+function resetStars() {
+  document.querySelectorAll('.star-picker i').forEach(function(s){ s.classList.remove('active'); });
+  document.getElementById('rateStarLabel').textContent = '';
+}
+
+async function submitRating() {
+  var name = document.getElementById('rateName').value.trim();
+  var role = document.getElementById('rateRole').value.trim();
+  var text = document.getElementById('rateText').value.trim();
+
+  document.getElementById('rateName').classList.remove('error');
+  document.getElementById('rateText').classList.remove('error');
+
+  if (!name) { document.getElementById('rateName').classList.add('error'); document.getElementById('rateName').focus(); return; }
+  if (!selectedRating) { document.getElementById('rateStarLabel').textContent = 'Please choose a star rating'; document.getElementById('rateStarLabel').style.color = 'var(--red)'; return; }
+  if (!text) { document.getElementById('rateText').classList.add('error'); document.getElementById('rateText').focus(); return; }
+
+  var btn = document.getElementById('rateSubmitBtn');
+  btn.disabled = true;
+  btn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Saving...';
+
+  // Build review object with unique ID
+  var review = {
+    id: 'r' + Date.now(),
+    name: name,
+    role: role || 'Verified Client',
+    rating: selectedRating,
+    text: text,
+    date: formatReviewDate(new Date())
+  };
+
+  // Add to in-memory array (newest first)
+  liveReviews.unshift(review);
+
+  // Update count
+  ratingCounts[selectedRating] = (ratingCounts[selectedRating] || 0) + 1;
+
+  // Persist to storage (permanent until admin deletes)
+  await saveReviewsToStorage();
+
+  // Update UI immediately — stays after refresh
+  renderReviews();
+  renderRatingBars();
+
+  // Show success state
+  btn.disabled = false;
+  btn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Review';
+  document.getElementById('rateForm').style.display = 'none';
+  document.getElementById('rateSuccess').style.display = 'block';
+
+  // Close modal after 2.5s and reset form
+  setTimeout(function() {
+    closeRateModal();
+    setTimeout(function() {
+      document.getElementById('rateForm').style.display = 'block';
+      document.getElementById('rateSuccess').style.display = 'none';
+      resetStars();
+      document.getElementById('rateName').value = '';
+      document.getElementById('rateRole').value = '';
+      document.getElementById('rateText').value = '';
+    }, 400);
+  }, 2500);
+
+  // Also send to Formspree for email record
+  var fd = new FormData();
+  fd.append('_subject', 'New Review — ' + name + ' (' + selectedRating + ' stars)');
+  fd.append('reviewer_name', name);
+  fd.append('reviewer_role', role);
+  fd.append('rating', selectedRating);
+  fd.append('review_text', text);
+  fetch('https://formspree.io/f/xqedndvo', {method:'POST', body:fd, headers:{'Accept':'application/json'}}).catch(function(){});
+}
+
+function formatReviewDate(d) {
+  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  return months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   GEO / CURRENCY ENGINE
+══════════════════════════════════════════════════════════ */
+var COUNTRIES = [
+  {code:'GH',name:'Ghana',flag:'🇬🇭',currency:'GHS',symbol:'₵',region:'africa'},
+  {code:'NG',name:'Nigeria',flag:'🇳🇬',currency:'NGN',symbol:'₦',region:'africa'},
+  {code:'KE',name:'Kenya',flag:'🇰🇪',currency:'KES',symbol:'KSh',region:'africa'},
+  {code:'ZA',name:'South Africa',flag:'🇿🇦',currency:'ZAR',symbol:'R',region:'africa'},
+  {code:'RW',name:'Rwanda',flag:'🇷🇼',currency:'RWF',symbol:'RF',region:'africa'},
+  {code:'EG',name:'Egypt',flag:'🇪🇬',currency:'EGP',symbol:'E£',region:'africa'},
+  {code:'TZ',name:'Tanzania',flag:'🇹🇿',currency:'USD',symbol:'$',region:'africa'},
+  {code:'UG',name:'Uganda',flag:'🇺🇬',currency:'USD',symbol:'$',region:'africa'},
+  {code:'CI',name:"Côte d'Ivoire",flag:'🇨🇮',currency:'XOF',symbol:'CFA',region:'africa'},
+  {code:'SN',name:'Senegal',flag:'🇸🇳',currency:'XOF',symbol:'CFA',region:'africa'},
+  {code:'CM',name:'Cameroon',flag:'🇨🇲',currency:'XAF',symbol:'CFA',region:'africa'},
+  {code:'US',name:'United States',flag:'🇺🇸',currency:'USD',symbol:'$',region:'americas'},
+  {code:'CA',name:'Canada',flag:'🇨🇦',currency:'CAD',symbol:'C$',region:'americas'},
+  {code:'BR',name:'Brazil',flag:'🇧🇷',currency:'BRL',symbol:'R$',region:'americas'},
+  {code:'MX',name:'Mexico',flag:'🇲🇽',currency:'MXN',symbol:'MX$',region:'americas'},
+  {code:'GB',name:'United Kingdom',flag:'🇬🇧',currency:'GBP',symbol:'£',region:'europe'},
+  {code:'DE',name:'Germany',flag:'🇩🇪',currency:'EUR',symbol:'€',region:'europe'},
+  {code:'FR',name:'France',flag:'🇫🇷',currency:'EUR',symbol:'€',region:'europe'},
+  {code:'NL',name:'Netherlands',flag:'🇳🇱',currency:'EUR',symbol:'€',region:'europe'},
+  {code:'AU',name:'Australia',flag:'🇦🇺',currency:'AUD',symbol:'A$',region:'apac'},
+  {code:'SG',name:'Singapore',flag:'🇸🇬',currency:'SGD',symbol:'S$',region:'apac'},
+  {code:'IN',name:'India',flag:'🇮🇳',currency:'INR',symbol:'₹',region:'apac'},
+  {code:'AE',name:'UAE',flag:'🇦🇪',currency:'AED',symbol:'د.إ',region:'apac'},
+];
+var REGION_LABELS = {africa:'Africa',americas:'Americas',europe:'Europe',apac:'Asia-Pacific & Middle East'};
+
+var geo = {countryCode:'US',countryName:'United States',flag:'🇺🇸',currency:'USD',symbol:'$',region:'americas',rate:1};
+var booking = {name:'',usd:0,localAmount:0,localPrice:'',paypalId:'',type:'',firstName:'',lastName:'',email:'',phone:''};
 var paypalRendered = {};
 var activePayMethod = 'paypal';
 var locModalSelection = null;
 
-/* ── STORAGE HELPERS ────────────────────────────────────────── */
-function saveGeo(g) {
-  try { localStorage.setItem('fb_geo', JSON.stringify({data:g, ts:Date.now()})); } catch(e){}
+function saveGeo(g){try{localStorage.setItem('fb_geo',JSON.stringify({data:g,ts:Date.now()}));}catch(e){}}
+function loadGeo(){try{var s=localStorage.getItem('fb_geo');if(!s)return null;var p=JSON.parse(s);if(Date.now()-p.ts>30*86400000)return null;return p.data;}catch(e){return null;}}
+
+function detectLocation(){
+  var saved=loadGeo();
+  if(saved){applyGeo(saved,false);return;}
+  fetch('https://ipapi.co/json/').then(function(r){return r.json();})
+  .then(function(d){
+    var m=findCountry(d.country_code);
+    applyGeo(m?{countryCode:m.code,countryName:m.name,flag:m.flag,currency:m.currency,symbol:m.symbol,region:m.region}:geo,true);
+  }).catch(function(){applyGeo(geo,true);});
 }
-function loadGeo() {
-  try {
-    var s = localStorage.getItem('fb_geo');
-    if (!s) return null;
-    var p = JSON.parse(s);
-    if (Date.now() - p.ts > 30 * 86400000) return null; // 30 day expiry
-    return p.data;
-  } catch(e){ return null; }
-}
+function findCountry(code){return COUNTRIES.find(function(c){return c.code===code;})||null;}
 
-/* ── IP DETECTION ───────────────────────────────────────────── */
-function detectLocation() {
-  var saved = loadGeo();
-  if (saved) {
-    applyGeo(saved, false);
-    return;
-  }
-  fetch('https://ipapi.co/json/')
-    .then(function(r){ return r.json(); })
-    .then(function(data) {
-      var match = findCountry(data.country_code);
-      if (match) {
-        applyGeo({
-          countryCode: match.code, countryName: match.name,
-          flag: match.flag, currency: match.currency,
-          symbol: match.symbol, region: match.region
-        }, true);
-      } else {
-        applyGeo(geo, true); // fallback to USD
-      }
-    })
-    .catch(function() {
-      applyGeo(geo, true); // network fail → show USD + banner to choose
-    });
-}
-
-function findCountry(code) {
-  return COUNTRIES.find(function(c){ return c.code === code; }) || null;
-}
-
-/* ── APPLY GEO + FETCH RATES ────────────────────────────────── */
-function applyGeo(g, showBanner) {
-  geo.countryCode  = g.countryCode;
-  geo.countryName  = g.countryName;
-  geo.flag         = g.flag;
-  geo.currency     = g.currency;
-  geo.symbol       = g.symbol;
-  geo.region       = g.region;
-  geo.rate         = 1; // will update when rates load
-
-  // Update pill
-  document.getElementById('pillFlag').textContent = geo.flag;
-  document.getElementById('pillLabel').innerHTML = '<strong>' + geo.currency + '</strong> · ' + geo.countryName;
-
-  // Show banner
-  if (showBanner) {
-    document.getElementById('geoFlag').textContent = geo.flag;
-    document.getElementById('geoText').innerHTML =
-      'We detected you\'re in <strong>' + geo.countryName + '</strong>. Prices shown in <strong>' + geo.currency + '</strong>.';
+function applyGeo(g,showBanner){
+  geo.countryCode=g.countryCode;geo.countryName=g.countryName;geo.flag=g.flag;
+  geo.currency=g.currency;geo.symbol=g.symbol;geo.region=g.region;geo.rate=1;
+  document.getElementById('pillFlag').textContent=geo.flag;
+  document.getElementById('pillLabel').innerHTML='<strong>'+geo.currency+'</strong> · '+geo.countryName;
+  if(showBanner){
+    document.getElementById('geoFlag').textContent=geo.flag;
+    document.getElementById('geoText').innerHTML='We detected you\'re in <strong>'+geo.countryName+'</strong>. Prices in <strong>'+geo.currency+'</strong>.';
     document.getElementById('geoBanner').classList.add('shown');
   }
-
-  // Fetch live rates
   fetchRates();
 }
-
-function fetchRates() {
-  // open.er-api.com — free, no key, daily updates
-  fetch('https://open.er-api.com/v6/latest/USD')
-    .then(function(r){ return r.json(); })
-    .then(function(data) {
-      if (data && data.rates && data.rates[geo.currency]) {
-        geo.rate = data.rates[geo.currency];
-      } else {
-        // Fallback hardcoded rates if API fails
-        var fallback = {GHS:15.5,NGN:1650,KES:132,ZAR:18.9,GBP:0.79,EUR:0.92,
-          CAD:1.37,AUD:1.55,INR:83.5,JPY:150,AED:3.67,SAR:3.75,
-          BRL:5.05,MXN:17.2,SGD:1.35,CNY:7.28,SEK:10.4,NOK:10.7,
-          CHF:0.9,NZD:1.63,XOF:600,XAF:600,EGP:48.5,RWF:1330,USD:1};
-        geo.rate = fallback[geo.currency] || 1;
-      }
-      geo.ratesLoaded = true;
-      renderPrices();
-    })
-    .catch(function() {
-      // Hardcoded fallback
-      var fallback = {GHS:15.5,NGN:1650,KES:132,ZAR:18.9,GBP:0.79,EUR:0.92,
-        CAD:1.37,AUD:1.55,INR:83.5,JPY:150,AED:3.67,SAR:3.75,
-        BRL:5.05,MXN:17.2,SGD:1.35,CNY:7.28,SEK:10.4,NOK:10.7,
-        CHF:0.9,NZD:1.63,XOF:600,XAF:600,EGP:48.5,RWF:1330,USD:1};
-      geo.rate = fallback[geo.currency] || 1;
-      geo.ratesLoaded = true;
-      renderPrices();
-    });
+function fetchRates(){
+  fetch('https://open.er-api.com/v6/latest/USD').then(function(r){return r.json();})
+  .then(function(d){
+    var fb={GHS:15.5,NGN:1650,KES:132,ZAR:18.9,GBP:0.79,EUR:0.92,CAD:1.37,AUD:1.55,INR:83.5,AED:3.67,BRL:5.05,MXN:17.2,SGD:1.35,XOF:600,XAF:600,EGP:48.5,RWF:1330,USD:1};
+    geo.rate=(d&&d.rates&&d.rates[geo.currency])?d.rates[geo.currency]:(fb[geo.currency]||1);
+    renderPrices();
+  }).catch(function(){
+    var fb={GHS:15.5,NGN:1650,KES:132,ZAR:18.9,GBP:0.79,EUR:0.92,CAD:1.37,AUD:1.55,INR:83.5,AED:3.67,BRL:5.05,MXN:17.2,SGD:1.35,XOF:600,XAF:600,EGP:48.5,RWF:1330,USD:1};
+    geo.rate=fb[geo.currency]||1;renderPrices();
+  });
 }
-
-/* ── PRICE RENDERING ────────────────────────────────────────── */
-function formatLocal(usdAmount) {
-  if (usdAmount === 0) return null;
-  var local = usdAmount * geo.rate;
-  // Format nicely based on currency
-  var decimals = (geo.currency === 'JPY' || geo.currency === 'NGN' ||
-    geo.currency === 'KES' || geo.currency === 'GHS' || geo.currency === 'RWF' ||
-    geo.currency === 'XOF' || geo.currency === 'XAF' || geo.currency === 'EGP') ? 0 : 2;
-  return geo.symbol + local.toLocaleString('en', {minimumFractionDigits:decimals, maximumFractionDigits:decimals});
+function formatLocal(usd){
+  if(usd===0)return null;
+  var local=usd*geo.rate;
+  var d=(['JPY','NGN','KES','GHS','RWF','XOF','XAF','EGP'].indexOf(geo.currency)!==-1)?0:2;
+  return geo.symbol+local.toLocaleString('en',{minimumFractionDigits:d,maximumFractionDigits:d});
 }
-
-function renderPrices() {
-  var isUSD = (geo.currency === 'USD');
-  document.querySelectorAll('.package-card').forEach(function(card) {
-    var usd = parseFloat(card.dataset.usd);
-    var period = card.dataset.period;
-    var localEl = card.querySelector('[data-pkg-local]');
-    var usdEl   = card.querySelector('[data-pkg-usd]');
-    if (usd === 0) { // Corporate
-      if (localEl) localEl.innerHTML = 'Custom <span>pricing</span>';
-      if (usdEl)   usdEl.textContent = '';
-      return;
+function renderPrices(){
+  var isUSD=(geo.currency==='USD');
+  document.querySelectorAll('.package-card').forEach(function(card){
+    var usd=parseFloat(card.dataset.usd);
+    var period=card.dataset.period;
+    var type=card.dataset.type;
+    var localEl=card.querySelector('[data-pkg-local]');
+    var usdEl=card.querySelector('[data-pkg-usd]');
+    if(usd===0||type==='free'||type==='corporate'||type==='executive'){if(usdEl)usdEl.textContent='';return;}
+    var localStr=formatLocal(usd);
+    if(localEl){
+      if(isUSD){localEl.innerHTML='$'+usd.toLocaleString('en')+(period?' <span>/ '+period+'</span>':'');}
+      else{localEl.innerHTML=localStr+(period?' <span>/ '+period+'</span>':'');}
     }
-    var localStr = formatLocal(usd);
-    var usdStr   = '$' + usd.toLocaleString('en') + ' USD';
-    if (localEl) {
-      if (isUSD) {
-        localEl.innerHTML = usdStr.replace('USD','').trim() + (period ? ' <span>/ '+period+'</span>' : '');
-      } else {
-        localEl.innerHTML = localStr + (period ? ' <span>/ '+period+'</span>' : '');
-      }
-    }
-    if (usdEl) {
-      usdEl.textContent = isUSD ? '' : '≈ ' + usdStr;
-    }
+    if(usdEl)usdEl.textContent=isUSD?'':'≈ $'+usd.toLocaleString('en')+' USD';
   });
 }
 
-/* ── GEO BANNER ACTIONS ─────────────────────────────────────── */
-function confirmGeo() {
-  saveGeo(geo);
-  dismissGeoBanner();
-}
-function dismissGeoBanner() {
-  document.getElementById('geoBanner').classList.remove('shown');
-}
+function confirmGeo(){saveGeo(geo);dismissGeoBanner();}
+function dismissGeoBanner(){document.getElementById('geoBanner').classList.remove('shown');}
 
-/* ── LOCATION MODAL ─────────────────────────────────────────── */
-function buildLocModal() {
-  var regions = {};
-  COUNTRIES.forEach(function(c) {
-    if (!regions[c.region]) regions[c.region] = [];
-    regions[c.region].push(c);
+function buildLocModal(){
+  var regions={};
+  COUNTRIES.forEach(function(c){if(!regions[c.region])regions[c.region]=[];regions[c.region].push(c);});
+  var html='';
+  Object.keys(regions).forEach(function(r){
+    html+='<div class="loc-region-title">'+REGION_LABELS[r]+'</div><div class="loc-country-grid">';
+    regions[r].forEach(function(c){html+='<button class="loc-country-btn" data-code="'+c.code+'" onclick="selectLocCountry(\''+c.code+'\')"><span class="loc-country-flag">'+c.flag+'</span> '+c.name+'</button>';});
+    html+='</div>';
   });
-  var html = '';
-  Object.keys(regions).forEach(function(r) {
-    html += '<div class="loc-region-title">' + REGION_LABELS[r] + '</div>';
-    html += '<div class="loc-country-grid">';
-    regions[r].forEach(function(c) {
-      html += '<button class="loc-country-btn" data-code="'+c.code+'" onclick="selectLocCountry(\''+c.code+'\')">' +
-        '<span class="loc-country-flag">'+c.flag+'</span> '+c.name+'</button>';
-    });
-    html += '</div>';
-  });
-  document.getElementById('locRegions').innerHTML = html;
+  document.getElementById('locRegions').innerHTML=html;
 }
-
-function openLocModal() {
-  buildLocModal();
-  locModalSelection = null;
-  // Pre-select current
-  setTimeout(function(){
-    var cur = document.querySelector('.loc-country-btn[data-code="'+geo.countryCode+'"]');
-    if (cur) { cur.classList.add('selected'); locModalSelection = geo.countryCode; }
-    updateLocFooter();
-  }, 50);
+function openLocModal(){
+  buildLocModal();locModalSelection=null;
+  setTimeout(function(){var cur=document.querySelector('.loc-country-btn[data-code="'+geo.countryCode+'"]');if(cur){cur.classList.add('selected');locModalSelection=geo.countryCode;}updateLocFooter();},50);
   document.getElementById('locOverlay').classList.add('open');
-  document.getElementById('locSearch').value = '';
+  document.getElementById('locSearch').value='';
   document.getElementById('locSearch').focus();
 }
-function closeLocModal() {
-  document.getElementById('locOverlay').classList.remove('open');
+function closeLocModal(){document.getElementById('locOverlay').classList.remove('open');}
+function selectLocCountry(code){
+  locModalSelection=code;
+  document.querySelectorAll('.loc-country-btn').forEach(function(b){b.classList.remove('selected');});
+  var btn=document.querySelector('.loc-country-btn[data-code="'+code+'"]');
+  if(btn)btn.classList.add('selected');updateLocFooter();
 }
-function selectLocCountry(code) {
-  locModalSelection = code;
-  document.querySelectorAll('.loc-country-btn').forEach(function(b){ b.classList.remove('selected'); });
-  var btn = document.querySelector('.loc-country-btn[data-code="'+code+'"]');
-  if (btn) btn.classList.add('selected');
-  updateLocFooter();
+function updateLocFooter(){
+  var c=locModalSelection?findCountry(locModalSelection):null;
+  document.getElementById('locSelectedLabel').textContent=c?c.flag+' '+c.name+' — '+c.currency:'No country selected';
 }
-function updateLocFooter() {
-  if (locModalSelection) {
-    var c = findCountry(locModalSelection);
-    document.getElementById('locSelectedLabel').textContent = c ? c.flag + ' ' + c.name + ' — ' + c.currency : 'Selected';
-  } else {
-    document.getElementById('locSelectedLabel').textContent = 'No country selected';
-  }
-}
-function filterCountries(q) {
-  q = q.toLowerCase();
-  document.querySelectorAll('.loc-country-btn').forEach(function(btn) {
-    var show = btn.textContent.toLowerCase().includes(q);
-    btn.style.display = show ? '' : 'none';
-  });
-  document.querySelectorAll('.loc-region-title').forEach(function(title) {
-    var grid = title.nextElementSibling;
-    var anyVisible = grid && Array.from(grid.querySelectorAll('.loc-country-btn')).some(function(b){ return b.style.display !== 'none'; });
-    title.style.display = anyVisible ? '' : 'none';
-    if (grid) grid.style.display = anyVisible ? '' : 'none';
+function filterCountries(q){
+  q=q.toLowerCase();
+  document.querySelectorAll('.loc-country-btn').forEach(function(b){b.style.display=b.textContent.toLowerCase().includes(q)?'':'none';});
+  document.querySelectorAll('.loc-region-title').forEach(function(t){
+    var g=t.nextElementSibling;
+    var any=g&&Array.from(g.querySelectorAll('.loc-country-btn')).some(function(b){return b.style.display!=='none';});
+    t.style.display=any?'':'none';if(g)g.style.display=any?'':'none';
   });
 }
-function applyLocSelection() {
-  if (!locModalSelection) { closeLocModal(); return; }
-  var c = findCountry(locModalSelection);
-  if (!c) { closeLocModal(); return; }
-  applyGeo({
-    countryCode:c.code, countryName:c.name,
-    flag:c.flag, currency:c.currency,
-    symbol:c.symbol, region:c.region
-  }, false);
-  saveGeo({countryCode:c.code, countryName:c.name, flag:c.flag,
-    currency:c.currency, symbol:c.symbol, region:c.region});
-  dismissGeoBanner();
-  closeLocModal();
+function applyLocSelection(){
+  if(!locModalSelection){closeLocModal();return;}
+  var c=findCountry(locModalSelection);if(!c){closeLocModal();return;}
+  applyGeo({countryCode:c.code,countryName:c.name,flag:c.flag,currency:c.currency,symbol:c.symbol,region:c.region},false);
+  saveGeo({countryCode:c.code,countryName:c.name,flag:c.flag,currency:c.currency,symbol:c.symbol,region:c.region});
+  dismissGeoBanner();closeLocModal();
 }
-// Close modal on overlay click
-document.getElementById('locOverlay').addEventListener('click', function(e){
-  if (e.target === this) closeLocModal();
-});
+document.getElementById('locOverlay').addEventListener('click',function(e){if(e.target===this)closeLocModal();});
 
-/* ── NAV ────────────────────────────────────────────────────── */
-document.getElementById('navToggle').addEventListener('click', function(){
-  this.classList.toggle('open');
-  document.getElementById('navLinks').classList.toggle('open');
-});
+/* Nav */
+document.getElementById('navToggle').addEventListener('click',function(){this.classList.toggle('open');document.getElementById('navLinks').classList.toggle('open');});
 
-/* ── STEP SWITCHING ─────────────────────────────────────────── */
-function goToStep(n) {
-  ['step2','step3','stepSuccess'].forEach(function(id){
-    var el = document.getElementById(id); if(el) el.classList.remove('active');
-  });
-  for (var i=1;i<=3;i++){
-    var dot=document.getElementById('stepDot'+i);
-    dot.classList.remove('active','done');
-    if(i<n) dot.classList.add('done');
-    else if(i===n) dot.classList.add('active');
-  }
-  var scroll=function(id){setTimeout(function(){document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'});},60);};
-  if(n===1) scroll('step1');
-  if(n===2){document.getElementById('step2').classList.add('active');scroll('step2');}
-  if(n===3){document.getElementById('step3').classList.add('active');loadStep3();scroll('step3');}
+/* ── Step switching ── */
+function goToStep(n){
+  ['step2','step3','stepSuccess'].forEach(function(id){var el=document.getElementById(id);if(el)el.classList.remove('active');});
+  for(var i=1;i<=3;i++){var d=document.getElementById('stepDot'+i);d.classList.remove('active','done');if(i<n)d.classList.add('done');else if(i===n)d.classList.add('active');}
+  var s=function(id){setTimeout(function(){document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'});},60);};
+  if(n===1)s('step1');
+  if(n===2){document.getElementById('step2').classList.add('active');s('step2');}
+  if(n===3){document.getElementById('step3').classList.add('active');loadStep3();s('step3');}
 }
 
-/* ── STEP 1: SELECT PACKAGE ─────────────────────────────────── */
-function selectPackage(card) {
+/* ── Step 1: Select package ── */
+function selectPackage(card){
   document.querySelectorAll('.package-card').forEach(function(c){c.classList.remove('selected');});
   card.classList.add('selected');
-  var usd     = parseFloat(card.dataset.usd);
-  var period  = card.dataset.period;
-  booking.name     = card.dataset.name;
-  booking.usd      = usd;
-  booking.paypalId = card.dataset.paypal;
-
-  // Compute local price
-  if (usd === 0) {
-    booking.localAmount = 0;
-    booking.localPrice  = 'Custom';
-  } else {
-    var localVal = usd * geo.rate;
-    var decimals = (geo.currency === 'JPY' || geo.currency === 'NGN' ||
-      geo.currency === 'KES' || geo.currency === 'GHS' || geo.currency === 'RWF' ||
-      geo.currency === 'XOF' || geo.currency === 'XAF' || geo.currency === 'EGP') ? 0 : 2;
-    booking.localAmount = Math.round(localVal * 100);
-    booking.localPrice = geo.symbol + localVal.toLocaleString('en',{minimumFractionDigits:decimals,maximumFractionDigits:decimals}) + ' ' + geo.currency;
+  var usd=parseFloat(card.dataset.usd);
+  var period=card.dataset.period;
+  var type=card.dataset.type||'';
+  booking.name=card.dataset.name;
+  booking.usd=usd;
+  booking.paypalId=card.dataset.paypal;
+  booking.type=type;
+  var isFree=(type==='free');
+  var isQuote=(type==='corporate'||type==='executive');
+  if(isFree){booking.localAmount=0;booking.localPrice='Free';}
+  else if(usd===0||isQuote){booking.localAmount=0;booking.localPrice='Quote Required';}
+  else{
+    var lv=usd*geo.rate;
+    var dc=(['JPY','NGN','KES','GHS','RWF','XOF','XAF','EGP'].indexOf(geo.currency)!==-1)?0:2;
+    booking.localAmount=Math.round(lv*100);
+    booking.localPrice=geo.symbol+lv.toLocaleString('en',{minimumFractionDigits:dc,maximumFractionDigits:dc})+' '+geo.currency;
   }
-
-  var pd = booking.localPrice;
-  if (period) pd += ' / ' + period;
-  document.getElementById('bannerPkg').textContent   = booking.name;
-  document.getElementById('bannerPrice').textContent = pd;
-  document.getElementById('hiddenPackage').value     = booking.name;
-  document.getElementById('hiddenPriceLocal').value  = booking.localPrice;
-  document.getElementById('hiddenPriceUSD').value    = '$' + usd + ' USD';
-  document.getElementById('hiddenCountry').value     = geo.countryName + ' (' + geo.currency + ')';
-  document.getElementById('hiddenSubject').value     = 'Booking Request: ' + booking.name;
-
-  setTimeout(function(){ goToStep(2); }, 180);
+  var pd=isFree?'Free (no payment required)':booking.localPrice+(period?' / '+period:'');
+  document.getElementById('bannerPkg').textContent=booking.name;
+  document.getElementById('bannerPrice').textContent=pd;
+  document.getElementById('hiddenPackage').value=booking.name;
+  document.getElementById('hiddenPriceLocal').value=booking.localPrice;
+  document.getElementById('hiddenPriceUSD').value=isFree?'Free':'$'+usd+' USD';
+  document.getElementById('hiddenCountry').value=geo.countryName+' ('+geo.currency+')';
+  document.getElementById('hiddenSubject').value=(isQuote?'Quote Request: ':'Booking Request: ')+booking.name;
+  document.getElementById('quoteNotice').style.display=isQuote?'block':'none';
+  document.getElementById('corporateFields').style.display=(type==='corporate')?'block':'none';
+  document.getElementById('executiveFields').style.display=(type==='executive')?'block':'none';
+  document.getElementById('submitBtnText').textContent=isQuote?'Submit Enquiry':(isFree?'Book Free Call':'Continue to Payment');
+  document.getElementById('formNote').innerHTML=isQuote?'Your enquiry is sent securely. Expect a response within 48 hours.':'Your details are sent securely. <strong>No payment is taken at this step.</strong>';
+  if(type==='corporate')document.getElementById('quoteNoticeText').textContent='Complete this questionnaire and Francisca\'s team will respond with a bespoke corporate workshop proposal within 48 hours.';
+  if(type==='executive')document.getElementById('quoteNoticeText').textContent='This confidential enquiry goes directly to Francisca. Expect a personal response within 48 hours.';
+  setTimeout(function(){goToStep(2);},180);
 }
 
-/* ── STEP 2: FORM SUBMIT ────────────────────────────────────── */
-document.getElementById('bookingForm').addEventListener('submit', function(e){
+/* ── Step 2: Form submit ── */
+document.getElementById('bookingForm').addEventListener('submit',function(e){
   e.preventDefault();
-  var fields = this.querySelectorAll('[required]'), valid=true;
+  var fields=this.querySelectorAll('[required]'),valid=true;
   fields.forEach(function(f){f.classList.remove('error');if(!f.value.trim()){f.classList.add('error');valid=false;}});
   if(!valid){fields[0].scrollIntoView({behavior:'smooth',block:'center'});return;}
-  booking.firstName = document.getElementById('firstName').value.trim();
-  booking.lastName  = document.getElementById('lastName').value.trim();
-  booking.email     = document.getElementById('email').value.trim();
-  booking.phone     = document.getElementById('phone').value.trim();
-  var btn = document.getElementById('formSubmitBtn');
-  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending…';
-  btn.disabled = true;
+  booking.firstName=document.getElementById('firstName').value.trim();
+  booking.lastName=document.getElementById('lastName').value.trim();
+  booking.email=document.getElementById('email').value.trim();
+  booking.phone=document.getElementById('phone').value.trim();
+  var btn=document.getElementById('formSubmitBtn');
+  btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Sending...';btn.disabled=true;
   fetch(this.action,{method:'POST',body:new FormData(this),headers:{'Accept':'application/json'}})
-  .then(function(){
-    btn.innerHTML = '<i class="fas fa-arrow-right"></i> Continue to Payment';
-    btn.disabled = false;
-    populateSummary();
-    goToStep(3);
-  })
-  .catch(function(){
-    btn.innerHTML = '<i class="fas fa-arrow-right"></i> Continue to Payment';
-    btn.disabled = false;
-    populateSummary();
-    goToStep(3);
-  });
+  .then(function(){advanceAfterForm(btn);}).catch(function(){advanceAfterForm(btn);});
 });
-
-function populateSummary() {
-  document.getElementById('sumPackage').textContent  = booking.name;
-  document.getElementById('sumName').textContent     = booking.firstName + ' ' + booking.lastName;
-  document.getElementById('sumLocation').textContent = geo.flag + ' ' + geo.countryName;
-  document.getElementById('sumPrice').textContent    = booking.localPrice + (geo.currency !== 'USD' ? ' (≈ $'+booking.usd+' USD)' : '');
-  document.getElementById('successEmail').textContent = booking.email;
-}
-
-/* ── STEP 3: SMART GATEWAY ROUTING ──────────────────────────── */
-function loadStep3() {
-  var isCustom = (booking.paypalId === 'custom' || booking.usd === 0);
-  document.getElementById('payMethods').style.display    = isCustom ? 'none' : 'block';
-  document.getElementById('panelPaypal').style.display   = isCustom ? 'none' : '';
-  document.getElementById('panelPaystack').style.display = isCustom ? 'none' : '';
-  document.getElementById('customFallback').style.display = isCustom ? 'block' : 'none';
-  if (isCustom) return;
-
-  // Smart default: if user is in Africa → recommend Paystack, else PayPal
-  var defaultMethod = (geo.region === 'africa') ? 'paystack' : 'paypal';
-
-  // Show "Recommended" badge on the right one
-  document.getElementById('paypalRecBadge').style.display   = (defaultMethod === 'paypal') ? '' : 'none';
-  document.getElementById('paystackRecBadge').style.display = (defaultMethod === 'paystack') ? '' : 'none';
-
-  switchPayMethod(defaultMethod);
-  updatePaystackAmountDisplay();
-  if (defaultMethod === 'paypal') loadPayPal();
-}
-
-function switchPayMethod(method) {
-  activePayMethod = method;
-  document.getElementById('tabPaypal').classList.toggle('active', method==='paypal');
-  document.getElementById('tabPaystack').classList.toggle('active', method==='paystack');
-  document.getElementById('panelPaypal').classList.toggle('active', method==='paypal');
-  document.getElementById('panelPaystack').classList.toggle('active', method==='paystack');
-  if (method === 'paypal') loadPayPal();
-  if (method === 'paystack') updatePaystackAmountDisplay();
-}
-
-function updatePaystackAmountDisplay() {
-  var display = booking.localPrice + ' ' + geo.currency;
-  if (geo.currency === 'USD') display = '$' + booking.usd + ' USD';
-  document.getElementById('psAmountDisplay').textContent = display;
-}
-
-/* ── PAYPAL ──────────────────────────────────────────────────── */
-function loadPayPal() {
-  var id = booking.paypalId;
-  var box = document.getElementById('paypalBox');
-  var fb  = document.getElementById('paypalFallback');
-  var zone = document.getElementById('paypalRenderZone');
-  var isPlaceholder = (!id || id==='custom' || id.indexOf('HOSTED_BTN') !== -1);
-  if (isPlaceholder) { box.style.display='none'; fb.style.display='block'; return; }
-  box.style.display='block'; fb.style.display='none';
-  if (paypalRendered[id]) return;
-  zone.innerHTML = '<div id="pp-zone-'+id+'" style="width:100%"></div>';
-  try {
-    paypal.HostedButtons({hostedButtonId:id}).render('#pp-zone-'+id);
-    paypalRendered[id] = true;
-  } catch(err) {
-    box.style.display='none'; fb.style.display='block';
+function advanceAfterForm(btn){
+  btn.innerHTML='<i class="fas fa-arrow-right"></i> <span>'+document.getElementById('submitBtnText').textContent+'</span>';
+  btn.disabled=false;
+  var isQuote=(booking.type==='corporate'||booking.type==='executive');
+  var isFree=(booking.type==='free');
+  document.getElementById('sumPackage').textContent=booking.name;
+  document.getElementById('sumName').textContent=booking.firstName+' '+booking.lastName;
+  document.getElementById('sumLocation').textContent=geo.flag+' '+geo.countryName;
+  document.getElementById('sumPrice').textContent=booking.localPrice+(geo.currency!=='USD'&&!isQuote&&!isFree?' (≈ $'+booking.usd+' USD)':'');
+  document.getElementById('successEmail').textContent=booking.email;
+  if(isQuote){
+    document.getElementById('successMsg').textContent='Your enquiry has been submitted. Francisca\'s team will reach out within 48 hours with a bespoke proposal tailored to your needs.';
+    ['step2'].forEach(function(id){document.getElementById(id).classList.remove('active');});
+    document.getElementById('stepSuccess').classList.add('active');
+    document.getElementById('stepSuccess').scrollIntoView({behavior:'smooth',block:'start'});
+  } else {
+    goToStep(3);
   }
 }
 
-/* ── PAYSTACK ────────────────────────────────────────────────── */
-function initiatePaystack() {
-  if (!booking.email) { alert('Please complete step 2 first.'); goToStep(2); return; }
-  // Paystack accepts specific currencies — map unsupported ones to USD
-  var paystackCurrencies = ['GHS','NGN','KES','ZAR','USD','GBP','EUR','XOF','EGP','RWF'];
-  var psCurrency = paystackCurrencies.indexOf(geo.currency) !== -1 ? geo.currency : 'USD';
-  var psAmount   = psCurrency === geo.currency ? booking.localAmount : booking.usd * 100;
-
-  var btn = document.getElementById('paystackBtn');
-  btn.disabled = true;
-  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Opening Paystack…';
-
-  var handler = PaystackPop.setup({
-    key:      PAYSTACK_KEY,
-    email:    booking.email,
-    amount:   psAmount,
-    currency: psCurrency,
-    ref:      'FB-' + Date.now(),
-    metadata: {
-      custom_fields: [
-        {display_name:'Package',      variable_name:'package', value:booking.name},
-        {display_name:'Customer',     variable_name:'name',    value:booking.firstName+' '+booking.lastName},
-        {display_name:'Phone',        variable_name:'phone',   value:booking.phone},
-        {display_name:'Country',      variable_name:'country', value:geo.countryName},
-        {display_name:'Local Price',  variable_name:'local_price', value:booking.localPrice}
-      ]
-    },
-    callback: function(resp) {
-      btn.disabled = false;
-      btn.innerHTML = '<i class="fas fa-lock"></i> Pay Securely with Paystack';
+/* ── Step 3: Gateway routing ── */
+function loadStep3(){
+  var isFree=(booking.type==='free');
+  var isCustom=(booking.paypalId==='custom'||booking.usd===0);
+  document.getElementById('payMethods').style.display=(!isFree&&!isCustom)?'block':'none';
+  document.getElementById('panelPaypal').style.display=(!isFree&&!isCustom)?'':'none';
+  document.getElementById('panelPaystack').style.display=(!isFree&&!isCustom)?'':'none';
+  document.getElementById('customFallback').style.display=(isFree||isCustom)?'block':'none';
+  if(isFree){
+    document.getElementById('customFallbackText').textContent='Your Discovery Call is free! No payment required. Francisca\'s team will reach out within 24 hours to schedule your call.';
+    document.getElementById('customFallbackLink').href='mailto:info@franciscaboateng.com?subject=Discovery%20Call%20Booking&body=Name%3A%20'+booking.firstName+'%20'+booking.lastName;
+    document.getElementById('customFallbackLink').textContent='Confirm by Email';
+    return;
+  }
+  if(isCustom)return;
+  var dm=(geo.region==='africa')?'paystack':'paypal';
+  document.getElementById('paypalRecBadge').style.display=(dm==='paypal')?'':'none';
+  document.getElementById('paystackRecBadge').style.display=(dm==='paystack')?'':'none';
+  switchPayMethod(dm);
+  updatePaystackDisplay();
+  if(dm==='paypal')loadPayPal();
+}
+function switchPayMethod(m){
+  activePayMethod=m;
+  document.getElementById('tabPaypal').classList.toggle('active',m==='paypal');
+  document.getElementById('tabPaystack').classList.toggle('active',m==='paystack');
+  document.getElementById('panelPaypal').classList.toggle('active',m==='paypal');
+  document.getElementById('panelPaystack').classList.toggle('active',m==='paystack');
+  if(m==='paypal')loadPayPal();
+  if(m==='paystack')updatePaystackDisplay();
+}
+function updatePaystackDisplay(){
+  document.getElementById('psAmountDisplay').textContent=(geo.currency==='USD')?('$'+booking.usd+' USD'):(booking.localPrice+' '+geo.currency);
+}
+function loadPayPal(){
+  var id=booking.paypalId;
+  var box=document.getElementById('paypalBox');
+  var fb=document.getElementById('paypalFallback');
+  var zone=document.getElementById('paypalRenderZone');
+  if(!id||id==='custom'||id==='free'){box.style.display='none';fb.style.display='block';return;}
+  box.style.display='block';fb.style.display='none';
+  if(paypalRendered[id])return;
+  zone.innerHTML='<div id="pp-zone-'+id+'" style="width:100%"></div>';
+  try{paypal.HostedButtons({hostedButtonId:id}).render('#pp-zone-'+id);paypalRendered[id]=true;}
+  catch(err){box.style.display='none';fb.style.display='block';}
+}
+function initiatePaystack(){
+  if(!booking.email){alert('Please complete step 2 first.');goToStep(2);return;}
+  var supported=['GHS','NGN','KES','ZAR','USD','GBP','EUR','XOF','EGP','RWF'];
+  var pc=supported.indexOf(geo.currency)!==-1?geo.currency:'USD';
+  var pa=pc===geo.currency?booking.localAmount:booking.usd*100;
+  var btn=document.getElementById('paystackBtn');
+  btn.disabled=true;btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Opening Paystack...';
+  PaystackPop.setup({
+    key:PAYSTACK_KEY,email:booking.email,amount:pa,currency:pc,
+    ref:'FB-'+Date.now(),
+    metadata:{custom_fields:[
+      {display_name:'Package',variable_name:'package',value:booking.name},
+      {display_name:'Customer',variable_name:'name',value:booking.firstName+' '+booking.lastName},
+      {display_name:'Country',variable_name:'country',value:geo.countryName},
+      {display_name:'Local Price',variable_name:'local_price',value:booking.localPrice}
+    ]},
+    callback:function(){
+      btn.disabled=false;btn.innerHTML='<i class="fas fa-lock"></i> Pay Securely with Paystack';
       document.getElementById('step3').classList.remove('active');
       document.getElementById('stepSuccess').classList.add('active');
       document.getElementById('stepSuccess').scrollIntoView({behavior:'smooth',block:'start'});
     },
-    onClose: function() {
-      btn.disabled = false;
-      btn.innerHTML = '<i class="fas fa-lock"></i> Pay Securely with Paystack';
-    }
-  });
-  handler.openIframe();
+    onClose:function(){btn.disabled=false;btn.innerHTML='<i class="fas fa-lock"></i> Pay Securely with Paystack';}
+  }).openIframe();
 }
 
-/* ── INIT ────────────────────────────────────────────────────── */
+/* ═══ VIDEO CAROUSEL ═══ */
+var videoIdx=0;
+var videoSlides=document.querySelectorAll('.video-slide');
+var videoDotsEl=document.getElementById('videoDots');
+var visibleVids=window.innerWidth<580?1:(window.innerWidth<900?2:3);
+
+function initVideoDots(){
+  videoDotsEl.innerHTML='';
+  var pages=Math.ceil(videoSlides.length/visibleVids);
+  for(var i=0;i<pages;i++){
+    var d=document.createElement('div');d.className='carousel-dot'+(i===0?' active':'');
+    d.setAttribute('data-i',i);d.onclick=function(){goVideoSlide(parseInt(this.getAttribute('data-i')));};
+    videoDotsEl.appendChild(d);
+  }
+}
+function goVideoSlide(idx){
+  var track=document.getElementById('videoTrack');
+  var slideW=videoSlides[0].offsetWidth+24;
+  videoIdx=Math.max(0,Math.min(idx,Math.ceil(videoSlides.length/visibleVids)-1));
+  track.style.transform='translateX(-'+(videoIdx*visibleVids*slideW)+'px)';
+  document.querySelectorAll('.carousel-dot').forEach(function(d,i){d.classList.toggle('active',i===videoIdx);});
+}
+function slideVideo(dir){goVideoSlide(videoIdx+dir);}
+window.addEventListener('resize',function(){visibleVids=window.innerWidth<580?1:(window.innerWidth<900?2:3);initVideoDots();goVideoSlide(0);});
+initVideoDots();
+
+/* Video lightbox */
+function openLightbox(src){
+  var lb=document.getElementById('vidLightbox');
+  var vid=document.getElementById('lightboxVideo');
+  vid.querySelector('source').src=src;vid.load();
+  lb.classList.add('open');
+  setTimeout(function(){vid.play();},300);
+}
+function closeLightbox(){
+  var vid=document.getElementById('lightboxVideo');vid.pause();
+  document.getElementById('vidLightbox').classList.remove('open');
+}
+document.getElementById('vidLightbox').addEventListener('click',function(e){if(e.target===this)closeLightbox();});
+
+/* ── Init ── */
 detectLocation();
+loadReviewsFromStorage(); // Load persistent reviews on page load
 </script>
 </body>
 </html>
