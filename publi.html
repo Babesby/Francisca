@@ -192,14 +192,16 @@ img{display:block;max-width:100%}a{color:inherit;text-decoration:none}button{cur
   <nav class="navbar" id="navbar">
     <a href="index.html" class="nav-logo">
       <img src="img/logo.svg" alt="FB" onerror="this.style.display='none'">
-      <span class="logo-text">F<span>B</span></span>
+
     </a>
     <div class="nav-links" id="navLinks">
       <a href="index.html" class="nav-link">Home</a>
       <a href="about.html" class="nav-link">About</a>
+      <a href="speaking.html" class="nav-link">Speaking</a>
+      <a href="impact.html" class="nav-link">Impact</a>
       <a href="publi.html" class="nav-link active">Videos</a>
+      <a href="blog.html" class="nav-link">Blog</a>
       <a href="booking.html" class="nav-link">Book</a>
-      <a href="index.html#contact" class="nav-link">Contact</a>
     </div>
     <button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
   </nav>
@@ -233,7 +235,7 @@ img{display:block;max-width:100%}a{color:inherit;text-decoration:none}button{cur
       <div class="video-card" data-topic="Faith" data-keywords="faith create compete creativity identity god">
         <div class="video-thumb"><video controls poster="franca/one.jpg" loading="lazy"><source src="img/Create Or Compete.mp4" type="video/mp4"></video><div class="video-topic-tag">Faith</div></div>
         <div class="video-body">
-          <h3 class="video-title">Create Or Compete — Finding Your Unique Path</h3>
+          <h3 class="video-title">Create Or Compete, Finding Your Unique Path</h3>
           <div class="video-actions">
             <button class="video-toggle-btn" onclick="toggleDesc(this)">Description <i class="fas fa-chevron-down"></i></button>
             <div class="video-icon-actions">
@@ -248,7 +250,7 @@ img{display:block;max-width:100%}a{color:inherit;text-decoration:none}button{cur
       <div class="video-card" data-topic="Leadership" data-keywords="leadership integrity trust build">
         <div class="video-thumb"><video controls poster="franca/two.jpg" loading="lazy"><source src="img/Integrity.mp4" type="video/mp4"></video><div class="video-topic-tag">Leadership</div></div>
         <div class="video-body">
-          <h3 class="video-title">Leading with Integrity — Building Trust</h3>
+          <h3 class="video-title">Leading with Integrity, Building Trust</h3>
           <div class="video-actions">
             <button class="video-toggle-btn" onclick="toggleDesc(this)">Description <i class="fas fa-chevron-down"></i></button>
             <div class="video-icon-actions">
@@ -263,7 +265,7 @@ img{display:block;max-width:100%}a{color:inherit;text-decoration:none}button{cur
       <div class="video-card" data-topic="Leadership" data-keywords="resilience courage strength leadership">
         <div class="video-thumb"><video controls poster="franca/three.jpg" loading="lazy"><source src="img/Strength and Courage.mp4" type="video/mp4"></video><div class="video-topic-tag">Leadership</div></div>
         <div class="video-body">
-          <h3 class="video-title">Resilient Leadership — Strength and Courage</h3>
+          <h3 class="video-title">Resilient Leadership, Strength and Courage</h3>
           <div class="video-actions">
             <button class="video-toggle-btn" onclick="toggleDesc(this)">Description <i class="fas fa-chevron-down"></i></button>
             <div class="video-icon-actions">
@@ -308,7 +310,7 @@ img{display:block;max-width:100%}a{color:inherit;text-decoration:none}button{cur
       <div class="video-card" data-topic="Love" data-keywords="fashion odo kloset brand story love">
         <div class="video-thumb"><video controls poster="franca/six.jpg" loading="lazy"><source src="img/Odo' Clothing.mp4" type="video/mp4"></video><div class="video-topic-tag">Love</div></div>
         <div class="video-body">
-          <h3 class="video-title">Odo's Kloset — Fashion Created with Love</h3>
+          <h3 class="video-title">Odo's Kloset, Fashion Created with Love</h3>
           <div class="video-actions">
             <button class="video-toggle-btn" onclick="toggleDesc(this)">Description <i class="fas fa-chevron-down"></i></button>
             <div class="video-icon-actions">
@@ -316,7 +318,7 @@ img{display:block;max-width:100%}a{color:inherit;text-decoration:none}button{cur
               <button class="share-video-btn" data-src="img/Odo' Clothing.mp4"><i class="fas fa-share-alt"></i></button>
             </div>
           </div>
-          <p class="video-desc">The story behind the brand — where every fabric is a love letter.</p>
+          <p class="video-desc">The story behind the brand, where every fabric is a love letter.</p>
         </div>
       </div>
 
@@ -338,7 +340,7 @@ img{display:block;max-width:100%}a{color:inherit;text-decoration:none}button{cur
       <div class="video-card" data-topic="Technology" data-keywords="cybersecurity training slamm foundation isc2 youth">
         <div class="video-thumb"><video controls poster="franca/eight.jpg" loading="lazy"><source src="img/training.MP4" type="video/mp4"></video><div class="video-topic-tag">Technology</div></div>
         <div class="video-body">
-          <h3 class="video-title">Slamm Foundation — ISC2 Cybersecurity Training in Kumasi</h3>
+          <h3 class="video-title">Slamm Foundation, ISC2 Cybersecurity Training in Kumasi</h3>
           <div class="video-actions">
             <button class="video-toggle-btn" onclick="toggleDesc(this)">Description <i class="fas fa-chevron-down"></i></button>
             <div class="video-icon-actions">
@@ -381,18 +383,7 @@ img{display:block;max-width:100%}a{color:inherit;text-decoration:none}button{cur
     </div>
   </section>
 
-  <!-- CONNECT -->
-  <section class="connect-section">
-    <div class="section-header" style="text-align:left">
-      <span class="section-eyebrow">Stay Connected</span>
-      <h2 class="section-title">Follow the Journey</h2>
-    </div>
-    <div class="connect-links">
-      <a href="https://www.instagram.com/francisca_boateng1/" class="connect-link" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
-      <a href="https://web.facebook.com/obo.boateng" class="connect-link" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a>
-      <a href="https://www.linkedin.com/in/franciscaboateng" class="connect-link" target="_blank"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
-    </div>
-  </section>
+
 
   <!-- SPEAKLIFE WIDGET -->
   <div class="speaklife-widget" id="speaklifeWidget">
