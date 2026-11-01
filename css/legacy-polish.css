@@ -1,0 +1,3 @@
+/* A restrained editorial layer across the existing deeper pages. */
+:root{--red:#a54937;--off:#f7f3ec;--dark:#211c19}
+body{background:#f7f3ec!important;color:#211c19}h1,h2,h3{letter-spacing:-.035em}p{line-height:1.75}button,a{transition:background-color .2s,color .2s,transform .2s}.nav,.navbar,header.site-header{background:#f7f3ec!important;box-shadow:none!important;border-bottom:1px solid #ddd5cb}.nav-links a:hover{color:#a54937!important}img{max-width:100%}*:focus-visible{outline:3px solid #a54937;outline-offset:3px}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}

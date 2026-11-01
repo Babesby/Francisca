@@ -1,0 +1,21 @@
+export const catalog={
+  'sienna-flow-kaftan':{name:"Sienna Flow Kaftan",amount:14800},
+  'cobalt-grace-gown':{name:"Cobalt Grace Gown",amount:18500},
+  'scarlet-bloom-peplum':{name:"Scarlet Bloom Peplum Dress",amount:21000},
+  'ivory-petal-maxi':{name:"Ivory Petal Maxi",amount:16500},
+  'kente-muse-column':{name:"Kente Muse Column Dress",amount:22500},
+  'lime-noir-resort-kaftan':{name:"Lime Noir Resort Kaftan",amount:15500},
+  'sunset-mosaic-kaftan':{name:"Sunset Mosaic Kaftan",amount:15800},
+  'coral-lace-midi':{name:"Coral Lace Midi",amount:19500},
+  'ember-kente-corset':{name:"Ember Kente Corset Dress",amount:21500},
+  'harbour-botanical-maxi':{name:"Harbour Botanical Maxi",amount:16800},
+  'blue-garden-kimono-set':{name:"Blue Garden Kimono Set",amount:18000},
+  'sunset-silk-kimono-set':{name:"Sunset Silk Kimono Set",amount:19000},
+  'jade-polka-occasion':{name:"Jade Polka Occasion Dress",amount:20500},
+  'rose-garden-layered-set':{name:"Rose Garden Layered Set",amount:19800},
+  'ruby-kente-corset-gown':{name:"Ruby Kente Corset Gown",amount:23500},
+  'terracotta-heritage-dress':{name:"Terracotta Heritage Dress",amount:18800},
+  'ivory-bloom-statement':{name:"Ivory Bloom Statement Dress",amount:22000},
+  'ruby-ease-kaftan':{name:"Ruby Ease Kaftan",amount:15000},
+  'fuchsia-petal-dress':{name:"Fuchsia Petal Dress",amount:19500}
+};

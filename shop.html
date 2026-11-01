@@ -1,0 +1,289 @@
+<!doctype html><html lang="en"><head><title>Odo's Kloset — Shop</title><meta name="description" content="Shop Odo’s Kloset: expressive colour, confident silhouettes and occasion pieces with secure Stripe and PayPal checkout."><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#6E1737"><link rel="icon" type="image/png" href="img/gods-fave-babe-favicon.png"><link rel="apple-touch-icon" href="img/apple-touch-icon.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="css/premium.css"><script defer src="js/premium.js"></script><style>
+.shop-hero-carousel{position:relative;overflow:hidden;border-radius:28px 28px 0 0;box-shadow:var(--shadow)}
+.shop-carousel-track{display:flex;transition:transform .6s ease}
+.shop-slide{min-width:100%;position:relative}
+.shop-slide img{width:100%;height:520px;object-fit:cover;object-position:center top}
+.shop-slide-caption{position:absolute;left:20px;bottom:20px;background:rgba(47,7,22,.82);color:#fff;padding:14px 16px;border-radius:18px;max-width:75%}
+.shop-slide-caption strong{display:block;color:var(--banana)}
+.shop-carousel-controls{position:absolute;inset:auto 20px 20px auto;display:flex;gap:8px;z-index:2}
+.shop-carousel-btn,.shop-dot{width:42px;height:42px;border-radius:50%;border:0;background:rgba(255,255,255,.92);color:var(--burgundy-deep);font-weight:900;box-shadow:0 8px 18px rgba(0,0,0,.16)}
+.shop-dots{position:absolute;left:20px;top:20px;display:flex;gap:8px;z-index:2}
+.shop-dot{width:10px;height:10px;background:rgba(255,255,255,.45);box-shadow:none}
+.shop-dot.active{background:var(--banana)}
+.shop-custom-card{display:grid;grid-template-columns:1fr .9fr;gap:38px;align-items:center}
+.shop-custom-copy h2{color:#fff;margin:0 0 12px;font-size:clamp(2rem,4vw,3.2rem);letter-spacing:-.04em}
+.shop-custom-copy p{color:#eadde2;margin:0 0 22px}
+@media(max-width:900px){.shop-custom-card{grid-template-columns:1fr}.shop-slide img{height:500px}}
+@media(max-width:640px){.shop-slide img{height:420px}.shop-slide-caption{left:14px;right:14px;bottom:14px;max-width:none}.shop-carousel-controls{right:14px;bottom:14px}.shop-dots{left:14px;top:14px}}
+</style></head><body><header class="site-header"><div class="container nav"><a class="brand" href="index.html" aria-label="Francisca Boateng home"><img class="brand-wordmark" src="img/gods-fave-babe-logo.png" alt="God’s Fave Babe"></a><nav class="navlinks" aria-label="Primary navigation"><a href="about.html" class="">About</a><a href="speaking.html" class="">Speaking</a><a href="impact.html" class="">Impact</a><a href="blog.html" class="">Journal</a><a href="publi.html" class="">Media</a><a href="shop.html" class="active">Odo’s Kloset</a></nav><div class="nav-actions"><button class="cart-pill" type="button" onclick="openCart()">Bag <span data-cart-count>0</span></button><a class="btn btn-primary" href="booking.html">Book Francisca</a><button class="menu-btn" data-menu aria-label="Open menu" aria-expanded="false"><span></span></button></div></div><nav class="mobile-drawer" aria-label="Mobile navigation"><a href="about.html" class="">About</a><a href="speaking.html" class="">Speaking</a><a href="impact.html" class="">Impact</a><a href="blog.html" class="">Journal</a><a href="publi.html" class="">Media</a><a href="shop.html" class="shop-mobile">Odo’s Kloset</a><a class="mobile-cta" href="booking.html">Book Francisca</a></nav></header><main>
+<section class="page-hero burgundy shop-hero">
+  <div class="container shop-hero-grid">
+    <div>
+      <h1>Odo’s Kloset.</h1>
+      <p>Thoughtfully made, confidently worn.</p>
+      <div class="hero-actions" style="margin-top:28px"><a class="btn btn-accent" href="#shop">Shop the collection</a><a class="btn btn-white" href="https://www.instagram.com/odoskloset/" target="_blank" rel="noopener">View @odoskloset</a></div>
+    </div>
+    <figure class="shop-hero-visual">
+      <div class="shop-hero-carousel" data-shop-carousel>
+        <div class="shop-dots"><button class="shop-dot active" data-shop-dot="0" aria-label="Slide 1"></button><button class="shop-dot" data-shop-dot="1" aria-label="Slide 2"></button><button class="shop-dot" data-shop-dot="2" aria-label="Slide 3"></button></div>
+        <div class="shop-carousel-track">
+          <div class="shop-slide"><img src="shop/shop-hero.webp" alt="Fuchsia occasion dress from Odo’s Kloset"><div class="shop-slide-caption"><strong>Statement occasion dressing</strong><span>Colour, shape and confident presence.</span></div></div>
+          <div class="shop-slide"><img src="shop/ruby-kente-corset-gown.webp" alt="Ruby Kente Corset Gown from Odo’s Kloset"><div class="shop-slide-caption"><strong>Heritage with structure</strong><span>Distinctive pieces for memorable entrances.</span></div></div>
+          <div class="shop-slide"><img src="shop/sunset-silk-kimono-set.webp" alt="Sunset Silk Kimono Set from Odo’s Kloset"><div class="shop-slide-caption"><strong>Flowing sets and kaftans</strong><span>Easy movement with premium finishing.</span></div></div>
+        </div>
+        <div class="shop-carousel-controls"><button class="shop-carousel-btn" type="button" data-shop-prev aria-label="Previous slide">‹</button><button class="shop-carousel-btn" type="button" data-shop-next aria-label="Next slide">›</button></div>
+      </div>
+    </figure>
+  </div>
+</section>
+<section class="section compact-section"><div class="container shop-intro-grid"><h2>The collection.</h2><div><p>From flowing kaftans to sculpted occasion dresses, Odo’s Kloset is built around colour, movement and pieces that feel special from the moment you put them on.</p><p class="shop-note">Prices are shown in USD. Final shipping details are collected during checkout.</p></div></div></section>
+<section class="section" id="shop">
+  <div class="container">
+    <div class="product-toolbar"><div><h2 class="shop-heading">Shop the collection</h2><p>19 distinct looks from the current Odo’s Kloset catalogue.</p></div><button class="btn btn-outline" type="button" onclick="openCart()">Open bag · <span data-cart-count>0</span></button></div>
+    <div class="product-grid">
+<article class="product-card" data-product-card>
+  <div class="product-media">
+    <span class="product-tag">Signature Kaftan</span>
+    <img src="shop/sienna-flow-kaftan.webp" alt="Sienna flowing kaftan from Odo’s Kloset" loading="lazy">
+  </div>
+  <div class="product-info">
+    <div class="product-top"><h3>Sienna Flow Kaftan</h3><span class="product-price">$148</span></div>
+    <p>A sculptural drape with generous movement and an effortless evening finish.</p>
+    <div class="product-actions"><button class="btn btn-primary" onclick="addToCart('sienna-flow-kaftan')">Add to bag</button></div>
+  </div>
+</article>
+<article class="product-card" data-product-card>
+  <div class="product-media">
+    <span class="product-tag">Occasion</span>
+    <img src="shop/cobalt-grace-gown.webp" alt="Cobalt blue full-length gown from Odo’s Kloset" loading="lazy">
+  </div>
+  <div class="product-info">
+    <div class="product-top"><h3>Cobalt Grace Gown</h3><span class="product-price">$185</span></div>
+    <p>A clean floor-length silhouette in saturated cobalt for formal moments.</p>
+    <div class="product-actions"><button class="btn btn-primary" onclick="addToCart('cobalt-grace-gown')">Add to bag</button></div>
+  </div>
+</article>
+<article class="product-card" data-product-card>
+  <div class="product-media">
+    <span class="product-tag">Occasion</span>
+    <img src="shop/scarlet-bloom-peplum.webp" alt="Scarlet floral peplum dress from Odo’s Kloset" loading="lazy">
+  </div>
+  <div class="product-info">
+    <div class="product-top"><h3>Scarlet Bloom Peplum Dress</h3><span class="product-price">$210</span></div>
+    <p>Floral lace, structured peplum shaping and a confident occasion profile.</p>
+    <div class="product-actions"><button class="btn btn-primary" onclick="addToCart('scarlet-bloom-peplum')">Add to bag</button></div>
+  </div>
+</article>
+<article class="product-card" data-product-card>
+  <div class="product-media">
+    <span class="product-tag">Maxi</span>
+    <img src="shop/ivory-petal-maxi.webp" alt="Ivory floral maxi dress from Odo’s Kloset" loading="lazy">
+  </div>
+  <div class="product-info">
+    <div class="product-top"><h3>Ivory Petal Maxi</h3><span class="product-price">$165</span></div>
+    <p>A light, full-length floral statement for celebrations and destination dressing.</p>
+    <div class="product-actions"><button class="btn btn-primary" onclick="addToCart('ivory-petal-maxi')">Add to bag</button></div>
+  </div>
+</article>
+<article class="product-card" data-product-card>
+  <div class="product-media">
+    <span class="product-tag">Heritage</span>
+    <img src="shop/kente-muse-column.webp" alt="Heritage print strapless column dress from Odo’s Kloset" loading="lazy">
+  </div>
+  <div class="product-info">
+    <div class="product-top"><h3>Kente Muse Column Dress</h3><span class="product-price">$225</span></div>
+    <p>A fitted heritage-print column with a modern strapless neckline.</p>
+    <div class="product-actions"><button class="btn btn-primary" onclick="addToCart('kente-muse-column')">Add to bag</button></div>
+  </div>
+</article>
+<article class="product-card" data-product-card>
+  <div class="product-media">
+    <span class="product-tag">Resort</span>
+    <img src="shop/lime-noir-resort-kaftan.webp" alt="Lime and black abstract kaftan from Odo’s Kloset" loading="lazy">
+  </div>
+  <div class="product-info">
+    <div class="product-top"><h3>Lime Noir Resort Kaftan</h3><span class="product-price">$155</span></div>
+    <p>Fluid abstract print and relaxed volume for elevated resort dressing.</p>
+    <div class="product-actions"><button class="btn btn-primary" onclick="addToCart('lime-noir-resort-kaftan')">Add to bag</button></div>
+  </div>
+</article>
+<article class="product-card" data-product-card>
+  <div class="product-media">
+    <span class="product-tag">Resort</span>
+    <img src="shop/sunset-mosaic-kaftan.webp" alt="Multicolour sunset kaftan from Odo’s Kloset" loading="lazy">
+  </div>
+  <div class="product-info">
+    <div class="product-top"><h3>Sunset Mosaic Kaftan</h3><span class="product-price">$158</span></div>
+    <p>Warm colour blocking with an easy, movement-led silhouette.</p>
+    <div class="product-actions"><button class="btn btn-primary" onclick="addToCart('sunset-mosaic-kaftan')">Add to bag</button></div>
+  </div>
+</article>
+<article class="product-card" data-product-card>
+  <div class="product-media">
+    <span class="product-tag">Occasion</span>
+    <img src="shop/coral-lace-midi.webp" alt="Coral lace midi dress from Odo’s Kloset" loading="lazy">
+  </div>
+  <div class="product-info">
+    <div class="product-top"><h3>Coral Lace Midi</h3><span class="product-price">$195</span></div>
+    <p>Intricate coral lace with a polished midi length for special occasions.</p>
+    <div class="product-actions"><button class="btn btn-primary" onclick="addToCart('coral-lace-midi')">Add to bag</button></div>
+  </div>
+</article>
+<article class="product-card" data-product-card>
+  <div class="product-media">
+    <span class="product-tag">Heritage</span>
+    <img src="shop/ember-kente-corset.webp" alt="Red and heritage print corset dress from Odo’s Kloset" loading="lazy">
+  </div>
+  <div class="product-info">
+    <div class="product-top"><h3>Ember Kente Corset Dress</h3><span class="product-price">$215</span></div>
+    <p>A bold corseted bodice and heritage print built for memorable entrances.</p>
+    <div class="product-actions"><button class="btn btn-primary" onclick="addToCart('ember-kente-corset')">Add to bag</button></div>
+  </div>
+</article>
+<article class="product-card" data-product-card>
+  <div class="product-media">
+    <span class="product-tag">Maxi</span>
+    <img src="shop/harbour-botanical-maxi.webp" alt="Botanical print maxi dress from Odo’s Kloset" loading="lazy">
+  </div>
+  <div class="product-info">
+    <div class="product-top"><h3>Harbour Botanical Maxi</h3><span class="product-price">$168</span></div>
+    <p>Botanical print, a long line and relaxed polish for resort or event wear.</p>
+    <div class="product-actions"><button class="btn btn-primary" onclick="addToCart('harbour-botanical-maxi')">Add to bag</button></div>
+  </div>
+</article>
+<article class="product-card" data-product-card>
+  <div class="product-media">
+    <span class="product-tag">Set</span>
+    <img src="shop/blue-garden-kimono-set.webp" alt="Blue floral kimono set from Odo’s Kloset" loading="lazy">
+  </div>
+  <div class="product-info">
+    <div class="product-top"><h3>Blue Garden Kimono Set</h3><span class="product-price">$180</span></div>
+    <p>A vibrant layered look that brings print, ease and versatility together.</p>
+    <div class="product-actions"><button class="btn btn-primary" onclick="addToCart('blue-garden-kimono-set')">Add to bag</button></div>
+  </div>
+</article>
+<article class="product-card" data-product-card>
+  <div class="product-media">
+    <span class="product-tag">Set</span>
+    <img src="shop/sunset-silk-kimono-set.webp" alt="Orange multicolour kimono set from Odo’s Kloset" loading="lazy">
+  </div>
+  <div class="product-info">
+    <div class="product-top"><h3>Sunset Silk Kimono Set</h3><span class="product-price">$190</span></div>
+    <p>A flowing kimono-led set with luminous warm tones and standout movement.</p>
+    <div class="product-actions"><button class="btn btn-primary" onclick="addToCart('sunset-silk-kimono-set')">Add to bag</button></div>
+  </div>
+</article>
+<article class="product-card" data-product-card>
+  <div class="product-media">
+    <span class="product-tag">Occasion</span>
+    <img src="shop/jade-polka-occasion.webp" alt="Jade green and dotted occasion dress from Odo’s Kloset" loading="lazy">
+  </div>
+  <div class="product-info">
+    <div class="product-top"><h3>Jade Polka Occasion Dress</h3><span class="product-price">$205</span></div>
+    <p>Rich jade, an asymmetric neckline and a playful dotted skirt with formal presence.</p>
+    <div class="product-actions"><button class="btn btn-primary" onclick="addToCart('jade-polka-occasion')">Add to bag</button></div>
+  </div>
+</article>
+<article class="product-card" data-product-card>
+  <div class="product-media">
+    <span class="product-tag">Set</span>
+    <img src="shop/rose-garden-layered-set.webp" alt="Rose floral layered set from Odo’s Kloset" loading="lazy">
+  </div>
+  <div class="product-info">
+    <div class="product-top"><h3>Rose Garden Layered Set</h3><span class="product-price">$198</span></div>
+    <p>A floral layered ensemble with soft volume and confident colour.</p>
+    <div class="product-actions"><button class="btn btn-primary" onclick="addToCart('rose-garden-layered-set')">Add to bag</button></div>
+  </div>
+</article>
+<article class="product-card" data-product-card>
+  <div class="product-media">
+    <span class="product-tag">Signature</span>
+    <img src="shop/ruby-kente-corset-gown.webp" alt="Ruby red gown with heritage print corset from Odo’s Kloset" loading="lazy">
+  </div>
+  <div class="product-info">
+    <div class="product-top"><h3>Ruby Kente Corset Gown</h3><span class="product-price">$235</span></div>
+    <p>A structured heritage-print bodice paired with a rich ruby full-length skirt.</p>
+    <div class="product-actions"><button class="btn btn-primary" onclick="addToCart('ruby-kente-corset-gown')">Add to bag</button></div>
+  </div>
+</article>
+<article class="product-card" data-product-card>
+  <div class="product-media">
+    <span class="product-tag">Heritage</span>
+    <img src="shop/terracotta-heritage-dress.webp" alt="Terracotta and print occasion dress from Odo’s Kloset" loading="lazy">
+  </div>
+  <div class="product-info">
+    <div class="product-top"><h3>Terracotta Heritage Dress</h3><span class="product-price">$188</span></div>
+    <p>Warm terracotta accents meet graphic print in a refined day-to-evening silhouette.</p>
+    <div class="product-actions"><button class="btn btn-primary" onclick="addToCart('terracotta-heritage-dress')">Add to bag</button></div>
+  </div>
+</article>
+<article class="product-card" data-product-card>
+  <div class="product-media">
+    <span class="product-tag">Statement</span>
+    <img src="shop/ivory-bloom-statement.webp" alt="Ivory statement dress with floral accents from Odo’s Kloset" loading="lazy">
+  </div>
+  <div class="product-info">
+    <div class="product-top"><h3>Ivory Bloom Statement Dress</h3><span class="product-price">$220</span></div>
+    <p>Crisp ivory with dramatic floral accents and a sweeping occasion shape.</p>
+    <div class="product-actions"><button class="btn btn-primary" onclick="addToCart('ivory-bloom-statement')">Add to bag</button></div>
+  </div>
+</article>
+<article class="product-card" data-product-card>
+  <div class="product-media">
+    <span class="product-tag">Kaftan</span>
+    <img src="shop/ruby-ease-kaftan.webp" alt="Ruby red flowing kaftan from Odo’s Kloset" loading="lazy">
+  </div>
+  <div class="product-info">
+    <div class="product-top"><h3>Ruby Ease Kaftan</h3><span class="product-price">$150</span></div>
+    <p>A minimalist ruby kaftan with fluid volume and effortless statement appeal.</p>
+    <div class="product-actions"><button class="btn btn-primary" onclick="addToCart('ruby-ease-kaftan')">Add to bag</button></div>
+  </div>
+</article>
+<article class="product-card" data-product-card>
+  <div class="product-media">
+    <span class="product-tag">Occasion</span>
+    <img src="shop/fuchsia-petal-dress.webp" alt="Fuchsia off-shoulder occasion dress from Odo’s Kloset" loading="lazy">
+  </div>
+  <div class="product-info">
+    <div class="product-top"><h3>Fuchsia Petal Dress</h3><span class="product-price">$195</span></div>
+    <p>A soft off-shoulder neckline and full fuchsia skirt made for celebratory dressing.</p>
+    <div class="product-actions"><button class="btn btn-primary" onclick="addToCart('fuchsia-petal-dress')">Add to bag</button></div>
+  </div>
+</article>
+    </div>
+  </div>
+</section>
+
+<section class="section lookbook-section">
+  <div class="container">
+    <div class="section-title-row"><h2>More from the Kloset.</h2><p>Colour, print and occasion dressing from the same Odo’s Kloset collection.</p></div>
+    <div class="fashion-lookbook">
+      <img src="shop/lookbook-sienna.webp" alt="Sienna Odo’s Kloset look" loading="lazy">
+      <img src="shop/lookbook-scarlet.webp" alt="Scarlet Odo’s Kloset look" loading="lazy">
+      <img src="shop/lookbook-kente.webp" alt="Kente Odo’s Kloset look" loading="lazy">
+      <img src="shop/lookbook-botanical.webp" alt="Botanical Odo’s Kloset look" loading="lazy">
+      <img src="shop/lookbook-mosaic.webp" alt="Mosaic Odo’s Kloset look" loading="lazy">
+      <img src="shop/lookbook-coral.webp" alt="Coral Odo’s Kloset look" loading="lazy">
+    </div>
+    <div class="lookbook-link"><a class="btn btn-outline" href="https://www.instagram.com/odoskloset/" target="_blank" rel="noopener">Follow @odoskloset</a></div>
+  </div>
+</section>
+
+<section class="section section-burgundy"><div class="container shop-custom-card"><video src="img/Odo' Clothing.mp4" controls playsinline style="width:100%;height:620px;object-fit:cover;border-radius:24px;background:#170812"></video><div class="shop-custom-copy"><h2>Custom Orders.</h2><p>Contact us for custom fashion enquiries at info@franciscaboateng.com.</p><a class="btn btn-accent" href="mailto:info@franciscaboateng.com?subject=Odo%27s%20Kloset%20Custom%20Order">Contact us</a></div></div></section>
+</main><div class="cart-backdrop" data-cart-backdrop onclick="closeCart()"></div><aside class="cart-drawer" aria-label="Odo's Kloset bag"><div class="cart-head"><strong>Odo’s Kloset Bag</strong><button class="icon-btn" type="button" aria-label="Close bag" onclick="closeCart()">×</button></div><div class="cart-body"></div><div class="cart-foot"><div class="cart-total"><span>Total</span><span data-cart-total>$0.00</span></div><a class="btn btn-primary" href="checkout.html">Secure checkout</a><div class="secondary-checkout"><button class="btn btn-outline" type="button" onclick="stripeCheckout()">Stripe</button><button class="btn btn-accent" type="button" onclick="paypalCheckout()">PayPal</button></div></div></aside><footer class="footer"><div class="container"><div class="footer-grid"><div><div class="brand"><img class="brand-wordmark" src="img/gods-fave-babe-logo.png" alt="God’s Fave Babe"></div><p style="max-width:430px">Governance and operations leader, keynote speaker and executive coach working across business, technology and community impact.</p></div><div><h4>Explore</h4><div class="footer-links"><a href="about.html">About</a><a href="speaking.html">Speaking</a><a href="impact.html">Impact</a><a href="blog.html">Journal</a></div></div><div><h4>Business</h4><div class="footer-links"><a href="shop.html">Odo’s Kloset</a><a href="booking.html">Book Francisca</a><a href="https://www.instagram.com/slammllc/" target="_blank" rel="noopener">Slamm</a><a href="https://www.instagram.com/slammfoundation_/" target="_blank" rel="noopener">Slamm Foundation</a></div></div><div><h4>Connect</h4><div class="footer-links"><a href="https://www.linkedin.com/in/franciscaboateng" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.instagram.com/francisca_boateng1/" target="_blank" rel="noopener">Instagram</a><a href="https://web.facebook.com/obo.boateng" target="_blank" rel="noopener">Facebook</a><a href="https://www.threads.com/@francisca_boateng1" target="_blank" rel="noopener">Threads</a></div></div></div><div class="footnote"><span>© 2026 Francisca Boateng.</span><span>Leadership · Operations · Technology · Community</span></div></div></footer><script>
+(function(){
+  const root=document.querySelector('[data-shop-carousel]');
+  if(!root) return;
+  const track=root.querySelector('.shop-carousel-track');
+  const slides=[...root.querySelectorAll('.shop-slide')];
+  const dots=[...root.querySelectorAll('[data-shop-dot]')];
+  let index=0, timer;
+  function render(){track.style.transform=`translateX(-${index*100}%)`;dots.forEach((d,i)=>d.classList.toggle('active',i===index));}
+  function go(i){index=(i+slides.length)%slides.length;render();restart();}
+  function restart(){clearInterval(timer);timer=setInterval(()=>go(index+1),4200)}
+  root.querySelector('[data-shop-prev]').addEventListener('click',()=>go(index-1));
+  root.querySelector('[data-shop-next]').addEventListener('click',()=>go(index+1));
+  dots.forEach((d,i)=>d.addEventListener('click',()=>go(i)));
+  render();restart();
+})();
+</script></body></html>
