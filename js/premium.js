@@ -21,15 +21,49 @@ const products={
   'fuchsia-petal-dress':{id:'fuchsia-petal-dress',name:"Fuchsia Petal Dress",price:195,image:'shop/fuchsia-petal-dress.webp'}
 };
 const money=n=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(n);
-function getCart(){try{return JSON.parse(localStorage.getItem(CART_KEY)||'[]')}catch{return[]}}
-function saveCart(c){localStorage.setItem(CART_KEY,JSON.stringify(c));renderCart();renderCheckout()}
-function addToCart(id){const c=getCart(),x=c.find(i=>i.id===id);if(x)x.qty++;else c.push({id,qty:1});saveCart(c);openCart()}
+function getCart(){
+  let raw=[];
+  try{
+    const parsed=JSON.parse(localStorage.getItem(CART_KEY)||'[]');
+    raw=Array.isArray(parsed)?parsed:[];
+  }catch{
+    raw=[];
+  }
+
+  // Keep only current catalogue products with valid positive quantities.
+  const merged=new Map();
+  for(const item of raw){
+    if(!item || typeof item.id!=='string' || !products[item.id]) continue;
+    const qty=Math.floor(Number(item.qty));
+    if(!Number.isFinite(qty) || qty<=0) continue;
+    merged.set(item.id,(merged.get(item.id)||0)+qty);
+  }
+
+  const clean=[...merged.entries()].map(([id,qty])=>({id,qty}));
+  const rawComparable=Array.isArray(raw)
+    ? raw.map(i=>i&&typeof i==='object'?{id:i.id,qty:Number(i.qty)}:i)
+    : [];
+
+  if(JSON.stringify(rawComparable)!==JSON.stringify(clean)){
+    if(clean.length) localStorage.setItem(CART_KEY,JSON.stringify(clean));
+    else localStorage.removeItem(CART_KEY);
+  }
+  return clean;
+}
+function saveCart(c){
+  const safe=Array.isArray(c)?c.filter(i=>i&&products[i.id]&&Number(i.qty)>0).map(i=>({id:i.id,qty:Math.max(1,Math.floor(Number(i.qty)))})):[];
+  if(safe.length) localStorage.setItem(CART_KEY,JSON.stringify(safe));
+  else localStorage.removeItem(CART_KEY);
+  renderCart();
+  renderCheckout();
+}
+function addToCart(id){if(!products[id])return;const c=getCart(),x=c.find(i=>i.id===id);if(x)x.qty++;else c.push({id,qty:1});saveCart(c);openCart()}
 function removeFromCart(id){saveCart(getCart().filter(i=>i.id!==id))}
-function changeQty(id,d){const c=getCart(),x=c.find(i=>i.id===id);if(!x)return;x.qty=Math.max(1,x.qty+d);saveCart(c)}
+function changeQty(id,d){const c=getCart(),x=c.find(i=>i.id===id);if(!x)return;const next=x.qty+Number(d||0);if(next<=0){saveCart(c.filter(i=>i.id!==id));return}x.qty=next;saveCart(c)}
 function openCart(){document.querySelector('.cart-drawer')?.classList.add('open');document.querySelector('[data-cart-backdrop]')?.classList.add('open');document.body.classList.add('cart-open')}
 function closeCart(){document.querySelector('.cart-drawer')?.classList.remove('open');document.querySelector('[data-cart-backdrop]')?.classList.remove('open');document.body.classList.remove('cart-open')}
-function renderCart(){const c=getCart(),body=document.querySelector('.cart-body'),count=c.reduce((s,i)=>s+i.qty,0),total=c.reduce((s,i)=>s+(products[i.id]?.price||0)*i.qty,0);document.querySelectorAll('[data-cart-count]').forEach(el=>el.textContent=count);document.querySelectorAll('[data-cart-total]').forEach(el=>el.textContent=money(total));if(body)body.innerHTML=c.length?c.map(i=>{const p=products[i.id];if(!p)return'';return `<div class="cart-item"><img src="${p.image}" alt="${p.name}"><div><strong>${p.name}</strong><small>${money(p.price)}</small><div class="qty-row"><button type="button" onclick="changeQty('${i.id}',-1)">−</button><span>${i.qty}</span><button type="button" onclick="changeQty('${i.id}',1)">+</button></div></div><button class="remove-btn" type="button" aria-label="Remove ${p.name}" onclick="removeFromCart('${i.id}')">×</button></div>`}).join(''):'<p class="muted">Your bag is empty.</p>'}
-function renderCheckout(){const box=document.querySelector('[data-checkout-items]'),totalEl=document.querySelector('[data-checkout-total]');if(!box&&!totalEl)return;const c=getCart(),total=c.reduce((s,i)=>s+(products[i.id]?.price||0)*i.qty,0);if(box)box.innerHTML=c.length?c.map(i=>{const p=products[i.id];return p?`<div class="summary-item"><img src="${p.image}" alt="${p.name}"><div><strong>${p.name}</strong><br><small>Qty ${i.qty}</small></div><strong>${money(p.price*i.qty)}</strong></div>`:''}).join(''):'<p class="muted">Your bag is empty. <a class="btn-link" href="shop.html">Return to the shop</a></p>';if(totalEl)totalEl.textContent=money(total)}
+function renderCart(){const c=getCart(),body=document.querySelector('.cart-body'),valid=c.filter(i=>products[i.id]&&i.qty>0),count=valid.reduce((s,i)=>s+i.qty,0),total=valid.reduce((s,i)=>s+products[i.id].price*i.qty,0);document.querySelectorAll('[data-cart-count]').forEach(el=>el.textContent=count);document.querySelectorAll('[data-cart-total]').forEach(el=>el.textContent=money(total));if(body)body.innerHTML=valid.length?valid.map(i=>{const p=products[i.id];return `<div class="cart-item"><img src="${p.image}" alt="${p.name}"><div><strong>${p.name}</strong><small>${money(p.price)}</small><div class="qty-row"><button type="button" onclick="changeQty('${i.id}',-1)">−</button><span>${i.qty}</span><button type="button" onclick="changeQty('${i.id}',1)">+</button></div></div><button class="remove-btn" type="button" aria-label="Remove ${p.name}" onclick="removeFromCart('${i.id}')">×</button></div>`}).join(''):'<p class="muted">Your bag is empty.</p>'}
+function renderCheckout(){const box=document.querySelector('[data-checkout-items]'),totalEl=document.querySelector('[data-checkout-total]');if(!box&&!totalEl)return;const c=getCart(),valid=c.filter(i=>products[i.id]&&i.qty>0),total=valid.reduce((s,i)=>s+products[i.id].price*i.qty,0);if(box)box.innerHTML=valid.length?valid.map(i=>{const p=products[i.id];return p?`<div class="summary-item"><img src="${p.image}" alt="${p.name}"><div><strong>${p.name}</strong><br><small>Qty ${i.qty}</small></div><strong>${money(p.price*i.qty)}</strong></div>`:''}).join(''):'<p class="muted">Your bag is empty. <a class="btn-link" href="shop.html">Return to the shop</a></p>';if(totalEl)totalEl.textContent=money(total)}
 async function stripeCheckout(){const items=getCart();if(!items.length)return alert('Your bag is empty.');try{const r=await fetch('/api/create-checkout-session',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({items})});const d=await r.json();if(!r.ok)throw new Error(d.error||'Stripe checkout is unavailable');location.href=d.url}catch(e){alert(e.message+'\n\nAdd STRIPE_SECRET_KEY and SITE_URL to the deployment environment.')}}
 async function paypalCheckout(){const items=getCart();if(!items.length)return alert('Your bag is empty.');try{const r=await fetch('/api/paypal-order',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({items})});const d=await r.json();if(!r.ok)throw new Error(d.error||'PayPal checkout is unavailable');const link=d.links?.find(x=>x.rel==='approve')?.href;if(!link)throw new Error('PayPal approval link was not returned');location.href=link}catch(e){alert(e.message+'\n\nAdd PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET and SITE_URL to the deployment environment.')}}
 async function hydrateInstagram(){const feed=document.querySelector('[data-instagram-feed]');if(!feed)return;try{const r=await fetch('/api/instagram-feed');if(!r.ok)return;const d=await r.json();const media=(d.media||[]).filter(x=>x.image).slice(0,8);if(!media.length)return;feed.innerHTML=media.slice(0,6).map(x=>`<a href="${x.permalink}" target="_blank" rel="noopener" aria-label="View Odo's Kloset post on Instagram"><img src="${x.image}" alt="Odo's Kloset Instagram look"></a>`).join('')}catch(_){}}
@@ -37,6 +71,7 @@ async function resolvePaymentStatus(){const card=document.querySelector('[data-p
 function initNav(){const btn=document.querySelector('[data-menu]'),drawer=document.querySelector('.mobile-drawer');if(!btn||!drawer)return;btn.addEventListener('click',()=>{const open=btn.getAttribute('aria-expanded')==='true';btn.setAttribute('aria-expanded',String(!open));drawer.classList.toggle('open',!open);document.body.classList.toggle('menu-open',!open)});drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{btn.setAttribute('aria-expanded','false');drawer.classList.remove('open');document.body.classList.remove('menu-open')}))}
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeCart();const btn=document.querySelector('[data-menu]'),drawer=document.querySelector('.mobile-drawer');btn?.setAttribute('aria-expanded','false');drawer?.classList.remove('open');document.body.classList.remove('menu-open')}});
 document.addEventListener('DOMContentLoaded',()=>{initNav();renderCart();renderCheckout();hydrateInstagram();resolvePaymentStatus()});
+window.addEventListener('storage',e=>{if(e.key===CART_KEY){renderCart();renderCheckout()}});
 Object.assign(window,{addToCart,removeFromCart,changeQty,openCart,closeCart,stripeCheckout,paypalCheckout});
 
 
@@ -65,4 +100,55 @@ function initSectionReveal(){
   const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-visible');io.unobserve(e.target)}})},{threshold:.08,rootMargin:'0px 0px -8% 0px'});
   sections.slice(1).forEach(s=>io.observe(s));
 }
-document.addEventListener('DOMContentLoaded',()=>{initSectionReveal();initTypewriter()});
+document.addEventListener('DOMContentLoaded',()=>{initSectionReveal();initTypewriter();initSpeakingVideos()});
+
+
+function initSpeakingVideos(){
+  const players=[...document.querySelectorAll('[data-youtube-id]')];
+  if(!players.length)return;
+
+  const hasWebOrigin=/^https?:$/.test(location.protocol) && location.origin && location.origin!=='null';
+
+  players.forEach(player=>{
+    const id=player.dataset.youtubeId;
+    const title=player.dataset.youtubeTitle||'YouTube video';
+    const playBtn=player.querySelector('.speaking-video-play');
+    const fallback=player.querySelector('.speaking-video-fallback');
+
+    if(!hasWebOrigin){
+      player.classList.add('local-video-preview');
+      if(playBtn){
+        playBtn.addEventListener('click',()=>{
+          window.open(`https://www.youtube.com/watch?v=${encodeURIComponent(id)}`,'_blank','noopener');
+        });
+      }
+      return;
+    }
+
+    const loadPlayer=()=>{
+      if(player.dataset.loaded==='true')return;
+      player.dataset.loaded='true';
+
+      const iframe=document.createElement('iframe');
+      const origin=encodeURIComponent(location.origin);
+      const widgetReferrer=encodeURIComponent(location.href);
+      iframe.src=`https://www.youtube.com/embed/${encodeURIComponent(id)}?autoplay=1&playsinline=1&rel=0&origin=${origin}&widget_referrer=${widgetReferrer}`;
+      iframe.title=title;
+      iframe.loading='lazy';
+      iframe.referrerPolicy='strict-origin-when-cross-origin';
+      iframe.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      iframe.allowFullscreen=true;
+
+      player.innerHTML='';
+      player.appendChild(iframe);
+    };
+
+    playBtn?.addEventListener('click',loadPlayer);
+    player.addEventListener('dblclick',loadPlayer);
+
+    // On the live site, keep the player lightweight until the visitor chooses to play.
+    // This also guarantees YouTube receives the embedding page as the referrer.
+    fallback?.addEventListener('click',()=>{});
+  });
+}
+

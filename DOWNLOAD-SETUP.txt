@@ -1,0 +1,12 @@
+FRANCISCA BOATENG WEBSITE — SPLIT DOWNLOAD
+
+This package was split only to avoid large-file download failures.
+
+1. Extract "Francisca-Boateng-Website-CORE.zip".
+2. Extract "Francisca-Boateng-MEDIA-1.zip" into the SAME folder.
+3. Extract "Francisca-Boateng-MEDIA-2.zip" into the SAME folder.
+4. Allow the img/ folder to merge.
+
+The media packs already contain the correct img/ paths, so no code changes are needed.
+
+The Core package includes the latest Journal update.
