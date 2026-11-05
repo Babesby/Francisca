@@ -47,6 +47,117 @@
   @media(max-width:700px){.journal-page-hero{padding-bottom:40px}.journal-toolbar{align-items:flex-start;flex-direction:column}.journal-grid{grid-template-columns:1fr}.journal-card{min-height:0}.journal-card-top{margin-bottom:20px}.journal-card h2{font-size:1.22rem}.journal-summary{font-size:.9rem}}
 
   
+
+
+  /* V16 mobile archive visibility safeguard */
+  .journal-archive,
+  .journal-archive .container,
+  .journal-grid,
+  .journal-card {
+    visibility: visible;
+  }
+
+  .journal-grid,
+  .journal-card {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .journal-card {
+    width: 100%;
+  }
+
+  .journal-card h2,
+  .journal-summary,
+  .journal-preview,
+  .journal-preview-body {
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+
+  @media(max-width:700px){
+    .journal-archive.reveal-section,
+    .js .journal-archive.reveal-section,
+    .js .journal-archive.reveal-section.is-visible {
+      opacity:1 !important;
+      transform:none !important;
+      visibility:visible !important;
+      transition:none !important;
+    }
+
+    .journal-archive {
+      display:block !important;
+      overflow:visible !important;
+      padding-top:48px !important;
+    }
+
+    .journal-archive > .container {
+      display:block !important;
+      width:min(92vw,620px) !important;
+      overflow:visible !important;
+    }
+
+    .journal-toolbar {
+      display:block !important;
+      width:100% !important;
+      margin-bottom:24px !important;
+    }
+
+    .journal-toolbar h2 {
+      display:block !important;
+      width:100% !important;
+      margin:0 !important;
+      font-size:clamp(2rem,11vw,2.8rem) !important;
+      line-height:1.05 !important;
+    }
+
+    .journal-grid {
+      display:grid !important;
+      grid-template-columns:minmax(0,1fr) !important;
+      width:100% !important;
+      gap:18px !important;
+      overflow:visible !important;
+    }
+
+    .journal-card {
+      display:flex !important;
+      opacity:1 !important;
+      visibility:visible !important;
+      transform:none !important;
+    }
+
+    .journal-card-top {
+      flex-wrap:wrap;
+    }
+
+    .journal-time {
+      text-align:left;
+    }
+
+    .journal-preview summary {
+      min-height:44px;
+      align-items:center;
+    }
+  }
+
+  @media(max-width:390px){
+    .journal-archive > .container {
+      width:calc(100% - 24px) !important;
+    }
+
+    .journal-card-top,
+    .journal-card h2,
+    .journal-summary,
+    .journal-author {
+      padding-left:18px;
+      padding-right:18px;
+    }
+
+    .journal-preview {
+      margin-left:18px;
+      margin-right:18px;
+    }
+  }
 </style>
 </head>
 <body>

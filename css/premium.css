@@ -1134,3 +1134,14 @@ h1,h2,h3{overflow-wrap:break-word}
     font-size: .68rem;
   }
 }
+
+
+/* V16 — reveal animation must never hide very long content sections */
+@media (max-width: 700px) {
+  .js .journal-archive.reveal-section {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+    transition: none !important;
+  }
+}

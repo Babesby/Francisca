@@ -94,11 +94,50 @@ function initSectionReveal(){
   document.documentElement.classList.add('js');
   const sections=[...document.querySelectorAll('main > section')];
   if(!sections.length)return;
+
   const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if(reduced){sections.forEach(s=>s.classList.add('is-visible'));return;}
-  sections.forEach((s,i)=>{s.classList.add('reveal-section');if(i===0)s.classList.add('is-visible')});
-  const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-visible');io.unobserve(e.target)}})},{threshold:.08,rootMargin:'0px 0px -8% 0px'});
-  sections.slice(1).forEach(s=>io.observe(s));
+  sections.forEach((section,index)=>{
+    section.classList.add('reveal-section');
+    if(index===0 || section.classList.contains('journal-archive')) {
+      section.classList.add('is-visible');
+    }
+  });
+
+  if(reduced){
+    sections.forEach(section=>section.classList.add('is-visible'));
+    return;
+  }
+
+  if(!('IntersectionObserver' in window)){
+    sections.forEach(section=>section.classList.add('is-visible'));
+    return;
+  }
+
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting || entry.intersectionRatio>0){
+        entry.target.classList.add('is-visible');
+        io.unobserve(entry.target);
+      }
+    });
+  },{
+    threshold:0,
+    rootMargin:'0px 0px -4% 0px'
+  });
+
+  sections.slice(1).forEach(section=>{
+    if(!section.classList.contains('is-visible')) io.observe(section);
+  });
+
+  // Failsafe: a reveal animation must never make real content inaccessible.
+  window.setTimeout(()=>{
+    sections.forEach(section=>{
+      const rect=section.getBoundingClientRect();
+      if(rect.top < window.innerHeight*1.35 && rect.bottom > 0){
+        section.classList.add('is-visible');
+      }
+    });
+  },500);
 }
 document.addEventListener('DOMContentLoaded',()=>{initSectionReveal();initTypewriter();initSpeakingVideos()});
 
